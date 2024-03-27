@@ -19,6 +19,6 @@
     "express": "^4.18.3",
     "mongodb": "^6.5.0",
     "mongoose": "^8.2.2",
-    "mongoose-slug-generator": "^1.0.4"
+    "mongoose-slug-updater": "^3.3.0"
   }
 }
