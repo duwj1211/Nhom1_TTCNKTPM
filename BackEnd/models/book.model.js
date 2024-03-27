@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const slug = require('mongoose-slug-updater');
+const { StatusBook } = require('../constant')
 
 mongoose.plugin(slug);
 
@@ -19,6 +20,7 @@ const BookSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Author'
   },
+  status: { type: Number, require: true, default: StatusBook.SELLING },
   slug: {type: String, slug: 'name'}, 
 }, {
   timestamps: true

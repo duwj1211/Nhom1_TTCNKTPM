@@ -54,7 +54,6 @@ const getBookByAuthor = async (req, res) => {
   const slug = req.params.slug;
   try {
     const author = await Author.findOne({slug: slug});
-    console.log(author);
     if (author) {
       const books = await Book.find({ author: author._id });
       res.status(200).json(books);
