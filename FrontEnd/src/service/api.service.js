@@ -23,8 +23,8 @@ instance.interceptors.response.use((response) => {
     const status = error.response ? error.response.status : null;
     if (status === 401) {
       
-    } else if (status == 500 || status == 500) {
-      router.push("/error/500");
+    } else if (status === 500) {
+      
     }
     return Promise.reject(error);
   }
