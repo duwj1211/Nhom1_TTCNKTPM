@@ -1,16 +1,27 @@
 const Book = require('../models/book.model');
 const Author = require('../models/author.model');
 
-const getBooks = async (req, res) => {
-  const page = parseInt(req.query.page) || 1;
+const searchBooks = async (req, res) => {
+  const search = req.query.search || '';
+  const page = parseInt(req.query.page) || 0;
   const limit = parseInt(req.query.limit) || 12;
+  const sortBy = req.query.sortBy || 'sold';
+  const orderBy = req.query.orderBy === 'desc' ? -1 : 1;
   try {
-    const totalCount = await Book.countDocuments();
-    const totalPages = Math.ceil(totalCount / limit);
+    
+    let querySearch =  {}
+    if (search) {
+      querySearch = {$text: { $search: search }}
+    }
+    const books = await Book
+      .find(querySearch)
+      .sort({[sortBy]: orderBy})
+      .skip((page) * limit).limit(limit);
 
-    const books = await Book.find()
-                                .skip((page - 1) * limit)
-                                .limit(limit);
+    const totalCount = await books.length;
+    const totalPages = Math.ceil(totalCount / limit); 
+
+    // const books = await query.exec();
     res.status(200).json({
       currentPage: page,
       totalPages: totalPages,
@@ -89,7 +100,7 @@ const updateBookById = async (req, res) => {
 };
 
 module.exports = {
-  getBooks,
+  searchBooks,
   getBookById,
   getBookBySlug,
   getBookByAuthor,

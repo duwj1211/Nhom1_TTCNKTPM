@@ -20,11 +20,14 @@ const BookSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Author'
   },
+  sold: { type: Number, default: 0},
   status: { type: Number, require: true, default: StatusBook.SELLING },
   slug: {type: String, slug: 'name'}, 
 }, {
   timestamps: true
 })
+
+BookSchema.index({name: 'text', description: 'text'})
 
 const Book = mongoose.model("Book", BookSchema);
 

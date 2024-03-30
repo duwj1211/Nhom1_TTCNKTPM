@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
-  getBooks,
+  searchBooks,
   getBookById,
   getBookBySlug,
   getBookByAuthor,
@@ -9,7 +9,7 @@ const {
   updateBookById,
 } = require('../controllers/book.controller')
 
-router.get('/', getBooks);
+router.get('/', searchBooks);
 router.get('/id/:id', getBookById);
 router.get('/:slug', getBookBySlug);
 router.get('/author/:slug', getBookByAuthor);
