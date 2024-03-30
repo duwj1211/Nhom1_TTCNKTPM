@@ -1,14 +1,35 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
+//route
 const userRoute = require('./routes/user.route');
+const authorRoute = require('./routes/author.route');
+const bookRoute = require('./routes/book.route');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+const corsOpts = {
+  origin: "*",
+  exposedHeaders: ["Authorization"],
+
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: [
+    "Origin",
+    "Content-Type",
+    "Accept",
+    "Authorization",
+    "X-Request-With",
+  ],
+};
+app.use(cors(corsOpts));
+
 app.use("/api/users", userRoute);
+app.use("/api/authors", authorRoute);
+app.use("/api/books", bookRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello from Node API Server Updated");

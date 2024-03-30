@@ -20,7 +20,7 @@ function Header() {
                 <li className={cx('nav-item')}><Link to={'#'}>Trang chủ</Link></li>
                 <li className={cx('nav-item')}>
                   <Link to={'#'}>Tin sách</Link>
-                  <i class="far fa-chevron-down"></i>
+                  <i className="far fa-chevron-down"></i>
                   </li>
                 <li className={cx('nav-item')}><Link to={'#'}>Sách Nhã Nam</Link></li>
                 <li className={cx('nav-item')}><Link to={'#'}>Tác giả</Link></li>
