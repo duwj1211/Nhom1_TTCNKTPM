@@ -1,10 +1,17 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+
 
 const cx = classNames.bind(styles)
 
 function Header() {
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const toggleUserMenu  = () =>{
+    setShowUserMenu(!showUserMenu);
+  }
   return (
     <header className={cx('wrap')}>
       <div className='container'>
@@ -41,7 +48,17 @@ function Header() {
                 </div>
               </div>
               <div>
-                <span className={cx('icon')}><i className="far fa-user"></i></span>
+                <div className={cx('user-header')} onMouseEnter={toggleUserMenu} onMouseLeave={toggleUserMenu}>
+                  <span className={cx('icon')}><i className="far fa-user"></i></span>
+                  {showUserMenu &&(
+                    <div className={cx('account-header')}>
+                      <a href="../../pages/signIn">Đăng nhập</a>
+						          <a href="#">Đăng ký</a>
+                    </div>
+                  )}  
+                </div>
+              </div>
+              <div className={cx('cart-header')}>
                 <Link to={'/cart'}>
                   <span className={cx('icon')}>
                     <i className="far fa-shopping-bag"></i>
