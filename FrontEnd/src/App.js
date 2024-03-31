@@ -4,7 +4,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 
 //pages
 import Home from "./pages/Home";
-import SignIn from "./pages/signIn";
+import LoginForm from './pages/signIn';
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
         <Routes>
         <Route path='' element={<DefaultLayout />}>
           <Route index element={<Home />} />
-          <Route index element={<SignIn/>}/>
+          <Route path="/signIn" index element={<LoginForm/>}/>
         </Route>
         </Routes>
       </div>
