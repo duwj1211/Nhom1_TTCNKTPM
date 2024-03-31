@@ -7,7 +7,7 @@ mongoose.plugin(slug);
 const BookSchema = mongoose.Schema({
   name: { type: String, require: true },
   avatar: { type: String, require: true },
-  priceOrginal: { type: Number, require: true },
+  priceOriginal: { type: Number, require: true },
   priceFinal: { type: Number, require: false },
   quantity: { type: Number, require: true },
   publicDate: { type: Date, require: true },
