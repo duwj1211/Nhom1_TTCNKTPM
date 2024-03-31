@@ -52,7 +52,7 @@ function Header() {
                   <span className={cx('icon')}><i className="far fa-user"></i></span>
                   {showUserMenu &&(
                     <div className={cx('account-header')}>
-                      <a href="../../pages/signIn">Đăng nhập</a>
+                      <a href="/signIn">Đăng nhập</a>
 						          <a href="#">Đăng ký</a>
                     </div>
                   )}  
