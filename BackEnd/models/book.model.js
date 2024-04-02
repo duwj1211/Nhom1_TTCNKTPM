@@ -23,6 +23,8 @@ const BookSchema = mongoose.Schema({
   sold: { type: Number, default: 0},
   status: { type: Number, require: true, default: StatusBook.SELLING },
   slug: {type: String, slug: 'name'}, 
+  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 }, {
   timestamps: true
 })

@@ -1,16 +1,18 @@
 const mongoose = require('mongoose');
-import OrderItem from './orderItem.model';
 
 const OrderSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  items: [OrderItem],
+  items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'OrderItem' }],
   totalPriceOrginal: { type: Number, require: true },
   totalPriceFinal: { type: Number, require: false },
   status: { type: Number, require: true, default: 0},
-  shipping_address: { type: String, require: true },
+  shippingAddress: { type: String, require: true },
+  shippingFee: { type: Number, require: false },
+  totalPrice: { type: Number, require: true },
+  note: { type: String, require: false },
 }, { timestamps: true })
 
 const Order = mongoose.model("Order", OrderSchema);

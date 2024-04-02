@@ -9,6 +9,7 @@ const AuthorSchema = mongoose.Schema({
   description: { type: String, require: false },
   country: { type: String, require: false },
   slug: {type: String, slug: 'fullName'}, 
+  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
 }, {
   timestamps: true
 })

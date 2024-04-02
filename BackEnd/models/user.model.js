@@ -6,7 +6,8 @@ const UserSchema = mongoose.Schema({
   password: { type: String, require: true },
   firstName: { type: String, require: false },
   lastName: { type: String, require: false },
-  phoneNumber: { type: String, require: false }
+  phoneNumber: { type: String, require: false },
+  status: { type: Number, require: false }
 }, { timestamps: true })
 
 UserSchema.pre('save', async function(next) {
