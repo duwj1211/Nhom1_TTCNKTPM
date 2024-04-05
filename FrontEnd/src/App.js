@@ -13,6 +13,7 @@ function App() {
         <Routes>
         <Route path='' element={<DefaultLayout />}>
           <Route index element={<Home />} />
+          <Route path='cart' element={<Home />} />
         </Route>
         </Routes>
       </div>

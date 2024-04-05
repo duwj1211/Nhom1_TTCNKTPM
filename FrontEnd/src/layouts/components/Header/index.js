@@ -1,56 +1,54 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const cx = classNames.bind(styles)
 
 function Header() {
   return (
     <header className={cx('wrap')}>
+      <div className={cx('top-header')}>
+        <div className='container d-flex align-items-center justify-content-between'>
+          <div className='d-flex align-items-center'>
+            <i className="fas fa-phone-alt"></i>
+            <span className='ms-2'>+84 989382479</span>
+          </div>
+          <div className='d-flex align-items-centen gap-4'>
+            <span className={cx('social-icon')}><i className="fab fa-facebook-f"></i></span>
+            <span className={cx('social-icon')}><i className="fab fa-instagram"></i></span>
+            <span className={cx('social-icon')}><i className="fab fa-linkedin-in"></i></span>
+          </div>
+        </div>
+      </div>
       <div className='container'>
-        <div className='row'>
-          <div className='col-lg-2 col-md-3'>
-            <Link to={''} className={cx('logo')}>
-              <img width="64" height="62" src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/logo.png?1704690471681" alt="Nhã Nam" />
-            </Link>
+        <div className={cx('main-header')}>
+          <div className={cx('logo')}>
+            OneBook
           </div>
-          <div className='col-9 col-md-3 col-xl-7 col-lg-6'>
-            <div className={cx('nav-head')}>
-              <ul className={cx('nav-list')}>
-                <li className={cx('nav-item')}><Link to={'#'}>Trang chủ</Link></li>
-                <li className={cx('nav-item')}>
-                  <Link to={'#'}>Tin sách</Link>
-                  <i className="far fa-chevron-down"></i>
-                  </li>
-                <li className={cx('nav-item')}><Link to={'#'}>Sách Nhã Nam</Link></li>
-                <li className={cx('nav-item')}><Link to={'#'}>Tác giả</Link></li>
-                <li className={cx('nav-item')}><Link to={'#'}>Cuộc thi</Link></li>
-                <li className={cx('nav-item')}><Link to={'#'}>Về Nhã Nam</Link></li>
-                <li className={cx('nav-item')}><Link to={'#'}>Liên hệ</Link></li>
-              </ul>
+          <div className={cx('search-wrap')}>
+            <input type='text' name='query' placeholder='Tìm kiếm' autoComplete='off' />
+            <div className={cx('search-btn')}>
+              <i className="far fa-search"></i>
             </div>
           </div>
-          <div className='col-md-6 col-xl-3 col-lg-4 col-12 mb-block'>
-            <div className='d-flex align-items-center h-100 justify-content-between'>
-              <div className={cx('search-wrap')}>
-                <input type='text' name='query'
-                  placeholder='Tìm kiếm' autoComplete='off'
-                />
-                <div className={cx('search-btn')}>
-                  <i className="far fa-search"></i>
-                </div>
-              </div>
-              <div>
-                <span className={cx('icon')}><i className="far fa-user"></i></span>
-                <Link to={'/cart'}>
-                  <span className={cx('icon')}>
-                    <i className="far fa-shopping-bag"></i>
-                    <span className={cx('count-item')}>{2}</span>
-                  </span>
-                </Link>
-              </div>
-            </div>
+          <div className={cx('header-action')}>
+            <NavLink to='#'>
+              <span className={cx('icon')}><i className="far fa-user"></i></span>
+              <span className='d-none d-md-inline'>Tài khoản</span>
+            </NavLink>
+            <div className={cx('device')}></div>
+            <NavLink to='#'>
+              <span className={cx('icon')}><i className="far fa-shopping-bag"></i></span>
+              <span className='d-none d-md-inline'>Giỏ hàng</span>
+            </NavLink>
           </div>
+        </div>
+        <div className={cx('nav-header')}>
+          <NavLink to='/' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Trang chủ</span></NavLink>
+          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Sách</span></NavLink>
+          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink>
+          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tác giả</span></NavLink>
+          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink>
         </div>
       </div>
     </header>
