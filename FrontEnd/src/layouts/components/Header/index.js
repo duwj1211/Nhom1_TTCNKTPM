@@ -59,7 +59,7 @@ function Header() {
                 </div>
               </div>
               <div className={cx('cart-header')}>
-                <Link to={'/cart'}>
+                <Link to={'/Cart'}>
                   <span className={cx('icon')}>
                     <i className="far fa-shopping-bag"></i>
                     <span className={cx('count-item')}>{2}</span>
