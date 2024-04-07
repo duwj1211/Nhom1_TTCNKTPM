@@ -1,0 +1,187 @@
+.social-marketting {
+    background: var(--main-color)
+}
+
+.social-marketting .social {
+    display: flex;
+    height: 80px;
+    align-items: center;
+}
+
+.social-marketting .social a {
+    position: relative;
+    margin-right: 20px;
+    height: 34px;
+    width: 34px;
+    transition: all 0.3s;
+}
+
+.social-marketting .social a:before {
+    content: "";
+    width: 38px;
+    height: 38px;
+    border: solid 2px #fff;
+    opacity: 0.5;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    border-radius: 50%
+}
+
+.social-marketting .social a:hover {
+    transform: rotate(360deg)
+}
+
+.social-marketting .email-mkt {
+    display: flex;
+    justify-content: end;
+    height: 100%;
+}
+
+.social-marketting .email-mkt h4 {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    height: 100%;
+    padding-right: 30px;
+    font-family: var(--font-base-bold);
+}
+
+.social-marketting .email-mkt .mail-chipm {
+    display: flex;
+    align-items: center;
+    width: 345px;
+    flex-flow: wrap
+}
+
+.social-marketting .email-mkt .newsletter-form {
+    position: relative;
+    width: 100%
+}
+
+.social-marketting .email-mkt .newsletter-form input {
+    height: 38px;
+    width: 100%;
+    padding: 0 90px 0 15px;
+    outline: none;
+    border: 1px solid #ebebeb;
+    font-size: 14px;
+    margin: 0;
+    min-height: 38px;
+    border-radius: 3px;
+    font-family: var(--font-base);
+    font-size: 14px
+}
+
+.social-marketting .email-mkt .newsletter-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: initial;
+    height: 38px;
+    width: 84px;
+    font-size: 14px;
+    padding: 0 10px;
+    background: #37CD37;
+    border-radius: 0 3px 3px 0;
+    color: #fff;
+    font-family: var(--font-base-bold);
+    border: none
+}
+
+.first-footer {
+    padding-top: 34px;
+}
+
+
+
+.footer .logo {
+    display: block;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.footer .logo span {
+    font-family: var(--font-base);
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #228B22;
+    display: inline-flex;
+    position: absolute;
+    bottom: -7px;
+    margin-left: 10px;
+}
+
+.footer .first-footer .list-menu .menu-items {
+    list-style: none;
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+.footer .first-footer ul li p, 
+.footer .first-footer ul li a {
+    display: block;
+    width: calc(100% - 30px);
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: var(--font-base);
+}
+
+.footer .first-footer ul li a:hover {
+    color: var(--main-color);
+}
+
+.list-menu .menu-items .icon {
+    width: 30px;
+    height: 24px;
+    font-size: 20px;
+    color: var(--main-color);
+}
+
+.footer h4 {
+    font-family: var(--font-base-bold);
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 16px;
+    margin-top: 45px;
+    color: var(--main-color);
+}
+
+.backtop {
+    position: fixed;
+    bottom: 80px;
+    right: 40px;
+    z-index: 99;
+    top: auto;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    color: #fff !important;
+    border-radius: 5px;
+    background: var(--main-color);
+    text-decoration: none;
+    opacity: 0 !important;
+}
+
+.backtop.show {
+    opacity: 1 !important;
+}
