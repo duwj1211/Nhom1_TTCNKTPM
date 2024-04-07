@@ -1,0 +1,53 @@
+.new-release-books {
+    margin: 50px 0;
+    padding: 10px;
+}
+
+.small-title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    color: rgba(122, 122, 122, 1);
+}
+
+.wrap-big-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-big-title hr {
+    margin-top: 25px;
+    width: 450px;
+    border-width: 1px;
+    color: rgb(104, 104, 104);
+}
+
+.hr {
+    margin-top: 35px;
+    width: 100%;
+    border-width: 1px;
+    color: rgb(104, 104, 104);
+}
+
+.big-title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 600;
+    line-height: 55px;
+    color: rgba(57, 50, 128, 1);
+}
+
+.view-all-products {
+    display: flex;
+    justify-content: end;
+    margin-top: 25px;
+    font-size: 16px;
+    color: rgba(237, 85, 59, 1);
+}
+
+.view-all-products p {
+    margin-right: 10px;
+    margin-top: -5px;
+}
