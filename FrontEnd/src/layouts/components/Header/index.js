@@ -46,10 +46,10 @@ function Header() {
         </div>
         <div className={cx('nav-header')}>
           <NavLink to='/' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Trang chủ</span></NavLink>
-          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Sách</span></NavLink>
-          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink>
-          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tác giả</span></NavLink>
-          <NavLink to='/cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink>
+          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Sách</span></NavLink>
+          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink>
+          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tác giả</span></NavLink>
+          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink>
         </div>
       </div>
     </header>

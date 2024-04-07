@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.main-content{
+    background-color: #ffffff;
+    width: 1200px;
+    height: fit-content;
+    margin: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.title{
+    padding-top: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
+table h2{
+    font-family: 'Times New Roman', Times, serif;
+}
+td{
+    vertical-align: middle;
+}
+.table-list-books{
+    width: 1000px;
+    outline: 1px solid #dddddd;   
+}
+.table-list-books th,
+.table-list-books td {
+    font-weight: 700;
+    color: #565a61;
+}
+.table-list-books th{
+    background-color: #fbfbfb;
+}
+.btn-outline-custom{
+    color: #5f4ecb;
+    border-color: #5f4ecb;
+}
+.btn-outline-custom:hover{
+    color: white;
+    background-color: #5f4ecb;
+}
+.cart{
+    width: 1000px;
+    height: fit-content;
+    margin: auto;
+}
+.cart-total-table{
+    height: fit-content;
+    outline: 1px solid #dddddd;
+}
+.cart-totals{
+    width: 500px;
+    margin-left: 485px;
+    padding-bottom: 10px;
+}
+.process-checkout button{
+    width: 500px;
+}
+.coupon{
+    display: flex;
+}
+.apply-btn{
+    margin-left: 10px;
+    margin-top: 5px;
+    height: 50px;
+}
+.update-btn{
+    margin-top: 5px;
+    margin-left: 512px;
+    height: 50px;
+}
+.coupon-input{
+    width: 260px;
+}
+.checkout-btn{
+    height: 50px;
+}
+.quantity-input{
+    outline: 1px solid #dddddd;
+    width: 45px;
+    height: 30px;
+}
+.cart-total-table th,
+.cart-total-tabletd {
+    color: #565a61;
+}
+.cart-total-table h2{
+    font-size: 20px;
+    vertical-align: middle;
+    margin-top:5px;
+    margin-bottom: 5px;
+    color: black;
+}
+.cart-total-table thead tr th{
+    background-color: #fbfbfb;
+}
