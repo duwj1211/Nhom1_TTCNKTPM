@@ -3,6 +3,7 @@ import styles from "./Home.module.css";
 
 import ApiService from "../../service/api.service";
 import { useState, useEffect } from "react";
+import TopBanner from "../../components/TopBanner";
 
 const cx = classNames.bind(styles)
 
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div className={cx("wrap")}>
+      <TopBanner />
       Home
     </div>
   )
