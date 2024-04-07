@@ -17,7 +17,7 @@ function NewReleaseBooks() {
         <hr className={cx("hr")}></hr>
         <div className={cx("view-all-products")}>
           <p>View All Products</p>
-          <i class="fa fa-arrow-right"></i>
+          <i className="fa fa-arrow-right"></i>
         </div>
       </div>
     </div>

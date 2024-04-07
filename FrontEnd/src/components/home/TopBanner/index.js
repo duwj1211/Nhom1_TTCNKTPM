@@ -30,22 +30,22 @@ function TopBanner() {
     {
       title: "Sách bán chạy nhất",
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.",
-      image: require('../../assets/images/top-banner.png')
+      image: require('../../../assets/images/top-banner.png')
     },
     {
       title: "The Assignment",
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo",
-      image: require('../../assets/images/top-banner-2.png')
+      image: require('../../../assets/images/top-banner-2.png')
     },
     {
       title: "Sách mới phát hành",
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo",
-      image: require('../../assets/images/top-banner-3.png')
+      image: require('../../../assets/images/top-banner-3.png')
     },
     {
       title: "Sách triết học",
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo",
-      image: require('../../assets/images/top-banner-4.png')
+      image: require('../../../assets/images/top-banner-4.png')
     },
   ]
   let sliderRef = useRef(null)

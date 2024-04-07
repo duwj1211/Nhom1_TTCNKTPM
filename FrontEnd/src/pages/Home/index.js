@@ -3,7 +3,9 @@ import styles from "./Home.module.css";
 
 import ApiService from "../../service/api.service";
 import { useState, useEffect } from "react";
-import TopBanner from "../../components/TopBanner";
+import TopBanner from "../../components/home/TopBanner";
+import EBook from "../../components/home/EBook";
+import NewReleaseBooks from "../../components/home/NewReleaseBooks/index";
 
 const cx = classNames.bind(styles)
 
@@ -25,7 +27,8 @@ export default function Home() {
   return (
     <div className={cx("wrap")}>
       <TopBanner />
-      Home
+      <EBook />
+      <NewReleaseBooks />
     </div>
   )
 }

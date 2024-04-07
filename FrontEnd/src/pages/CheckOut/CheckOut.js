@@ -50,8 +50,8 @@ const LocationFilter = () => {
     return(
         <div>
             <div className={cx("country")}>
-                <label htmlFor="coun" class="form-label">Tỉnh / Thành phố<span className={cx("required")}>*</span></label>
-                <select id="coun" class="form-select" value={selectedCity} onChange={handleCityChange}>
+                <label htmlFor="coun" className="form-label">Tỉnh / Thành phố<span className={cx("required")}>*</span></label>
+                <select id="coun" className="form-select" value={selectedCity} onChange={handleCityChange}>
                     <option value="">Chọn tỉnh/thành phố</option>
                     {cities.map(city => (
                         <option key={city.Id} value={city.Id}>{city.Name}</option>
@@ -60,7 +60,7 @@ const LocationFilter = () => {
             </div>
             <div className={cx("district")}>
                 <label  className="form-label">Quận / Huyện<span className={cx("required")}>*</span></label>
-                <select id="reg-district" class="form-select" value={selectedDistrict} onChange={handleDistrictChange}>
+                <select id="reg-district" className="form-select" value={selectedDistrict} onChange={handleDistrictChange}>
                     <option value="">Chọn quận / huyện</option>
                     {districts.map(district => (
                         <option key={district.Id} value={district.Id}>{district.Name}</option>
@@ -69,7 +69,7 @@ const LocationFilter = () => {
             </div>
             <div className={cx("street")}>
                 <label className="form-label">Phường / Xã<span className={cx("required")}>*</span></label>
-                <select id="ward" class="form-select" value={selectedWard} onChange={handleWardChange}>
+                <select id="ward" className="form-select" value={selectedWard} onChange={handleWardChange}>
                     <option value="">Chọn Phường/Xã</option>
                     {wards.map(ward => (
                         <option key={ward.Id} value={ward.Id}>{ward.Name}</option>
@@ -97,39 +97,39 @@ export default function CheckOut(){
                         <form className={cx("billing-details")}>
                             <span className={cx("name")}>
                                 <div className={cx("fn")}>
-                                    <label htmlFor="firstname" class="form-label">Họ<span className={cx("required")}>*</span></label>
-                                    <input className={cx("first-name","form-control")} id="firstname" class="form-control"></input>
+                                    <label htmlFor="firstname" className="form-label">Họ<span className={cx("required")}>*</span></label>
+                                    <input className={cx("first-name","form-control")} id="firstname"></input>
                                 </div>
                                 <div className={cx("ln")}>
-                                    <label htmlFor="lastname" class="form-label">Tên<span className={cx("required")}>*</span></label>
-                                <input className={cx("last-name","form-control")} id="lastname" class="form-control"></input>
+                                    <label htmlFor="lastname" className="form-label">Tên<span className={cx("required")}>*</span></label>
+                                <input className={cx("last-name","form-control")} id="lastname"></input>
                                 </div>
                             </span>
                             <div className={cx("company")}>
-                                <label htmlFor="company-name" class="form-label">Tên công ty (Tùy chọn)</label>
-                                <input  class="form-control" id="company-name"></input>
+                                <label htmlFor="company-name" className="form-label">Tên công ty (Tùy chọn)</label>
+                                <input className={cx('form-control')} id="company-name"></input>
                             </div>
                             <div className={cx("email")}>
-                                <label htmlFor="inputEmail" class="form-label">Địa chỉ email<span className={cx("required")}>*</span></label>
-                                <input className={cx("email-add","form-control")} type="email" class="form-control" id="inputEmail" placeholder="name@example.com"></input>
-                                <div id="emailHelp" class="form-text">Chúng tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn cho ai khác.</div>
+                                <label htmlFor="inputEmail" className="form-label">Địa chỉ email<span className={cx("required")}>*</span></label>
+                                <input className={cx("email-add","form-control")} type="email" id="inputEmail" placeholder="name@example.com"></input>
+                                <div id="emailHelp" className="form-text">Chúng tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn cho ai khác.</div>
                             </div>
                             <LocationFilter />
                             <div className={cx("street-address")}>
-                                <label class="form-label">Địa chỉ chi tiết<span className={cx("required")}>*</span></label>
-                                <input className={cx("street-add","form-control")} class="form-control"  placeholder="Số nhà hoặc tên đường"></input>
+                                <label className="form-label">Địa chỉ chi tiết<span className={cx("required")}>*</span></label>
+                                <input className={cx("street-add","form-control")} placeholder="Số nhà hoặc tên đường"></input>
                             </div>
                             <div className={cx("phone-number")}>
-                                <label class="form-label">Số điện thoại<span className={cx("required")}>*</span></label>
-                                <input className={cx("phone-num","form-control")} class="form-control"  placeholder="+84xxxxxxxxx"></input>
+                                <label className="form-label">Số điện thoại<span className={cx("required")}>*</span></label>
+                                <input className={cx("phone-num","form-control")} placeholder="+84xxxxxxxxx"></input>
                             </div>
                         </form>
                         <form className={cx("additional-information")}>
                             <div><h3>Thông tin thêm</h3></div>
                             <div><hr></hr></div>
                             <div className={cx("order-notes")}>
-                                <label class="form-label">Thêm chú thích (Tùy chọn)</label>
-                                <input className={cx("order","form-control")} class="form-control"></input>
+                                <label className="form-label">Thêm chú thích (Tùy chọn)</label>
+                                <input className={cx("order","form-control")}></input>
                             </div>
                         </form>
                     </div>
@@ -137,25 +137,25 @@ export default function CheckOut(){
                         <div className={cx("inside-order-payment")}>
                             <h3>Sản phẩm của bạn</h3>
                             <div className={cx("your-order")}>
-                                <table className={cx("your-order-table","table")} class="table">
+                                <table className={cx("your-order-table","table")}>
                                     <thead>    
 		                                <tr>
-			                                <th class="product-name">Sản phẩm</th>
-			                                <th class="product-total">Tổng phụ</th>
+			                                <th className="product-name">Sản phẩm</th>
+			                                <th className="product-total">Tổng phụ</th>
 		                                </tr>
 	                                </thead>
 	                                <tbody>
-						                <tr class="cart_item">
-					                        <td class="product-name">Ark Forging&nbsp;<strong class="product-quantity">×&nbsp;2</strong></td>
-					                        <td class="product-total"><span><bdi><span class="woocommerce-Price-currencySymbol">$</span>40.00</bdi></span></td>
+						                <tr className="cart_item">
+					                        <td className="product-name">Ark Forging&nbsp;<strong className="product-quantity">×&nbsp;2</strong></td>
+					                        <td className="product-total"><span><bdi><span className="woocommerce-Price-currencySymbol">$</span>40.00</bdi></span></td>
 				                        </tr>
 					                </tbody>
 	                                <tfoot>
-		                                <tr class="cart-subtotal">
+		                                <tr className="cart-subtotal">
 			                                <th>Tổng phụ</th>
 			                                <td><span><bdi><span>$</span>40.00</bdi></span></td>
 		                                </tr>
-		                                <tr class="order-total">
+		                                <tr className="order-total">
 			                                <th>Tổng</th>
 			                                <td><strong><span><bdi><span>$</span>40.00</bdi></span></strong></td>
 		                                </tr>
