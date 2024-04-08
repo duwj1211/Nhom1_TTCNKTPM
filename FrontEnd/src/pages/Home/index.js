@@ -1,16 +1,17 @@
-import classNames from "classnames/bind";
 import styles from "./Home.module.css";
+import classNames from "classnames/bind";
 
 import ApiService from "../../service/api.service";
 import { useState, useEffect } from "react";
 import TopBanner from "../../components/home/TopBanner";
 import EBook from "../../components/home/EBook";
-import NewReleaseBooks from "../../components/home/NewReleaseBooks/index";
+import NewReleaseBooks from "../../components/home/NewReleaseBooks";
+import FeaturedBook from "../../components/home/FeaturedBook";
+import Categories from "../../components/home/Categories";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 export default function Home() {
-
   const [authors, setAuthors] = useState([]);
 
   async function getAuthors() {
@@ -27,8 +28,10 @@ export default function Home() {
   return (
     <div className={cx("wrap")}>
       <TopBanner />
+      <Categories />
       <EBook />
       <NewReleaseBooks />
+      <FeaturedBook />
     </div>
-  )
+  );
 }
