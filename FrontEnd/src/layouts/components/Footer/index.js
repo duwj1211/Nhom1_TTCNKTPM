@@ -18,13 +18,13 @@ function Footer() {
                                 <a href={'https://www.instagram.com/'} className={cx('social-btn')} title='Instagram' target='_blank' rel='nofollow'>
                                     <img src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/instagram-icon.png?1704690471681" alt="Instagram" />
                                 </a>
-                                <a href="https://www.lazada.vn/shop/nha-nam-tphcm1632821525/" class="social-button" title="Lazada" target="_blank" rel="nofollow">
+                                <a href="https://www.lazada.vn/shop/nha-nam-tphcm1632821525/" className="social-button" title="Lazada" target="_blank" rel="nofollow">
                                 <img src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/lazada-icon.png?1704690471681" alt="Lazada" />
                                 </a>
-                                <a href="https://shopee.vn/nhanam59" class="social-button" title="Shopee" target="_blank" rel="nofollow">
+                                <a href="https://shopee.vn/nhanam59" className="social-button" title="Shopee" target="_blank" rel="nofollow">
                                     <img src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/shopee-icon.png?1704690471681" alt="Shopee" />
                                 </a>
-                                <a href="https://www.tiktok.com/@nhanamhanoi" class="social-button" title="Tiktok" target="_blank" rel="nofollow">
+                                <a href="https://www.tiktok.com/@nhanamhanoi" className="social-button" title="Tiktok" target="_blank" rel="nofollow">
                                     <img src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/tiktok-icon.png?1704690471681" alt="Tiktok" />
                                 </a>
                             </div>
@@ -34,7 +34,7 @@ function Footer() {
                                 <h4>Nhận thông tin khuyến mãi từ chúng tôi</h4>
                                 <div className={cx('mail-chipm')}>
                                     <form action="#" className={cx('newsletter-form')}>
-                                        <input className={cx('form-control')} type="email" aria-label='Nhập thông tin email' placeholder='Nhận email ưu đãi' name='EMAIL' required autocomplete='off'/>
+                                        <input className={cx('form-control')} type="email" aria-label='Nhập thông tin email' placeholder='Nhận email ưu đãi' name='EMAIL' required autoComplete='off'/>
                                         <button className={cx('button-sub')} type='submit' aria-label='Đăng ký nhận thông tin ưu đãi' name='subscribe'>Đăng ký</button>
                                     </form>
                                 </div>
@@ -68,13 +68,13 @@ function Footer() {
                                     <div className={cx('icon')}>
                                         <i className={cx('fas', 'fa-phone-alt')}></i>
                                     </div>
-                                    <a class='phone' href='tel:02435146876'>02435146876</a>
+                                    <a className='phone' href='tel:02435146876'>02435146876</a>
                                 </li>
                                 <li className={cx('menu-items')}>
                                     <div className={cx('icon')}>
-                                        <i class={cx('fas', 'fa-mobile-alt')}></i>
+                                        <i className={cx('fas', 'fa-mobile-alt')}></i>
                                     </div>
-                                    <a class='phone' href='tel:0903244248'>0903244248</a>
+                                    <a className='phone' href='tel:0903244248'>0903244248</a>
                                 </li>
                             </ul>
                         </div>
@@ -120,8 +120,8 @@ function Footer() {
                             <h4 className={cx('title-menu')}>
                                 <span>Phương thức thanh toán</span>
                             </h4>
-                            <div class="payment">
-						        <img src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/payment_method.png?1704690471681" class="lazyload loaded" alt="Phương thức thanh toán" />
+                            <div className="payment">
+						        <img src="//bizweb.dktcdn.net/100/363/455/themes/918830/assets/payment_method.png?1704690471681" className="lazyload loaded" alt="Phương thức thanh toán" />
 					        </div>
                         </div>
                     </div>

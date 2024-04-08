@@ -11,10 +11,13 @@ const cx = classNames.bind(styles);
 function CarouselComponent() {
   const [books, setBooks] = useState([]);
   async function getBooks() {
-    const response = await ApiService.get("books");
-    console.log(response.data);
-    if (response.status === 200) {
-      setBooks(response.data.books);
+    try {
+      const response = await ApiService.get("books");
+      if (response.status === 200) {
+        setBooks(response.data.books);
+      }
+    } catch (err) {
+      console.error(err);
     }
   }
   useEffect(() => {
@@ -34,14 +37,16 @@ function CarouselComponent() {
   return (
     <Slider {...settings} className={cx("slider")}>
       {books.map((book) => (
-        <div key={book.id} className={cx("book-item")}>
-          <div className={cx("item-img")}>
-            <img src={book.avatar} alt="Book item"></img>
-          </div>
-          <div className={cx("item-content")}>
-            <h4>{book.name}</h4>
-            <h5>{book.publisher}</h5>
-            <h6>{book.priceOriginal / 1000}.000 VNĐ</h6>
+        <div key={book._id} className={cx("wrap-book-item")}>
+          <div className={cx("book-item")}>
+            <div className={cx("item-img")}>
+              <img src={book.avatar} alt="Book item"></img>
+            </div>
+            <div className={cx("item-content")}>
+              <h4>{book.name}</h4>
+              <h5>{book.publisher}</h5>
+              <h6>{book.priceOriginal / 1000}.000 VNĐ</h6>
+            </div>
           </div>
         </div>
       ))}

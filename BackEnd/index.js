@@ -2,15 +2,18 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+require("dotenv").config();
+
 //route
-const userRoute = require('./routes/user.route');
-const authorRoute = require('./routes/author.route');
-const bookRoute = require('./routes/book.route');
+const authRoute = require("./routes/auth.route");
+const userRoute = require("./routes/user.route");
+const authorRoute = require("./routes/author.route");
+const bookRoute = require("./routes/book.route");
 
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 const corsOpts = {
   origin: "*",
@@ -27,6 +30,7 @@ const corsOpts = {
 };
 app.use(cors(corsOpts));
 
+app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/authors", authorRoute);
 app.use("/api/books", bookRoute);

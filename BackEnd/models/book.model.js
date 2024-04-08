@@ -7,7 +7,7 @@ mongoose.plugin(slug);
 const BookSchema = mongoose.Schema({
   name: { type: String, require: true },
   avatar: { type: String, require: true },
-  priceOrginal: { type: Number, require: true },
+  priceOriginal: { type: Number, require: true },
   priceFinal: { type: Number, require: false },
   quantity: { type: Number, require: true },
   publicDate: { type: Date, require: true },
@@ -23,6 +23,8 @@ const BookSchema = mongoose.Schema({
   sold: { type: Number, default: 0},
   status: { type: Number, require: true, default: StatusBook.SELLING },
   slug: {type: String, slug: 'name'}, 
+  categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Category' }],
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Reviews' }],
 }, {
   timestamps: true
 })

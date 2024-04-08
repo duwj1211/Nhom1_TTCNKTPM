@@ -5,10 +5,6 @@ const OrderItemSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Book'
   },
-  order: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Order'
-  },
   priceOrginal: { type: Number, require: true },
   priceFinal: { type: Number, require: false },
   quantity: { type: Number, require: true, default: 1 },
