@@ -3,8 +3,6 @@ import ApiService from "../../../service/api.service";
 import Slider from "react-slick";
 import classNames from "classnames/bind";
 import styles from "./CarouselComponent.module.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const cx = classNames.bind(styles);
 
