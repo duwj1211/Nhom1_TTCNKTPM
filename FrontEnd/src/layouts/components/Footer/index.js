@@ -62,10 +62,12 @@ function Footer() {
                             <div>
                                 <h3 className={cx('heading')}>Lastest news</h3>
                                 <ul className={cx('news-list')}>
-                                    <li className={cx('news-items')}>   
-                                        <a href="#" target='_self' className={cx('link')}>
-                                            <img className={cx('news-thumb')} src="./images/img_rectangle_22.png" alt="image" />
-                                        </a>
+                                    <li className={cx('news-items')}>  
+                                        <div className={cx('news-thumb')}>
+                                            <a href="#" target='_self' className={cx('link')}>
+                                                <img className={cx('image')} src="./images/img_rectangle_22.png" alt="image" />
+                                            </a>
+                                        </div> 
                                         <div className={cx('news-container')}>
                                             <h5 className={cx('title')}>
                                                 <a href="#" target='_self'> Nostrud exercitation</a>
@@ -77,9 +79,12 @@ function Footer() {
                                         </div>
                                     </li>
                                     <li className={cx('news-items')}>
-                                        <a href="#" target='_self'>
-                                            <img className={cx('news-thumb')} src="./images/img_rectangle_22_100x100.png" alt="image" />
-                                        </a>
+                                        <div className={cx('news-thumb')}>
+                                            <a href="#" target='_self'>
+                                                <img className={cx('image')} src="./images/img_rectangle_22_100x100.png" alt="image" />
+                                            </a>
+                                        </div> 
+                                        
                                         <div className={cx('news-container')}>
                                             <h5 className={cx('title')}>
                                                 <a href="#" target='_self'> Nostrud exercitation</a>
@@ -103,6 +108,7 @@ function Footer() {
                             </div>
                         </div>
                         <div className={cx()}>
+
                         </div>
                     </section>
                 </section>

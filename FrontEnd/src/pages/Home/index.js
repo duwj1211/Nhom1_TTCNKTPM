@@ -8,6 +8,7 @@ import EBook from "../../components/home/EBook";
 import NewReleaseBooks from "../../components/home/NewReleaseBooks";
 import FeaturedBook from "../../components/home/FeaturedBook";
 import Categories from "../../components/home/Categories";
+import Sales from "../../components/home/Sales";
 
 const cx = classNames.bind(styles);
 
@@ -32,6 +33,7 @@ export default function Home() {
       <EBook />
       <NewReleaseBooks />
       <FeaturedBook />
+      <Sales />
     </div>
   );
 }
