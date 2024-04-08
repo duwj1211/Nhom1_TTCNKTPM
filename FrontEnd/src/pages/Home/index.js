@@ -1,8 +1,11 @@
 import classNames from "classnames/bind";
 import styles from "./Home.module.css";
 
+import Sales from "../../components/home/Sales"
+
 import ApiService from "../../service/api.service";
 import { useState, useEffect } from "react";
+import BestSeller from "../../components/home/BestSeller";
 
 const cx = classNames.bind(styles)
 
@@ -23,7 +26,8 @@ export default function Home() {
 
   return (
     <div className={cx("wrap")}>
-      Home
+      <BestSeller />
+      <Sales />
     </div>
   )
 }
