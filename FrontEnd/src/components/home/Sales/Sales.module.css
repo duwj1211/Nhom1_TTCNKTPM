@@ -1,0 +1,121 @@
+.slide {
+    display: flex;
+    justify-content: space-around;
+}
+
+.row {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    margin: 79px auto;
+    padding: 36px;
+    max-width: 1400px;
+    background: #fcebea;
+    border-radius: 20px;
+}
+
+.column {
+    margin: 0px 10px;
+    padding-bottom: 109px;
+}
+
+.column .title {
+    font-size: 45px;
+    font-weight: 700;
+    color: #463c74 ;
+    line-height: 66px;
+}
+
+.column .description {
+    font-size: 18px;
+    font-weight: 400;
+    color: #393280;
+    padding: 0;
+    margin: 0;
+}
+  
+.timer-container ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 32px;
+}
+  
+.timer-container ul li {
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+}
+
+.timer-container .days,
+.timer-container .hours,
+.timer-container .minutes,
+.timer-container .seconds {
+    color: #ed553b;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+  
+.timer-container ul li span {
+    font-size: 2rem;
+}
+
+.slick-dots {
+    display: flex;
+    align-items: center;
+    column-gap: 24px;
+    height: 20px;
+    margin-top: 32px;
+    margin-left: 8px;
+}
+  
+.dot-item {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #BEBEBE;
+    cursor: pointer;
+    transition: all linear .2s;
+}
+  
+.dot-item:hover {
+    transform: scale(1.2);
+    background-color: #ED553B;
+}
+
+.dot-item--active {
+    transform: scale(1.2);
+    background-color: #ED553B;
+}
+
+.dot-item--active::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid #ED553B;
+    transform-origin: center;
+    animation: scaleCicle .3s ease-out forwards;
+}
+  
+@keyframes scaleCicle {
+    100% {
+      width: 30px;
+      height: 30px;
+    }
+}
+
+.image img{
+    width: 632px;
+    height: 488px;
+}
