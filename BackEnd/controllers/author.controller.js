@@ -1,4 +1,5 @@
 const Author = require('../models/author.model');
+const Book = require('../models/book.model');
 
 const getAuthors = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -7,9 +8,11 @@ const getAuthors = async (req, res) => {
     const totalCount = await Author.countDocuments();
     const totalPages = Math.ceil(totalCount / limit);
 
-    const authors = await Author.find()
-                                .skip((page - 1) * limit)
-                                .limit(limit);
+    const authors = await Author
+      .find()
+      .select('_id fullName avatar slug')
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.status(200).json({
       currentPage: page,
       totalPages: totalPages,
@@ -26,7 +29,10 @@ const getAuthorById = async (req, res) => {
   try {
     const author = await Author.findOne({_id: id});
     if (author) {
-        res.status(200).json(author);
+      const books = await Book
+        .find({author: author._id})
+        .select('_id slug name avatar priceOriginal status')
+      res.status(200).json({author, books});
     } else {
       res.status(404).json({ message: "Không tìm thấy tác giả" });
     }
@@ -40,7 +46,10 @@ const getAuthorBySlug = async (req, res) => {
   try {
     const author = await Author.findOne({slug: slug});
     if (author) {
-      res.status(200).json(author);
+      const books = await Book
+        .find({author: author._id})
+        .select('_id slug name avatar priceOriginal status')
+      res.status(200).json({author, books});
     } else {
       res.status(404).json({ message: "Không tìm thấy tác giả" });
     }
