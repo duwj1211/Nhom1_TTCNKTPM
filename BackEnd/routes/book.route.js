@@ -12,7 +12,7 @@ const {
 router.get('/', searchBooks);
 router.get('/id/:id', getBookById);
 router.get('/:slug', getBookBySlug);
-router.get('/author/:slug', getBookByAuthor);
+// router.get('/author/:slug', getBookByAuthor);
 router.post('/create', createBook);
 router.put('/id/:id/edit', updateBookById);
 
