@@ -5,7 +5,7 @@ const Category = require('../models/category.model');
 const searchBooks = async (req, res) => {
   const search = req.query.search || '';
   const category = req.query.category || '';
-  const page = parseInt(req.query.page) || 0;
+  const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 12;
   const sortBy = req.query.sortBy || 'sold';
   const orderBy = req.query.orderBy === 'desc' ? -1 : 1;
@@ -27,14 +27,15 @@ const searchBooks = async (req, res) => {
       .select('_id slug name avatar priceOriginal status')
       .populate('categories')
       .sort({[sortBy]: orderBy})
-      .skip((page) * limit).limit(limit);
+      .skip((page - 1) * limit).limit(limit);
 
-    const totalCount = await books.length;
+    const totalCount = await Book.countDocuments();
     const totalPages = Math.ceil(totalCount / limit); 
     res.status(200).json({
       currentPage: page,
       totalPages: totalPages,
       totalCount: totalCount,
+      pageSize: books.length,
       books: books
     });
   } catch (error) {

@@ -17,6 +17,7 @@ const getAuthors = async (req, res) => {
       currentPage: page,
       totalPages: totalPages,
       totalCount: totalCount,
+      pageSize: authors.length,
       authors: authors
     });
   } catch (error) {
