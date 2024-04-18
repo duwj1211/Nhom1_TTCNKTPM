@@ -2,30 +2,26 @@
     display: flex;
     justify-content: center;
     margin: auto;
-    width: 1200px;
+    max-width: 1200px;
     height: fit-content ;
     background-color: #ffffff;
 }
 .main{
     margin-top: 10px;
     margin-bottom: 25px;
-}
-h1, h3{
-    /* font-family: 'Times New Roman', Times, serif; */
+    max-width: 100%;
 }
 
-h3{
+.main h3{
     font-size: 20px;
     font-weight: 700;
 }
-hr{
-    width: 500px;
+.inside-billing-order hr{
+    max-width: 500px;
+    width: 100%;
 }
 .required{
     color: red;
-}
-input{
-    width: 100px;
 }
 .billing-order{
     display: flex;
@@ -35,15 +31,16 @@ input{
 }
 .fn,
 .ln{
-    width: 220px;
+    max-width: 220px;
 }
 .fn{
     margin-right: 60px;
 }
 .billing-details input,
 .additional-information input,
-select{
+.select-address select{
     height: 45px;
+    max-width: 100%;
 }
 .email,
 .company,
@@ -54,7 +51,7 @@ select{
 .phone-number,
 .order-notes{
     margin-top: 5px;
-    width: 500px;
+    max-width: 500px;
 }
 .fn label,
 .ln label,
@@ -79,12 +76,15 @@ select{
     margin-left: 70px;
     height:fit-content;
     border: 1px solid #dddddd;
+    max-width: 100%;
 }
 .inside-order-payment{
     margin: 15px;
+    max-width: 100%;
 }
 .your-order{
-    width: 400px;
+    max-width: 400px;
+    max-width: 100%;
     margin-left: 20px;
 }
 .your-order-table th,
@@ -123,12 +123,12 @@ select{
     font-weight: 700;
     color: #565a61;
 }
-label .imgName{
+.imgName{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-label:nth-child(2), label:nth-child(3){
+.category label:nth-child(2), label:nth-child(3){
     margin: 15px 0;
 }
 
@@ -150,16 +150,16 @@ label:nth-child(2), label:nth-child(3){
 .container input{
     display: none;
 }
-input:checked.visa-check ~ .category .visaMethod,
-input:checked.mastercard-check ~ .category .mastercardMethod,
-input:checked.local-check ~ .category .local-bankMethod,
-input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod{
+.container input:checked.visa-check ~ .category .visaMethod,
+.container input:checked.mastercard-check ~ .category .mastercardMethod,
+.container input:checked.local-check ~ .category .local-bankMethod,
+.container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod{
     box-shadow: 0px 0px 0px 1px #6064b6;
 }
-input:checked.visa-check ~ .category .visaMethod .check,
-input:checked.mastercard-check ~ .category .mastercardMethod .check,
-input:checked.local-check ~ .category .local-bankMethod .check,
-input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod .check{
+.container input:checked.visa-check ~ .category .visaMethod .check,
+.container input:checked.mastercard-check ~ .category .mastercardMethod .check,
+.container input:checked.local-check ~ .category .local-bankMethod .check,
+.container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod .check{
     display: block;
 }
 .order{
