@@ -1,6 +1,7 @@
 const Book = require('../models/book.model');
 const Author = require('../models/author.model');
 const Category = require('../models/category.model');
+const {StatusBook} = require('../constant')
 
 const searchBooks = async (req, res) => {
   const search = req.query.search || '';
@@ -22,14 +23,15 @@ const searchBooks = async (req, res) => {
         res.status(404).json({ message: "Không tìm thấy danh mục" });
       }
     }
+    querySearch['status'] = { $in: [StatusBook.SELLING, StatusBook.STOP_IMPORT] };
     const books = await Book
       .find(querySearch)
-      .select('_id slug name avatar priceOriginal status')
+      .select('_id slug name avatar priceOriginal priceFinal status')
       .populate('categories')
       .sort({[sortBy]: orderBy})
       .skip((page - 1) * limit).limit(limit);
 
-    const totalCount = await Book.countDocuments();
+    const totalCount = await Book.countDocuments(querySearch);
     const totalPages = Math.ceil(totalCount / limit); 
     res.status(200).json({
       currentPage: page,
