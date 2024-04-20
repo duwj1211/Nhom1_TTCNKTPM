@@ -7,14 +7,38 @@
   object-fit: contain;
 }
 
-.signInWith {
-  margin: 0;
+
+.SgnUpFB {
+  position: absolute;
+  top: 800px;
+  left: 90px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
 }
 
-.signInWithContainer {
+.SgnUpGG {
+  position: absolute;
+  top: 800px;
+  left: 465px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+}
+
+.signUpWithFB {
+  margin: 10px 0 0 0;
+}
+
+
+.signUpWithContainer {
   position: absolute;
   top: calc(50% - 12px);
-  left: 79px;
+  left: calc(50% - 71.5px);
 }
 
 .logoContainer {
@@ -44,47 +68,82 @@
 
 .socialMediaFacebook {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 19px);
   left: 24px;
   width: 39px;
   height: 39px;
 }
 
-.inputField {
-  position: absolute;
-  top: calc(50% + 325px);
-  left: calc(50% - 353px);
-  border-radius: var(--br-5xs);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 301px;
-  height: 66px;
-}
 
 .techLogosGoogle {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 19px);
   left: 22px;
   border-radius: var(--br-49xl);
   width: 39px;
   height: 39px;
 }
 
+/* FirstName */
+.firstNameWrapper {
+  position: absolute;
+  top: 180px;
+  left: 100px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.firstName {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 137.5px);
+}
+
 .inputField1 {
   position: absolute;
-  top: 774px;
-  left: 448px;
+  top: 30px;
+  left: 10px;
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-200);
   box-sizing: border-box;
-  width: 288px;
+  width: 301px;
   height: 66px;
+  font-size: 30px;
+}
+
+/*LastName*/
+.lastNameWrapper {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.lastName {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 137.5px);
+}
+
+.inputField2 {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+  font-size: 30px;
 }
 
 /*Email*/
 .emailWrapper {
   position: absolute;
-  top: 170px;
+  top: 280px;
   left: 100px;
   box-sizing: border-box;
   width: 310px;
@@ -97,29 +156,22 @@
   left: 10px;
 }
 
-.inputField2 {
+.inputField3 {
   position: absolute;
   top: 30px;
   left: 10px;
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-200);
   box-sizing: border-box;
-  width: 500px;
-  height: 60px;
+  width: 400px;
+  height: 66px;
   font-size: 30px;
-}
-
-.alreadyHaveAn {
-  position: absolute;
-  top: 660px;
-  left: 123px;
-  color: var(--color-darkslategray-100);
 }
 
 /*Password*/
 .passwordWrapper {
   position: absolute;
-  top: 280px;
+  top: 380px;
   left: 100px;
   box-sizing: border-box;
   width: 400px;
@@ -132,41 +184,48 @@
   left: 10px;
 }
 
-.inputField3 {
+.inputField4 {
   position: absolute;
   top: 30px;
   left: 10px;
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-200);
   box-sizing: border-box;
-  width: 500px;
-  height: 60px;
+  width: 400px;
+  height: 66px;
   font-size: 30px;
 }
 
 .hideIcon {
   position: absolute;
   top: 47px;
-  left: 470px;
+  left: 370px;
   width: 24px;
   height: 24px;
 }
 
-.signinAccount {
+.alreadyHaveAn {
   position: absolute;
-  top: calc(50% - 21px);
-  left: calc(50% - 108px);
+  top: 698px;
+  left: 119px;
+  color: var(--color-darkslategray-100);
 }
 
-.or,
-.signinAccountWrapper {
+.createAccount {
+  position: absolute;
+  top: calc(50% - 21px);
+  left: calc(50% - 107px);
+}
+
+.createAccountWrapper,
+.or {
   position: absolute;
   font-size: var(--font-size-9xl);
 }
 
-.signinAccountWrapper {
-  top: 550px;
-  left: 120px;
+.createAccountWrapper {
+  top: calc(50% + 132.5px);
+  left: calc(50% - 361px);
   border-radius: var(--br-5xs);
   background-color: var(--color-darkslategray-100);
   border: 1px solid var(--color-darkslategray-200);
@@ -174,34 +233,48 @@
   width: 618px;
   height: 82px;
   color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+
 .or {
-  top: 697px;
-  left: 415px;
+  top: 730px;
+  left: 411px;
   color: var(--color-darkslategray-100);
 }
 
-.crossIcon,
-.crossIcon1 {
+.crossIcon {
   position: absolute;
-  top: 448px;
-  left: 120px;
+  top: 10px;
+  left: -30px;
   width: 24px;
   height: 24px;
 }
 
 .crossIcon1 {
-  top: 398px;
+  position: absolute;
+  top: 55px;
+  left: -30px;
+  width: 24px;
+  height: 24px;
 }
 
-.passwordStrengthAtContainer {
+.passwordConditions {
   position: absolute;
-  top: 384px;
-  left: 160px;
-  line-height: 50px;
+  top: 480px;
+  left: 156px;
+  line-height: 35px;
   font-family: var(--font-frank-ruhl-libre);
 }
+
+.passwordDisplay {
+  display: flex;
+  top: 10px;
+}
+
+
 
 .homeIcon {
   position: absolute;
@@ -214,30 +287,30 @@
 .frameChild,
 .frameItem {
   position: absolute;
-  top: 720px;
-  left: 465px;
+  top: 752px;
+  left: 116px;
   max-height: 100%;
   width: 271px;
 }
 
 .frameItem {
-  left: 127px;
+  left: 466px;
 }
 
-.inputFieldParent {
+.frameParent {
   position: absolute;
-  top: 1px;
+  top: 0;
   right: 0;
   border-radius: var(--br-mini) 0 0 var(--br-mini);
   background-color: var(--primary);
   border: 1px solid var(--text2);
   box-sizing: border-box;
   width: 960px;
-  height: 898px;
+  height: 899px;
   overflow: hidden;
 }
 
-.signinAccount2 {
+.createAccount2 {
   position: absolute;
   top: 61px;
   left: 116px;
@@ -271,7 +344,7 @@
   height: 242px;
 }
 
-.signin {
+.signup {
   width: 100%;
   position: relative;
   border-radius: var(--br-xl) 0 0 var(--br-xl);

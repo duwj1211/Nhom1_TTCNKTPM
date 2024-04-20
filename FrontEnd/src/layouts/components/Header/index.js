@@ -35,7 +35,7 @@ function Header() {
           <div className={cx('header-action')}>
             <NavLink to='#'>
               <span className={cx('icon')}><i className="far fa-user"></i></span>
-              <span className='d-none d-md-inline'>Tài khoản</span>
+              <NavLink to='/SignIn' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tài khoản</span></NavLink>
             </NavLink>
             <div className={cx('device')}></div>
             <NavLink to='#'>
