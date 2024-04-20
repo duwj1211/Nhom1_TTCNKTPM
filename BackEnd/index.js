@@ -5,11 +5,11 @@ const cors = require("cors");
 require("dotenv").config();
 
 //route
-const authRoute = require('./routes/auth.route');
-const userRoute = require('./routes/user.route');
-const authorRoute = require('./routes/author.route');
-const bookRoute = require('./routes/book.route');
-const categoryRoute = require('./routes/category.route');
+const authRoute = require("./routes/auth.route");
+const userRoute = require("./routes/user.route");
+const authorRoute = require("./routes/author.route");
+const bookRoute = require("./routes/book.route");
+const categoryRoute = require("./routes/category.route");
 
 const app = express();
 
