@@ -6,7 +6,7 @@ const OrderSchema = mongoose.Schema({
     ref: 'User'
   },
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'OrderItem' }],
-  totalPriceOrginal: { type: Number, require: true },
+  totalPriceOriginal: { type: Number, require: true },
   totalPriceFinal: { type: Number, require: false },
   status: { type: Number, require: true, default: 0},
   shippingAddress: { type: String, require: true },
