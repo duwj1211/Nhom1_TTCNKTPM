@@ -3,153 +3,74 @@ import { Link } from "react-router-dom";
 import ApiService from "../../service/api.service";
 import classNames from "classnames/bind";
 import styles from "./BookList.module.css";
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
 function BookList() {
+  const location = useLocation();
+  const [searchParams] = useSearchParams();
+
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [sortOption, setSortOption] = useState("");
-  const [pageOption, setPageOption] = useState("");
-  const [booksPerPage, setBooksPerPage] = useState(9);
+  const [sortBy, setSortBy] = useState("sold");
+  const [orderBy, setOrderBy] = useState("desc");
+  const [category, setCategory] = useState("desc");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const listSort = [
+    {title: 'Sắp xếp theo mặc định', sortBy: 'sold', orderBy: 'desc'},
+    {title: 'Sắp xếp theo tên A-Z', sortBy: 'name', orderBy: 'asc'},
+    {title: 'Sắp xếp theo tên Z-A', sortBy: 'name', orderBy: 'desc'},
+    {title: 'Sắp xếp theo giá thấp - cao', sortBy: 'priceFinal', orderBy: 'asc'},
+    {title: 'Sắp xếp theo giá cao - thấp', sortBy: 'priceFinal', orderBy: 'desc'},
+    {title: 'Sách mới', sortBy: 'createdAt', orderBy: 'desc'},
+  ]
+
+  useEffect(() => {
+    setSearchQuery(searchParams.get('q'))
+  }, [location.search])
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await ApiService.get("books", {
-          params: { limit: 15 },
+          params: { 
+            search: searchQuery,
+            page: currentPage,
+            limit: 12,
+            sortBy: sortBy,
+            orderBy: orderBy,
+          },
         });
         if (response.status === 200) {
           setBooks(response.data.books);
+          setCurrentPage(response.data.currentPage);
+          setTotalPage(response.data.totalPages)
         }
       } catch (err) {
         console.error(err);
       }
     }
     fetchData();
-  }, []);
+  }, [searchQuery, currentPage, sortBy, orderBy]);
 
-  const handleFilterAndSort = async (event) => {
-    try {
-      const minPriceInput = document.querySelector('input[name="minPrice"]');
-      const maxPriceInput = document.querySelector('input[name="maxPrice"]');
-      const nameInput = document.querySelector('input[name="name"]');
+  
+  function handleSortChange(event) {
+    const selectedSort = event.target.value;
+    const [selectedSortBy, selectedOrderBy] = selectedSort.split(',');
+    setSortBy(selectedSortBy);
+    setOrderBy(selectedOrderBy);
+  }
 
-      const minPrice = minPriceInput.value;
-      const maxPrice = maxPriceInput.value;
-      const name = encodeURIComponent(nameInput.value);
-
-      const sortOption = event.target.value;
-
-      const params = {};
-
-      if (minPrice && maxPrice) {
-        params.search = `priceOriginal>=${minPrice}&priceOriginal<=${maxPrice}`;
-      } else if (minPrice) {
-        params.search = `priceOriginal>=${minPrice}`;
-      } else if (maxPrice) {
-        params.search = `priceOriginal<=${maxPrice}`;
-      }
-
-      if (name) {
-        params.search += `${params.search ? "&" : ""}=${name}`;
-      }
-
-      if (selectedCategory) {
-        params.search += `${
-          params.search ? "&" : ""
-        }category=${selectedCategory}`;
-      }
-
-      switch (sortOption) {
-        case "alphabet":
-          params.sortBy = "name";
-          params.orderBy = "asc";
-          break;
-        case "price-asc":
-          params.sortBy = "priceFinal";
-          params.orderBy = "asc";
-
-          break;
-        case "price-desc":
-          params.sortBy = "priceFinal";
-          params.orderBy = "desc";
-
-          break;
-        case "new-book":
-          params.sortBy = "createdAt";
-          params.orderBy = "desc";
-          break;
-        case "bestseller-book":
-          params.sortBy = "sold";
-          params.orderBy = "desc";
-          break;
-        default:
-          break;
-      }
-
-      const response = await ApiService.get("books", { params });
-
-      if (response.status === 200) {
-        setBooks(response.data.books);
-      }
-
-      minPriceInput.value = "";
-      maxPriceInput.value = "";
-      nameInput.value = "";
-      setSelectedCategory("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const handlePaging = async (event) => {
-    try {
-      const pageOption = event.target.value;
-
-      switch (pageOption) {
-        case "9books":
-          setBooksPerPage(9);
-          break;
-        case "12books":
-          setBooksPerPage(12);
-          break;
-        case "15books":
-          setBooksPerPage(15);
-          break;
-        default:
-          break;
-      }
-
-      const response = await ApiService.get("books");
-
-      if (response.status === 200) {
-        setBooks(response.data.books);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const indexOfLastBook = currentPage * booksPerPage;
-  const indexOfFirstBook = indexOfLastBook - booksPerPage;
-  const currentBooks = books.slice(indexOfFirstBook, indexOfLastBook);
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  const chunkArray = (arr, size) => {
-    const chunkedArr = [];
-    for (let i = 0; i < arr.length; i += size) {
-      chunkedArr.push(arr.slice(i, i + size));
-    }
-    return chunkedArr;
-  };
-
-  const chunkedBooks = chunkArray(currentBooks, 3);
+  function handlePageChange(pageNumber) {
+    setCurrentPage(pageNumber);
+  }
 
   return (
-    <div className={cx("all-book")}>
+    <div className={cx("all-book", "container-fluid")}>
       <div className={cx("all-book-nav")}>
         <a className={cx("nav-home")} href="/">
           HOME
@@ -158,49 +79,36 @@ function BookList() {
         <div>BOOKS</div>
       </div>
       <div className={cx("all-book-content")}>
-        <Filter handleFilter={handleFilterAndSort} />
+        <Filter />
         <div className={cx("col-list-book")}>
           <div className={cx("sort-and-paging")}>
             <div className="sort">
-              <select
-                className={cx("sort-select")}
-                onChange={handleFilterAndSort}
-                value={sortOption}
-              >
-                <option value="alphabet">Sắp xếp theo tên A-Z</option>
-                <option value="price-asc">Sắp xếp theo giá thấp - cao</option>
-                <option value="price-desc">Sắp xếp theo giá cao - thấp</option>
-                <option value="new-book">Sách mới</option>
-                <option value="bestseller-book">Bán chạy</option>
-              </select>
-            </div>
-            <div className={cx("paging")}>
-              <select
-                className={cx("paging-select")}
-                onChange={handlePaging}
-                value={pageOption}
-              >
-                <option value="9books">Hiển thị: 9 sách</option>
-                <option value="12books">Hiển thị: 12 sách</option>
-                <option value="15books">Hiển thị: 15 sách</option>
+              <select className={cx('sort-select')} value={`${sortBy},${orderBy}`} onChange={handleSortChange}>
+                {listSort.map((sortOption, index) => (
+                  <option key={sortOption.sortBy} value={`${sortOption.sortBy},${sortOption.orderBy}`}>
+                    {sortOption.title}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
           <div className={cx("book-list")}>
-            {chunkedBooks.map((row, rowIndex) => (
-              <div key={rowIndex} className={cx("book-row")}>
-                {row.map((book) => (
-                  <Link key={book._id} to={`/DetailBook/${book.slug}`}>
-                    <Book book={book} />
-                  </Link>
-                ))}
-              </div>
-            ))}
+            <div className={cx('row')}>
+              {books.map((book, index) => {
+                return (
+                  <div key={book._id} className={cx('col-6 col-md-4')}>
+                    <Link key={book._id} to={`/DetailBook/${book.slug}`}>
+                      <Book book={book} />
+                    </Link>
+                  </div>
+                )
+              })}
+            </div>
           </div>
           <Pagination
-            booksPerPage={booksPerPage}
-            totalBooks={books.length}
-            paginate={paginate}
+            currentPage={currentPage}
+            totalPage={totalPage}
+            paginate={handlePageChange}
           />
         </div>
       </div>
@@ -209,17 +117,13 @@ function BookList() {
 }
 
 function Filter({ handleFilter }) {
-  const [isPriceCollapsed, setPriceCollapsed] = useState(true);
-  const [isNameCollapsed, setNameCollapsed] = useState(true);
+  const [isPriceCollapsed, setPriceCollapsed] = useState(false);
   const [isCategoryCollapsed, setCategoryCollapsed] = useState(true);
   const [isAuthorCollapsed, setAuthorCollapsed] = useState(true);
   const [isAvailabilityCollapsed, setAvailabilityCollapsed] = useState(true);
 
   const togglePrice = () => {
     setPriceCollapsed(!isPriceCollapsed);
-  };
-  const toggleName = () => {
-    setNameCollapsed(!isNameCollapsed);
   };
   const toggleCategory = () => {
     setCategoryCollapsed(!isCategoryCollapsed);
@@ -244,33 +148,11 @@ function Filter({ handleFilter }) {
           {!isPriceCollapsed && (
             <div className={cx("wrap-input")}>
               <div className={cx("input")}>
-                <div>$</div>
+                {/* <div>$</div> */}
                 <input type="number" name="minPrice" placeholder="Min price" />
                 <div>to</div>
                 <input type="number" name="maxPrice" placeholder="Max price" />
-                <div>$</div>
-              </div>
-              <button onClick={handleFilter}>Filter</button>
-            </div>
-          )}
-        </div>
-        <hr />
-        <div className={cx("filter-item")}>
-          <div className={cx("filter-type")}>
-            Name{" "}
-            <span className={cx("filter-toggle")} onClick={toggleName}>
-              {isNameCollapsed ? "+" : "-"}
-            </span>
-          </div>
-          {!isNameCollapsed && (
-            <div className={cx("wrap-input")}>
-              <div className={cx("input")}>
-                <input
-                  className={cx("name-input")}
-                  type="text"
-                  name="name"
-                  placeholder="Enter a name"
-                />
+                {/* <div>$</div> */}
               </div>
               <button onClick={handleFilter}>Filter</button>
             </div>
@@ -364,10 +246,10 @@ function Book({ book }) {
   );
 }
 
-function Pagination({ booksPerPage, totalBooks, paginate }) {
+function Pagination({ currentPage, totalPage, paginate }) {
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(totalBooks / booksPerPage); i++) {
+  for (let i = 1; i <= totalPage; i++) {
     pageNumbers.push(i);
   }
 
