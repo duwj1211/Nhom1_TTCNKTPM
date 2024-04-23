@@ -48,7 +48,7 @@ const LocationFilter = () => {
     };
 
     return(
-        <div>
+        <div className={cx("select-address")}>
             <div className={cx("country")}>
                 <label htmlFor="coun" className="form-label">Tỉnh / Thành phố<span className={cx("required")}>*</span></label>
                 <select id="coun" className="form-select" value={selectedCity} onChange={handleCityChange}>

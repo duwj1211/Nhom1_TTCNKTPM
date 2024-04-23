@@ -5,11 +5,12 @@ const cors = require("cors");
 require("dotenv").config();
 
 //route
-const authRoute = require("./routes/auth.route");
-const userRoute = require("./routes/user.route");
-const authorRoute = require("./routes/author.route");
-const bookRoute = require("./routes/book.route");
-const categoryRoute = require("./routes/category.route");
+const authRoute = require('./routes/auth.route');
+const userRoute = require('./routes/user.route');
+const authorRoute = require('./routes/author.route');
+const bookRoute = require('./routes/book.route');
+const categoryRoute = require('./routes/category.route');
+const cartRoute = require("./routes/cart.route");
 
 const app = express();
 
@@ -36,6 +37,7 @@ app.use("/api/users", userRoute);
 app.use("/api/authors", authorRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/api/carts", cartRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello from Node API Server Updated");
