@@ -1,7 +1,8 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Cart.module.css';
 import { Link } from 'react-router-dom';
+import ApiService from '../../service/api.service';
 
 const cx = classNames.bind(styles);
 
@@ -13,10 +14,47 @@ const alert = ({message, type}) => {
     )
 }
 
+
 export default function Cart(){
+    const [cart, setCart] = useState(null);
+
     const handleButtonClick = () =>{
         window.location.href = "/CheckOut"
     }
+
+    const deleteCartItem = async (userId, cartItemId) => {
+        try{
+            const response = await ApiService.delete(`carts/delete/66084000eed56d34dfebdac1/${cartItemId}`);
+            if(response.status === 200 ){
+                const updatedCartResponse = await ApiService.get('carts/user/66084000eed56d34dfebdac1');
+                if(updatedCartResponse.status === 200){
+                    const updatedCart = updatedCartResponse.data.cart;
+                    setCart(updatedCart);
+                }
+            }else{
+                console.log('Error delete ');
+            }
+        }catch(error){
+            console.error('Error fetching delete cart:', error);
+        }
+    }
+
+    useEffect(() => {
+        async function fetchCartData() {
+            try{
+                const response = await ApiService.get('carts/user/66084000eed56d34dfebdac1');
+                if(response.status === 200){
+                    setCart(response.data.cart);
+                }else{
+                    console.log('Error');
+                }
+            }catch(error){
+                console.error('Error fetching cart:', error);
+            }
+        }
+        fetchCartData();
+    },[])
+    
     return(
         <div className={cx('main-content')}>
             <div className={cx('cart')}>
@@ -40,29 +78,33 @@ export default function Cart(){
                                     <th className='product-subtotlal'>Tổng phụ</th>
                                 </tr>
                             </thead>
-                            <tbody >
-                                <tr >
+                            <tbody> 
+                                {cart && cart.items.map((item, index) => (
+                                <React.Fragment key={index}>
+                                <tr>
                                     <td className={cx("product-remove")}>
-                                        <a><span className="ahfb-svg-iconset ast-inline-flex"><svg className="ast-mobile-svg ast-close-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5.293 6.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"></path></svg></span></a>
+                                        <button className={cx("remove-button")} onClick={() => deleteCartItem('66084000eed56d34dfebdac1',item._id)}><a><span className="ahfb-svg-iconset ast-inline-flex"><svg className="ast-mobile-svg ast-close-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5.293 6.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"></path></svg></span></a></button>
                                     </td>
                                     <td className={cx("product-thumbnail")}>
-                                        <a><img fetchpriority="high" decoding="async" width="100" height="150" src="https://websitedemos.net/book-store-02/wp-content/uploads/sites/834/2021/05/author-book-store-book-cover-07-300x450.jpg" srcSet="https://websitedemos.net/book-store-02/wp-content/uploads/sites/834/2021/05/author-book-store-book-cover-07-300x450.jpg 300w, https://websitedemos.net/book-store-02/wp-content/uploads/sites/834/2021/05/author-book-store-book-cover-07-200x300.jpg 200w, https://websitedemos.net/book-store-02/wp-content/uploads/sites/834/2021/05/author-book-store-book-cover-07.jpg 400w" sizes="(max-width: 300px) 100vw, 300px"></img></a>						
+                                        <a><img src={item.book.avatar} sizes='60'></img></a>						
                                     </td>
                                     <td className={cx("product-name")}data-title="Product">
-                                        <a>The Throned Mirror</a>						
+                                        <a>{item.book.name}</a>						
                                     </td>
                                     <td className={cx("product-price")} data-title="Price">
-                                        <span ><bdi><span>$</span>23.00</bdi></span>						
+                                        <span>{(item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>						
                                     </td>
                                     <td className={cx("product-quantity")} data-title="Quantity">
                                         <div >
-                                            <input className={cx("quantity-input")} type="number" id="quantity_660abf30afbb2" name="cart[58ae749f25eded36f486bc85feb3f0ab][qty]"  aria-label="Product quantity" size="4" min="0" max="" step="1" placeholder="" inputMode="numeric" autoComplete="on"></input>
+                                            <input className={cx("quantity-input")} type="number" id="quantity_660abf30afbb2" name="cart[58ae749f25eded36f486bc85feb3f0ab][qty]"  aria-label="Product quantity" size="4" min="1" max="" step="1" placeholder="" inputMode="numeric" autoComplete="on" defaultValue={item.quantity}></input>
                                         </div>
                                     </td>
                                     <td className={cx("product-subtotal")} data-title="Subtotal">
-                                        <span><bdi><span>$</span>23.00</bdi></span>						
+                                        <span>{(item.quantity*item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>						
                                     </td>
                                 </tr>
+                                </React.Fragment>
+                                ))}
                                 <tr>
                                     <td colSpan="6">
                                         <div className={cx("coupon")}>
@@ -87,14 +129,15 @@ export default function Cart(){
                                 <th colSpan="2"><h2>Tổng số trong giỏ hàng</h2></th>
                             </tr>
                         </thead>
+                        {cart && (
                         <tbody>
                             <tr>
                                 <th>Tổng phụ</th>
-                                <td><span><bdi><span>$</span>23.00</bdi></span></td>
+                                <td><span>{cart.totalPriceOriginal}</span></td>
                             </tr>
                             <tr>
                                 <th>Tổng</th>
-                                <td><span><bdi><span>$</span>23.00</bdi></span></td>
+                                <td><span>{cart.totalPriceFinal}</span></td>
                             </tr>
                             <tr>
                                 <td colSpan="2">
@@ -102,6 +145,7 @@ export default function Cart(){
                                 </td>
                             </tr>
                         </tbody>
+                        )}
                     </table>
                 </div>
             </div>
