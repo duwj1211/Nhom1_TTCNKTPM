@@ -52,8 +52,7 @@
 }
 
 .filter {
-    display: flex;
-    flex-direction: column;
+    
 }
 
 .filter hr {
@@ -91,7 +90,15 @@
 
 .input {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.input input {
+    border: 1px solid rgba(57, 50, 128, 1);
+    border-radius: 4px;
+    padding: 8px 4px;
+    width: 100%;
 }
 
 .wrap-input button {
