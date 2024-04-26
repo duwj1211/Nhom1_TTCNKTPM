@@ -14,11 +14,10 @@ function BookList() {
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("sold");
   const [orderBy, setOrderBy] = useState("desc");
   const [category, setCategory] = useState("desc");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('q'));
 
   const listSort = [
     {title: 'Sắp xếp theo mặc định', sortBy: 'sold', orderBy: 'desc'},
@@ -70,7 +69,7 @@ function BookList() {
   }
 
   return (
-    <div className={cx("all-book", "container-fluid")}>
+    <div className={cx("all-book")}>
       <div className={cx("all-book-nav")}>
         <a className={cx("nav-home")} href="/">
           HOME
@@ -78,38 +77,42 @@ function BookList() {
         <p>/</p>
         <div>BOOKS</div>
       </div>
-      <div className={cx("all-book-content")}>
-        <Filter />
-        <div className={cx("col-list-book")}>
-          <div className={cx("sort-and-paging")}>
-            <div className="sort">
-              <select className={cx('sort-select')} value={`${sortBy},${orderBy}`} onChange={handleSortChange}>
-                {listSort.map((sortOption, index) => (
-                  <option key={sortOption.sortBy} value={`${sortOption.sortBy},${sortOption.orderBy}`}>
-                    {sortOption.title}
-                  </option>
-                ))}
-              </select>
-            </div>
+      <div className="container py-4">
+        <div className={cx("row")}>
+          <div className={cx("col-0 col-md-3")}>
+            <Filter />
           </div>
-          <div className={cx("book-list")}>
-            <div className={cx('row')}>
-              {books.map((book, index) => {
-                return (
-                  <div key={book._id} className={cx('col-6 col-md-4')}>
-                    <Link key={book._id} to={`/DetailBook/${book.slug}`}>
-                      <Book book={book} />
-                    </Link>
-                  </div>
-                )
-              })}
+          <div className={cx("col-12 col-md-9")}>
+            <div className={cx("sort-and-paging")}>
+              <div className="sort">
+                <select className={cx('sort-select')} value={`${sortBy},${orderBy}`} onChange={handleSortChange}>
+                  {listSort.map((sortOption, index) => (
+                    <option key={index} value={`${sortOption.sortBy},${sortOption.orderBy}`}>
+                      {sortOption.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
+            <div className={cx("book-list")}>
+              <div className={cx('row')}>
+                {books.map((book, index) => {
+                  return (
+                    <div key={book._id} className={cx('col-6 col-md-4')}>
+                      <Link key={book._id} to={`/DetailBook/${book.slug}`}>
+                        <Book book={book} />
+                      </Link>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+            <Pagination
+              currentPage={currentPage}
+              totalPage={totalPage}
+              paginate={handlePageChange}
+            />
           </div>
-          <Pagination
-            currentPage={currentPage}
-            totalPage={totalPage}
-            paginate={handlePageChange}
-          />
         </div>
       </div>
     </div>
@@ -136,94 +139,90 @@ function Filter({ handleFilter }) {
   };
 
   return (
-    <div className={cx("col-filter")}>
-      <div className={cx("filter")}>
-        <div className={cx("filter-item")}>
-          <div className={cx("filter-type")}>
-            Price{" "}
-            <span className={cx("filter-toggle")} onClick={togglePrice}>
-              {isPriceCollapsed ? "+" : "-"}
-            </span>
-          </div>
-          {!isPriceCollapsed && (
-            <div className={cx("wrap-input")}>
-              <div className={cx("input")}>
-                {/* <div>$</div> */}
-                <input type="number" name="minPrice" placeholder="Min price" />
-                <div>to</div>
-                <input type="number" name="maxPrice" placeholder="Max price" />
-                {/* <div>$</div> */}
-              </div>
-              <button onClick={handleFilter}>Filter</button>
-            </div>
-          )}
+    <div className={cx("filter")}>
+      <div className={cx("filter-item")}>
+        <div className={cx("filter-type")} onClick={togglePrice}>
+          Giá
+          <span className={cx("filter-toggle")}>
+            {isPriceCollapsed ? "+" : "-"}
+          </span>
         </div>
-        <hr />
-        <div className={cx("filter-item")}>
-          <div className={cx("filter-type")}>
-            Category{" "}
-            <span className={cx("filter-toggle")} onClick={toggleCategory}>
-              {isCategoryCollapsed ? "+" : "-"}
-            </span>
-          </div>
-          {!isCategoryCollapsed && (
-            <div className={cx("wrap-select")}>
-              <div className={cx("select")}>
-                <select>
-                  <option value="">All</option>
-                  <option value="Category 1">Category 1</option>
-                  <option value="Category 2">Category 2</option>
-                  <option value="Category 3">Category 3</option>
-                </select>
-              </div>
-              <button onClick={handleFilter}>Filter</button>
+        {!isPriceCollapsed && (
+          <>
+            <div className={cx("input")}>
+              <input type="number" name="minPrice" />
+              <div>-</div>
+              <input type="number" name="maxPrice"/>
             </div>
-          )}
+            <button onClick={handleFilter}>Filter</button>
+          </>
+        )}
+      </div>
+      <hr />
+      <div className={cx("filter-item")}>
+        <div className={cx("filter-type")}>
+          Category{" "}
+          <span className={cx("filter-toggle")} onClick={toggleCategory}>
+            {isCategoryCollapsed ? "+" : "-"}
+          </span>
         </div>
-        <hr />
-        <div className={cx("filter-item")}>
-          <div className={cx("filter-type")}>
-            Author{" "}
-            <span className={cx("filter-toggle")} onClick={toggleAuthor}>
-              {isAuthorCollapsed ? "+" : "-"}
-            </span>
-          </div>
-          {!isAuthorCollapsed && (
-            <div className={cx("wrap-select")}>
-              <div className={cx("select")}>
-                <select>
-                  <option value="">All</option>
-                  <option value="Author 1">Author 1</option>
-                  <option value="Author 2">Author 2</option>
-                  <option value="Author 3">Author 3</option>
-                </select>
-              </div>
-              <button onClick={handleFilter}>Filter</button>
+        {!isCategoryCollapsed && (
+          <div className={cx("wrap-select")}>
+            <div className={cx("select")}>
+              <select>
+                <option value="">All</option>
+                <option value="Category 1">Category 1</option>
+                <option value="Category 2">Category 2</option>
+                <option value="Category 3">Category 3</option>
+              </select>
             </div>
-          )}
-        </div>
-        <hr />
-        <div className={cx("filter-item")}>
-          <div className={cx("filter-type")}>
-            Availability{" "}
-            <span className={cx("filter-toggle")} onClick={toggleAvailability}>
-              {isAvailabilityCollapsed ? "+" : "-"}
-            </span>
+            <button onClick={handleFilter}>Filter</button>
           </div>
-          {!isAvailabilityCollapsed && (
-            <div className={cx("wrap-input")}>
-              <div className={cx("input")}>
-                <input
-                  className={cx("availability-input")}
-                  type="number"
-                  name="availability"
-                  placeholder="Enter a number"
-                />
-              </div>
-              <button onClick={handleFilter}>Filter</button>
-            </div>
-          )}
+        )}
+      </div>
+      <hr />
+      <div className={cx("filter-item")}>
+        <div className={cx("filter-type")}>
+          Author{" "}
+          <span className={cx("filter-toggle")} onClick={toggleAuthor}>
+            {isAuthorCollapsed ? "+" : "-"}
+          </span>
         </div>
+        {!isAuthorCollapsed && (
+          <div className={cx("wrap-select")}>
+            <div className={cx("select")}>
+              <select>
+                <option value="">All</option>
+                <option value="Author 1">Author 1</option>
+                <option value="Author 2">Author 2</option>
+                <option value="Author 3">Author 3</option>
+              </select>
+            </div>
+            <button onClick={handleFilter}>Filter</button>
+          </div>
+        )}
+      </div>
+      <hr />
+      <div className={cx("filter-item")}>
+        <div className={cx("filter-type")}>
+          Availability{" "}
+          <span className={cx("filter-toggle")} onClick={toggleAvailability}>
+            {isAvailabilityCollapsed ? "+" : "-"}
+          </span>
+        </div>
+        {!isAvailabilityCollapsed && (
+          <div className={cx("wrap-input")}>
+            <div className={cx("input")}>
+              <input
+                className={cx("availability-input")}
+                type="number"
+                name="availability"
+                placeholder="Enter a number"
+              />
+            </div>
+            <button onClick={handleFilter}>Filter</button>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -254,7 +253,7 @@ function Pagination({ currentPage, totalPage, paginate }) {
   }
 
   return (
-    <nav>
+    <nav className="d-flex justify-content-center mt-4">
       <ul className={cx("pagination")}>
         {pageNumbers.map((number) => (
           <li key={number} className={cx("page-item")}>
