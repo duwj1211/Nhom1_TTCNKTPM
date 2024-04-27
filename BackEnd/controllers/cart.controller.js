@@ -86,9 +86,12 @@ const deleteFromCart = async(req , res) =>{
 
 const updateQuantityOfCartItem = async (req, res) => {
     try {
-        const { userId, cartItemId, quantity } = req.body;
-        if (!userId || !cartItemId) {
+        const { userId, cartItemId, quantity } = req.params;
+        if (!userId) {
             return res.status(400).json({ message: 'Thiếu thông tin cần thiết' });
+        }
+        if(!cartItemId){
+            return res.status(400).json({message: 'Thiếu thông tin cần thiết'})
         }
 
         const cart = await Cart.findOne({ user: userId }).populate({
