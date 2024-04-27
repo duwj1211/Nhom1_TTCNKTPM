@@ -10,6 +10,8 @@ const searchBooks = async (req, res) => {
   const limit = parseInt(req.query.limit) || 12;
   const sortBy = req.query.sortBy || 'sold';
   const orderBy = req.query.orderBy === 'desc' ? -1 : 1;
+  const minPrice = req.query.minPrice ? parseFloat(req.query.minPrice) : null;
+  const maxPrice = req.query.maxPrice ? parseFloat(req.query.maxPrice) : null;
   try {
     let querySearch =  {}
     if (search) {
@@ -24,6 +26,12 @@ const searchBooks = async (req, res) => {
       }
     }
     querySearch['status'] = { $in: [StatusBook.SELLING, StatusBook.STOP_IMPORT] };
+    if (minPrice !== null) {
+      querySearch.priceFinal = { $gte: minPrice };
+    }
+    if (maxPrice !== null) {
+      querySearch.priceFinal = querySearch.priceFinal ? { ...querySearch.priceFinal, $lte: maxPrice } : { $lte: maxPrice };
+    }
     const books = await Book
       .find(querySearch)
       .select('_id slug name avatar priceOriginal priceFinal status')
