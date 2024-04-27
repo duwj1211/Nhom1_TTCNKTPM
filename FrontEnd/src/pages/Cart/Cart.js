@@ -24,19 +24,23 @@ export default function Cart(){
     const [productName, setProductName] = useState('');
     const [isDebouncing, setIsDebouncing] = useState(false);
     const [isLoading, setLoading] = useState(false);
+    const [changingItemId, setChangingItemId] = useState(null);
     
     const handleButtonClick = () => {
         window.location.href = "/CheckOut"
     }
     const debounceOnChange = debounce((newValue, cartItemId) =>{
         setIsDebouncing(true);
+        setChangingItemId(cartItemId);
         updateQuantity('66084000eed56d34dfebdac1',cartItemId,newValue).then(() => {
             fetchCartData();
+            
         }).finally(() => {
             setIsDebouncing(false);
+            
         });
     },300);
-
+    
     const fetchCartData = async () => {
         try {
             setLoading(true);
@@ -50,6 +54,7 @@ export default function Cart(){
             console.error('Error fetching cart:', error);
         } finally {
             setLoading(false);
+            setChangingItemId(null);
         }
     }
     const updateQuantity = async( userId, cartItemId, quantity) =>{
@@ -162,11 +167,11 @@ export default function Cart(){
                                         </div>
                                     </td>
                                     <td className={cx("product-subtotal")} data-title="Subtotal">
-                                        {isDebouncing || isLoading ? (
+                                        {changingItemId === item._id && (isDebouncing ||isLoading) ? (
                                             <span><div className={cx("loader-product-subtotal")}></div></span>
                                         ) : (
-                                            <span>{(item.quantity*item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>
-                                        )}						
+                                            <span>{(item.quantity * item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>
+                                        )}					
                                     </td>
                                 </tr>
                                 </React.Fragment>
