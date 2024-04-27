@@ -3,6 +3,7 @@ const Cart = require('../models/cart.model');
 const User = require('../models/user.model');
 const Book = require('../models/book.model');
 const { populate } = require('dotenv');
+const { json } = require('express');
 
 const addToCart = async(req, res) => {
     try {
@@ -87,24 +88,19 @@ const deleteFromCart = async(req , res) =>{
 const updateQuantityOfCartItem = async (req, res) => {
     try {
         const { userId, cartItemId, quantity } = req.params;
-        if (!userId) {
-            return res.status(400).json({ message: 'Thiếu thông tin cần thiết' });
-        }
-        if(!cartItemId){
-            return res.status(400).json({message: 'Thiếu thông tin cần thiết'})
-        }
-
+        
+        const updateQuantity = quantity || 1;
         const cart = await Cart.findOne({ user: userId }).populate({
             path: 'items',
             populate: {
                 path: 'book'
             }
-        });;
+        });
         if (!cart) {
             return res.status(404).json({ message: 'Không tìm thấy giỏ hàng cho người dùng này' });
         }
 
-        const cartItem = cart.items.find(item => item._id.equals(cartItemId));
+        const cartItem = await CartItem.findOne({_id : cartItemId});
         if (!cartItem) {
             return res.status(404).json({ message: `Không tìm thấy mục hàng với ID ${cartItemId}` });
         }
@@ -113,8 +109,14 @@ const updateQuantityOfCartItem = async (req, res) => {
             return res.status(400).json({ message: 'Số lượng sản phẩm phải lớn hơn 0' });
         }
 
-        cartItem.quantity = quantity;
+        cartItem.quantity = updateQuantity;
         await cartItem.save();
+
+        cart.items.forEach(item => {
+            if (item._id.equals(cartItemId)) {
+                item.quantity = updateQuantity;
+            }
+        });
 
         let totalPriceOriginal = 0;
         let totalPriceFinal = 0;
@@ -126,7 +128,7 @@ const updateQuantityOfCartItem = async (req, res) => {
 
         cart.totalPriceOriginal = totalPriceOriginal;
         cart.totalPriceFinal = totalPriceFinal;
-
+        
         await cart.save();
 
         res.status(200).json({ message: 'Số lượng sản phẩm đã được cập nhật thành công' });
