@@ -4,6 +4,7 @@ import styles from './Cart.module.css';
 import { Link } from 'react-router-dom';
 import ApiService from '../../service/api.service';
 import DeleteConfirm from '../../layouts/components/Dialog/DeleteConfirm';
+import { debounce } from 'lodash';
 
 const cx = classNames.bind(styles);
 
@@ -13,13 +14,28 @@ export default function Cart(){
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
     const [selectedCartItem, setSelectedCartItem] = useState(null);
     const [productName, setProductName] = useState('');
+    const [isDebouncing, setIsDebouncing] = useState(false);
+    const [isLoading, setLoading] = useState(false);
+    const [changingItemId, setChangingItemId] = useState(null);
     
     const handleButtonClick = () => {
         window.location.href = "/CheckOut"
     }
-
+    const debounceOnChange = debounce((newValue, cartItemId) =>{
+        setIsDebouncing(true);
+        setChangingItemId(cartItemId);
+        updateQuantity('66084000eed56d34dfebdac1',cartItemId,newValue).then(() => {
+            fetchCartData();
+            
+        }).finally(() => {
+            setIsDebouncing(false);
+            
+        });
+    },300);
+    
     const fetchCartData = async () => {
         try {
+            setLoading(true);
             const response = await ApiService.get('carts/user/66084000eed56d34dfebdac1');
             if (response.status === 200) {
                 setCart(response.data.cart);
@@ -28,21 +44,26 @@ export default function Cart(){
             }
         } catch (error) {
             console.error('Error fetching cart:', error);
+        } finally {
+            setLoading(false);
+            setChangingItemId(null);
         }
     }
-    /* //Pending
     const updateQuantity = async( userId, cartItemId, quantity) =>{
         try{
             const response = await ApiService.post(`carts/updateQuantity/66084000eed56d34dfebdac1/${cartItemId}/${quantity}`);
             if(response.status === 200){
-                fetchCartData();
+                console.log("Successful");
+            }
+            else if(response.status === 400){
+                console.error('Error quantity')
             }else{
                 console.error('Error update quantity cart');
             }
         }catch(error){
             console.error('Error update cart quantity:',error);
         }
-    }*/
+    }
     const deleteCartItem = async (userId, cartItemId, productName) => {
         console.log(productName);
         try {
@@ -125,11 +146,25 @@ export default function Cart(){
                                     </td>
                                     <td className={cx("product-quantity")} data-title="Quantity">
                                         <div >
-                                            <input className={cx("quantity-input")} type="number" id="quantity_660abf30afbb2"  aria-label="Product quantity" size="4" min="1" max="" step="1" placeholder="" inputMode="numeric" autoComplete="on" defaultValue={item.quantity} /*onChange={()=> updateQuantity('66084000eed56d34dfebdac1',item._id,item.quantity)}*/></input>
+                                            <input className={cx("quantity-input")} type="number" id="quantity_660abf30afbb2"  aria-label="Product quantity" size="4" min="1" max="" step="1" placeholder="" inputMode="numeric" autoComplete="on" onChange={(event)=> {
+                                                const newValue = event.target.value;
+                                                if(!newValue){
+                                                    event.target.value = 1;
+                                                    event.target.select();
+                                                    debounceOnChange(1, item._id);
+                                                }else{
+                                                    debounceOnChange(newValue, item._id);
+                                                }}
+                                                } defaultValue={item.quantity}
+                                                disabled={isDebouncing}></input>
                                         </div>
                                     </td>
                                     <td className={cx("product-subtotal")} data-title="Subtotal">
-                                        <span>{(item.quantity*item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>						
+                                        {changingItemId === item._id && (isDebouncing ||isLoading) ? (
+                                            <span><div className={cx("loader-product-subtotal")}></div></span>
+                                        ) : (
+                                            <span>{(item.quantity * item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>
+                                        )}					
                                     </td>
                                 </tr>
                                 </React.Fragment>
@@ -159,22 +194,36 @@ export default function Cart(){
                             </tr>
                         </thead>
                         <tbody>
-                        {cart && (
-                            <React.Fragment>
-                            <tr>
-                                <th>Tổng phụ</th>
-                                <td><span>{(cart.totalPriceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span></td>
-                            </tr>
-                            <tr>
-                                <th>Tổng</th>
-                                <td><span>{(cart.totalPriceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span></td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2">
-                                    <div className={cx("process-checkout")}><button type='button' className={cx("checkout-btn","btn","btn-outline-custom")} onClick={handleButtonClick}>Tiến hành thanh toán</button></div>
-                                </td>
-                            </tr>
-                            </React.Fragment>
+                            {cart && (
+                                <React.Fragment>
+                                    {isLoading || isDebouncing ? (
+                                        <tr colSpan='2'>
+                                            <td className={cx("processing")}><div className={cx("loader-total")}></div></td>
+                                        </tr>
+                                    ) : (
+                                        <React.Fragment>
+                                            <tr>
+                                                <th>Tổng phụ</th>
+                                                <td>
+                                                    <span>{(cart.totalPriceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tổng</th>
+                                                <td>
+                                                    <span>{(cart.totalPriceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colSpan="2">
+                                                    <div className={cx("process-checkout")}>
+                                                        <button type='button' className={cx("checkout-btn","btn","btn-outline-custom")} onClick={handleButtonClick}>Tiến hành thanh toán</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </React.Fragment>
+                                    )}
+                                </React.Fragment>
                             )}
                         </tbody>
                     </table>
