@@ -8,14 +8,6 @@ import { debounce } from 'lodash';
 
 const cx = classNames.bind(styles);
 
-const alert = ({message, type}) => {
-    return(
-        <div className={`alert alert-${type}`} role="alert">
-            {message}
-        </div>
-    )
-}
-
 
 export default function Cart(){
     const [cart, setCart] = useState();
@@ -98,6 +90,7 @@ export default function Cart(){
 
     useEffect(() => {
         fetchCartData();
+        console.log(cart);
     }, [])
 
     return(
@@ -143,10 +136,10 @@ export default function Cart(){
                                         </button>
                                     </td>
                                     <td className={cx("product-thumbnail")}>
-                                        <a><img src={item.book.avatar} sizes='60'></img></a>						
+                                        <Link to={`/${item.book.slug}`}><img alt={item.book.name} src={item.book.avatar} sizes='60'></img></Link>						
                                     </td>
                                     <td className={cx("product-name")}data-title="Product">
-                                        <a>{item.book.name}</a>						
+                                        <Link to={`/${item.book.slug}`}>{item.book.name}</Link>						
                                     </td>
                                     <td className={cx("product-price")} data-title="Price">
                                         <span>{(item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>						
