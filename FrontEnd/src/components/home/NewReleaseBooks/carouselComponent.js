@@ -3,6 +3,7 @@ import ApiService from "../../../service/api.service";
 import Slider from "react-slick";
 import classNames from "classnames/bind";
 import styles from "./CarouselComponent.module.css";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -35,13 +36,13 @@ function CarouselComponent() {
   return (
     <Slider {...settings} className={cx("slider")}>
       {books.map((book) => (
-        <div key={book._id} className={cx("wrap-book-item")}>
+        <div key={book.id} className={cx("wrap-book-item")}>
           <div className={cx("book-item")}>
-            <div className={cx("item-img")}>
+            <Link to={`/BookDetails/${book.slug}`} className={cx("item-img")}>
               <img src={book.avatar} alt="Book item"></img>
-            </div>
+            </Link>
             <div className={cx("item-content")}>
-              <h4>{book.name}</h4>
+              <Link to={`/BookDetails/${book.slug}`}>{book.name}</Link>
               <h5>{book.publisher}</h5>
               <h6>{book.priceOriginal / 1000}.000 VNĐ</h6>
             </div>

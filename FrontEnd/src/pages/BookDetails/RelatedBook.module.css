@@ -1,0 +1,58 @@
+.heading {
+    margin-bottom: 48px;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.book-img {
+    padding: 30px;
+    border: 1px solid rgba(234, 232, 223, 1);
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    width: 220px;
+}
+
+.book-img img {
+    width: 100%;
+    height: 230px;
+}
+
+.book-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-content h4 {
+    color: rgba(57, 50, 128, 1);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.book-content .book-name {
+    color: rgba(136, 136, 136, 1);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.book-content .book-price {
+    color: rgba(237, 85, 59, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.slick-prev,
+.slick-next {
+    font-size: 16px !important;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+}

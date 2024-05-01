@@ -10,21 +10,23 @@ function Footer() {
             <section className={cx('index-module_grid', 'index-module_wide')}>
                 <section className={cx('index-module_row')}>
                     <section className={cx('index-module_col', 'index-module_l-4')}>
-                        <img className={cx('top-logo')} src="./images/img_logo_1.png" alt="image logo"/>
+                        <Link to={'/'} className={cx('logo')}>
+                            <img className={cx('top-logo')} src="./images/img_logo_1.png" alt="image logo"/>
+                        </Link>
                         <p>Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <section className={cx('index-module_row', 'social-list')}>
-                                <a href="#" className={cx('social-item')} title='1Book trên Facebook' target='_blank' rel='noreferrer'>
+                                <Link to={'/'} className={cx('social-item')} title='1Book trên Facebook' target='_blank' rel='noreferrer'>
                                     <img className={cx('social-logo')} src="./images/img_facebook_logo.png" alt="facebook logo"/>
-                                </a>
-                                <a href="#" className={cx('social-item')} title='1Book trên Linkedin' target='_blank' rel='noreferrer'>
+                                </Link>
+                                <Link to={'/'} className={cx('social-item')} title='1Book trên Linkedin' target='_blank' rel='noreferrer'>
                                     <img className={cx('social-logo')} src="./images/img_linkedin_logo.png" alt="linkedin logo"/>
-                                </a>
-                                <a href="#" className={cx('social-item')} title='1Book trên Twitter' target='_blank' rel='noreferrer'>
+                                </Link>
+                                <Link to={'/'} className={cx('social-item')} title='1Book trên Twitter' target='_blank' rel='noreferrer'>
                                     <img className={cx('social-logo')} src="./images/img_twitter_logo.png" alt="twitter logo"/>
-                                </a>
-                                <a href="#" className={cx('social-item')} title='1Book trên Youtube' target='_blank' rel='noreferrer'>
+                                </Link>
+                                <Link to={'/'} className={cx('social-item')} title='1Book trên Youtube' target='_blank' rel='noreferrer'>
                                     <img className={cx('social-logo')} src="./images/img_youtube_logo.png" alt="youtube logo"/>
-                                </a>  
+                                </Link>  
                         </section>
                     </section>
                     <section className={cx('index-module_col', 'index-module_l-3')}>
@@ -33,25 +35,25 @@ function Footer() {
                                 <h3 className={cx('heading')}>Company</h3>
                                 <ul className={cx('list')}>
                                     <li className={cx('list-items')}>
-                                        <a href="#">Home</a>    
+                                        <Link to={'/'}>Home</Link>    
                                     </li>
                                     <li className={cx('list-items')}>
-                                        <a href="#">About us</a>
+                                        <Link to={'/AboutUs'}>About us</Link>
                                     </li>
                                     <li className={cx('list-items')}>
-                                        <a href="#">Books</a>
+                                        <Link to={'/Books'}>Books</Link>
                                     </li>
                                     <li className={cx('list-items')}>
-                                        <a href="#">Ebooks</a>
+                                        <Link to={'/Ebooks'}>Ebooks</Link>
                                     </li>
                                     <li className={cx('list-items')}>
-                                        <a href="#">New release</a>
+                                        <Link to={'/NewRelease'}>New release</Link>
                                     </li>
                                     <li className={cx('list-items')}>
-                                        <a href="#">Contact us</a>
+                                        <Link to={'/ContactUs'}>Contact us</Link>
                                     </li>
                                     <li className={cx('list-items')}>
-                                        <a href="#">Blog</a>
+                                        <Link to={'/Blog'}>Blog</Link>
                                     </li>
                                 </ul>
                             </div>
@@ -64,13 +66,13 @@ function Footer() {
                                 <ul className={cx('news-list')}>
                                     <li className={cx('news-items')}>  
                                         <div className={cx('news-thumb')}>
-                                            <a href="#" target='_self' className={cx('link')}>
+                                            <Link to={'/'} target='_self' className={cx('link')}>
                                                 <img className={cx('image')} src="./images/img_rectangle_22.png" alt="image" />
-                                            </a>
+                                            </Link>
                                         </div> 
                                         <div className={cx('news-container')}>
                                             <h5 className={cx('title')}>
-                                                <a href="#" target='_self'> Nostrud exercitation</a>
+                                                <Link to={'/'} target='_self'> Nostrud exercitation</Link>
                                             </h5>
                                             <div className={cx('description')}>
                                             Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -80,14 +82,14 @@ function Footer() {
                                     </li>
                                     <li className={cx('news-items')}>
                                         <div className={cx('news-thumb')}>
-                                            <a href="#" target='_self'>
+                                            <Link to={'/'} target='_self'>
                                                 <img className={cx('image')} src="./images/img_rectangle_22_100x100.png" alt="image" />
-                                            </a>
+                                            </Link>
                                         </div> 
                                         
                                         <div className={cx('news-container')}>
                                             <h5 className={cx('title')}>
-                                                <a href="#" target='_self'> Nostrud exercitation</a>
+                                                <Link to={'/'} target='_self'> Nostrud exercitation</Link>
                                             </h5>
                                             <div className={cx('description')}>
                                             Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

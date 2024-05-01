@@ -3,7 +3,7 @@ import styles from './Sales.module.css';
 import Slider from "react-slick";
 
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+
 
 const cx = classNames.bind(styles)
 

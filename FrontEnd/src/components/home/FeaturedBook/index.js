@@ -57,7 +57,7 @@ function FeaturedBook() {
                   <p className={cx("price")}>
                     {featuredBook.priceOriginal / 1000}.000 VNĐ
                   </p>
-                  <Link to="/" className={cx("link-btn")}>
+                  <Link to={`/BookDetails/${featuredBook.slug}`} className={cx("link-btn")}>
                     Xem chi tiết
                   </Link>
                 </div>
