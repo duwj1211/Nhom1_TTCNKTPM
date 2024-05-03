@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ApiService from "../../service/api.service";
 import classNames from "classnames/bind";
 import styles from "./BookList.module.css";
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -17,26 +17,34 @@ function BookList() {
   const [sortBy, setSortBy] = useState("sold");
   const [orderBy, setOrderBy] = useState("desc");
   const [category, setCategory] = useState("desc");
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('q'));
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("q"));
 
   const listSort = [
-    {title: 'Sắp xếp theo mặc định', sortBy: 'sold', orderBy: 'desc'},
-    {title: 'Sắp xếp theo tên A-Z', sortBy: 'name', orderBy: 'asc'},
-    {title: 'Sắp xếp theo tên Z-A', sortBy: 'name', orderBy: 'desc'},
-    {title: 'Sắp xếp theo giá thấp - cao', sortBy: 'priceFinal', orderBy: 'asc'},
-    {title: 'Sắp xếp theo giá cao - thấp', sortBy: 'priceFinal', orderBy: 'desc'},
-    {title: 'Sách mới', sortBy: 'createdAt', orderBy: 'desc'},
-  ]
+    { title: "Sắp xếp theo mặc định", sortBy: "sold", orderBy: "desc" },
+    { title: "Sắp xếp theo tên A-Z", sortBy: "name", orderBy: "asc" },
+    { title: "Sắp xếp theo tên Z-A", sortBy: "name", orderBy: "desc" },
+    {
+      title: "Sắp xếp theo giá thấp - cao",
+      sortBy: "priceFinal",
+      orderBy: "asc",
+    },
+    {
+      title: "Sắp xếp theo giá cao - thấp",
+      sortBy: "priceFinal",
+      orderBy: "desc",
+    },
+    { title: "Sách mới", sortBy: "createdAt", orderBy: "desc" },
+  ];
 
   useEffect(() => {
-    setSearchQuery(searchParams.get('q'))
-  }, [location.search])
+    setSearchQuery(searchParams.get("q"));
+  }, [location.search]);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await ApiService.get("books", {
-          params: { 
+          params: {
             search: searchQuery,
             page: currentPage,
             limit: 12,
@@ -47,7 +55,7 @@ function BookList() {
         if (response.status === 200) {
           setBooks(response.data.books);
           setCurrentPage(response.data.currentPage);
-          setTotalPage(response.data.totalPages)
+          setTotalPage(response.data.totalPages);
         }
       } catch (err) {
         console.error(err);
@@ -56,10 +64,9 @@ function BookList() {
     fetchData();
   }, [searchQuery, currentPage, sortBy, orderBy]);
 
-  
   function handleSortChange(event) {
     const selectedSort = event.target.value;
-    const [selectedSortBy, selectedOrderBy] = selectedSort.split(',');
+    const [selectedSortBy, selectedOrderBy] = selectedSort.split(",");
     setSortBy(selectedSortBy);
     setOrderBy(selectedOrderBy);
   }
@@ -85,9 +92,16 @@ function BookList() {
           <div className={cx("col-12 col-md-9")}>
             <div className={cx("sort-and-paging")}>
               <div className="sort">
-                <select className={cx('sort-select')} value={`${sortBy},${orderBy}`} onChange={handleSortChange}>
+                <select
+                  className={cx("sort-select")}
+                  value={`${sortBy},${orderBy}`}
+                  onChange={handleSortChange}
+                >
                   {listSort.map((sortOption, index) => (
-                    <option key={index} value={`${sortOption.sortBy},${sortOption.orderBy}`}>
+                    <option
+                      key={index}
+                      value={`${sortOption.sortBy},${sortOption.orderBy}`}
+                    >
                       {sortOption.title}
                     </option>
                   ))}
@@ -95,15 +109,15 @@ function BookList() {
               </div>
             </div>
             <div className={cx("book-list")}>
-              <div className={cx('row')}>
+              <div className={cx("row")}>
                 {books.map((book, index) => {
                   return (
-                    <div key={book._id} className={cx('col-6 col-md-4')}>
+                    <div key={book._id} className={cx("col-6 col-md-4")}>
                       <Link key={book._id} to={`/DetailBook/${book.slug}`}>
                         <Book book={book} />
                       </Link>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -152,7 +166,7 @@ function Filter({ handleFilter }) {
             <div className={cx("input")}>
               <input type="number" name="minPrice" />
               <div>-</div>
-              <input type="number" name="maxPrice"/>
+              <input type="number" name="maxPrice" />
             </div>
             <button onClick={handleFilter}>Filter</button>
           </>
@@ -238,7 +252,14 @@ function Book({ book }) {
         <div className={cx("item-content")}>
           <h4>{book.name}</h4>
           <h5>{book.publisher}</h5>
-          <h6>{(book.priceOriginal / 1000).toFixed(3)} VNĐ</h6>
+          <div className={cx("item-price")}>
+            <h6 className={cx("final-price")}>
+              {(book.priceFinal / 1000).toFixed(3)} VNĐ
+            </h6>
+            <h6 className={cx("original-price")}>
+              {(book.priceOriginal / 1000).toFixed(3)} VNĐ
+            </h6>
+          </div>
         </div>
       </div>
     </div>
