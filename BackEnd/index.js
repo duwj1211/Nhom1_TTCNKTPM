@@ -11,6 +11,7 @@ const authorRoute = require("./routes/author.route");
 const bookRoute = require("./routes/book.route");
 const categoryRoute = require("./routes/category.route");
 const cartRoute = require("./routes/cart.route");
+const orderRoute = require("./routes/order.route");
 
 const app = express();
 
@@ -37,6 +38,8 @@ app.use("/api/users", userRoute);
 app.use("/api/authors", authorRoute);
 app.use("/api/books", bookRoute);
 app.use("/api/categories", categoryRoute);
+app.use("/api/carts", cartRoute);
+app.use("/api/orders", orderRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello from Node API Server Updated");

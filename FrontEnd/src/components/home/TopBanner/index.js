@@ -12,7 +12,6 @@ function TopBanner() {
   const [slideIndex, setSlideIndex] = useState(0);
 
   const  settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -68,7 +67,7 @@ function TopBanner() {
                     <div className={cx('slick-dots')}>
                       {slides.map((slide, index) => {
                         return (
-                          <span key={index} className={cx('dot-item', index==slideIndex ? 'dot-item--active': '')}
+                          <span key={index} className={cx('dot-item', index===slideIndex ? 'dot-item--active': '')}
                             onClick={() => changeSlide(index)}
                           >
                           </span>

@@ -1,42 +1,55 @@
-const Book = require('../models/book.model');
-const Author = require('../models/author.model');
-const Category = require('../models/category.model');
+const Book = require("../models/book.model");
+const Author = require("../models/author.model");
+const Category = require("../models/category.model");
 
 const searchBooks = async (req, res) => {
-  const search = req.query.search || '';
-  const category = req.query.category || '';
+  const search = req.query.search || "";
+  const category = req.query.category || "";
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 12;
-  const sortBy = req.query.sortBy || 'sold';
-  const orderBy = req.query.orderBy === 'desc' ? -1 : 1;
+  const sortBy = req.query.sortBy || "sold";
+  const orderBy = req.query.orderBy === "desc" ? -1 : 1;
+  const minPrice = req.query.minPrice ? parseFloat(req.query.minPrice) : null;
+  const maxPrice = req.query.maxPrice ? parseFloat(req.query.maxPrice) : null;
   try {
-    let querySearch =  {}
+    let querySearch = {};
     if (search) {
-      querySearch = {$text: { $search: search }}
+      querySearch = { $text: { $search: search } };
     }
     if (category) {
-      const categoryModel = await Category.findOne({slug: category});
+      const categoryModel = await Category.findOne({ slug: category });
       if (categoryModel) {
-        querySearch['categories'] = categoryModel._id;
+        querySearch["categories"] = categoryModel._id;
       } else {
         res.status(404).json({ message: "Không tìm thấy danh mục" });
       }
     }
-    const books = await Book
-      .find(querySearch)
-      .select('_id slug name avatar priceOriginal status')
-      .populate('categories')
-      .sort({[sortBy]: orderBy})
-      .skip((page - 1) * limit).limit(limit);
+    querySearch["status"] = {
+      $in: [StatusBook.SELLING, StatusBook.STOP_IMPORT],
+    };
+    if (minPrice !== null) {
+      querySearch.priceFinal = { $gte: minPrice };
+    }
+    if (maxPrice !== null) {
+      querySearch.priceFinal = querySearch.priceFinal
+        ? { ...querySearch.priceFinal, $lte: maxPrice }
+        : { $lte: maxPrice };
+    }
+    const books = await Book.find(querySearch)
+      .select("_id slug name avatar priceOriginal status")
+      .populate("categories")
+      .sort({ [sortBy]: orderBy })
+      .skip((page - 1) * limit)
+      .limit(limit);
 
     const totalCount = await Book.countDocuments();
-    const totalPages = Math.ceil(totalCount / limit); 
+    const totalPages = Math.ceil(totalCount / limit);
     res.status(200).json({
       currentPage: page,
       totalPages: totalPages,
       totalCount: totalCount,
       pageSize: books.length,
-      books: books
+      books: books,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -46,10 +59,9 @@ const searchBooks = async (req, res) => {
 const getBookById = async (req, res) => {
   const id = req.params.id;
   try {
-    const book = await Book
-      .findOne({_id: id})
-      .populate('categories')
-      .populate('author', '_id slug fullName avatar');
+    const book = await Book.findOne({ _id: id })
+      .populate("categories")
+      .populate("author", "_id slug fullName avatar");
     if (book) {
       res.status(200).json(book);
     } else {
@@ -63,10 +75,9 @@ const getBookById = async (req, res) => {
 const getBookBySlug = async (req, res) => {
   const slug = req.params.slug;
   try {
-    const book = await Book
-      .findOne({slug: slug})
-      .populate('categories')
-      .populate('author', '_id slug fullName avatar');
+    const book = await Book.findOne({ slug: slug })
+      .populate("categories")
+      .populate("author", "_id slug fullName avatar");
     if (book) {
       res.status(200).json(book);
     } else {
@@ -80,7 +91,7 @@ const getBookBySlug = async (req, res) => {
 const getBookByAuthor = async (req, res) => {
   const slug = req.params.slug;
   try {
-    const author = await Author.findOne({slug: slug});
+    const author = await Author.findOne({ slug: slug });
     if (author) {
       const books = await Book.find({ author: author._id });
       res.status(200).json(books);
@@ -90,7 +101,7 @@ const getBookByAuthor = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}; 
+};
 
 const createBook = async (req, res) => {
   try {
@@ -104,7 +115,9 @@ const createBook = async (req, res) => {
 const updateBookById = async (req, res) => {
   const id = req.params.id;
   try {
-    const book = await Book.findOneAndUpdate({_id: id}, req.body, {new: true});
+    const book = await Book.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
     if (!book) {
       res.status(404).json({ message: "Không tìm thấy sách" });
     } else {
