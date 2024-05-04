@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ApiService from "../../../service/api.service";
 import classNames from "classnames/bind";
+import { Container, Row, Col } from "react-bootstrap";
 import styles from "./FeaturedBook.module.css";
 
 import { Link } from "react-router-dom";
@@ -34,36 +35,41 @@ function FeaturedBook() {
   return (
     <div>
       {featuredBook && (
-        <div className="container">
-          <div className={cx("wrap-featured-book")}>
-            <div className="row">
-              <div className="col-6">
+        <div className={cx("wrap-featured-book")}>
+          <Container>
+            <Row>
+              <Col md={6}>
                 <div className={cx("wrap-featured-book-img")}>
                   <div className={cx("featured-book-img")}>
                     <img src={featuredBook.avatar} alt=""></img>
                   </div>
                 </div>
-              </div>
-              <div className="col-6 px-0">
+              </Col>
+              <Col md={6} className="px-0">
                 <div className={cx("featured-book-content")}>
                   <h2>Featured Book</h2>
                   <hr></hr>
                   <h6>{featuredBook.publisher}</h6>
                   <h3>{featuredBook.name}</h3>
-                  <p className={cx("description")}>
+                  <div className={cx("description")}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                     eu feugiat amet, libero ipsum enim pharetra hac.
-                  </p>
-                  <p className={cx("price")}>
-                    {featuredBook.priceOriginal / 1000}.000 VNĐ
-                  </p>
+                  </div>
+                  <div className={cx("item-price")}>
+                    <h5 className={cx("final-price")}>
+                      {(featuredBook.priceFinal / 1000).toFixed(3)} VNĐ
+                    </h5>
+                    <h5 className={cx("original-price")}>
+                      {(featuredBook.priceOriginal / 1000).toFixed(3)} VNĐ
+                    </h5>
+                  </div>
                   <Link to={`/BookDetails/${featuredBook.slug}`} className={cx("link-btn")}>
                     Xem chi tiết
                   </Link>
                 </div>
-              </div>
-            </div>
-          </div>
+              </Col>
+            </Row>
+          </Container>
         </div>
       )}
     </div>

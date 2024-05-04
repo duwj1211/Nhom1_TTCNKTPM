@@ -173,7 +173,7 @@ export default function Cart(){
                                     <td colSpan="6">
                                         <div className={cx("coupon")}>
                                             <div className="form-floating mb-1">
-                                                <input type="coupon" className={cx("coupon-input","form-control")} id="floatingInput" placeholder="Coupon code"></input>
+                                                <input type="email" className={cx("coupon-input","form-control")} id="floatingInput" placeholder="Coupon code"></input>
                                                 <label htmlFor="floatingInput">Mã giảm giá</label>
                                             </div>
                                             <button type="button" className={cx("apply-btn","btn","btn-outline-custom")}>Áp dụng </button>

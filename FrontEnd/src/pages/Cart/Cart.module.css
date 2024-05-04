@@ -9,11 +9,10 @@
     padding-top: 10px;
     font-family: 'Times New Roman', Times, serif;
 }
-.list-books table h2,
-.cart-totals table h2{
+table h2{
     font-family: 'Times New Roman', Times, serif;
 }
-.cart td{
+td{
     vertical-align: middle;
 }
 .table-list-books{

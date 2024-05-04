@@ -1,31 +1,43 @@
 .main-content {
     background-color: #ffffff;
 }
-.main{
+
+.main {
     margin-top: 10px;
     margin-bottom: 25px;
-    max-width: 100%;
 }
 
-.main h3{
+h1, h3 {
+    /* font-family: 'Times New Roman', Times, serif; */
+}
+
+h3 {
     font-size: 20px;
     font-weight: 700;
 }
-.required{
+
+.required {
     color: red;
 }
-.billing-order{
+
+input {
+    width: 100px;
+}
+
+.billing-order {
     display: flex;
 }
-.name{
+
+.name {
     display: flex;
 }
+
 .billing-details input,
 .additional-information input,
-.select-address select{
+select {
     height: 45px;
-    max-width: 100%;
 }
+
 .email,
 .company,
 .country,
@@ -33,9 +45,10 @@
 .district,
 .street-address,
 .phone-number,
-.order-notes{
+.order-notes {
     margin-top: 5px;
 }
+
 .fn label,
 .ln label,
 .email label,
@@ -45,44 +58,52 @@
 .district label,
 .street-address label,
 .phone-number label,
-.order-notes{
+.order-notes {
     margin-top: 10px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 13.5px;
     font-weight: 700;
-    color: #565a61;;
+    color: #565a61;
+    ;
 }
-.additional-information{
-    margin-top:30px;
+
+.additional-information {
+    margin-top: 30px;
 }
-.order-payment{
-    height:fit-content;
+
+.order-payment {
+    height: fit-content;
     border: 1px solid #dddddd;
-    max-width: 100%;
 }
-.inside-order-payment{
+
+.inside-order-payment {
     margin: 15px;
-    max-width: 100%;
 }
-.your-order{
+
+.your-order {
     max-width: 100%;
     margin-left: 20px;
 }
+
 .your-order-table th,
-.your-order-table td{
+.your-order-table td {
     color: #565a61;
 }
-.order-container h4{
+
+.order-container h4 {
     font-family: 'Times New Roman', Times, serif;
 }
-.imgName{
+
+.imgName {
     display: flex;
 }
-.category{
+
+.category {
     margin-top: 10px;
     padding-top: 10px;
 }
-.category label{
+
+.category label {
     display: flex;
     padding: 20px;
     width: 100%;
@@ -93,68 +114,83 @@
     cursor: pointer;
     border-radius: 5px;
 }
-.imgName  img{
+
+.imgName img {
     width: 50px;
     height: auto;
 }
-.imgName span{
+
+.imgName span {
     margin-left: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: 700;
     color: #565a61;
 }
-.imgName{
+
+label .imgName {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.category label:nth-child(2), label:nth-child(3){
+
+label:nth-child(2), label:nth-child(3) {
     margin: 15px 0;
 }
 
-.payment-on-delivery img{
+.payment-on-delivery img {
     width: 55px;
 }
-.visa img{
+
+.visa img {
     width: 55px;
 }
-.mastercard img{
+
+.mastercard img {
     width: 55px;
 }
-.local-bank img{
+
+.local-bank img {
     width: 55px;
 }
-.check{
+
+.check {
     display: none;
 }
-.order-container input{
+
+.order-container input {
     display: none;
 }
-.order-container input:checked.visa-check ~ .category .visaMethod,
-.order-container input:checked.mastercard-check ~ .category .mastercardMethod,
-.order-container input:checked.local-check ~ .category .local-bankMethod,
-.order-container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod{
+
+.order-container input:checked.visa-check~.category .visaMethod,
+.order-container input:checked.mastercard-check~.category .mastercardMethod,
+.order-container input:checked.local-check~.category .local-bankMethod,
+.order-container input:checked.payment-on-delivery-check~.category .payment-on-deliveryMethod {
     box-shadow: 0px 0px 0px 1px #6064b6;
 }
-.order-container input:checked.visa-check ~ .category .visaMethod .check,
-.order-container input:checked.mastercard-check ~ .category .mastercardMethod .check,
-.order-container input:checked.local-check ~ .category .local-bankMethod .check,
-.order-container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod .check{
+
+.order-container input:checked.visa-check~.category .visaMethod .check,
+.order-container input:checked.mastercard-check~.category .mastercardMethod .check,
+.order-container input:checked.local-check~.category .local-bankMethod .check,
+.order-container input:checked.payment-on-delivery-check~.category .payment-on-deliveryMethod .check {
     display: block;
 }
-.order{
+
+.order {
     margin-top: 10px;
 }
-.btn-outline-custom{
+
+.btn-outline-custom {
     width: 100%;
     color: #5f4ecb;
     border-color: #5f4ecb;
 }
-.btn-outline-custom:hover{
+
+.btn-outline-custom:hover {
     color: white;
     background-color: #ED553B;
 }
+
 .error-message {
     font-size: 14px;
     color: #ED553B;
