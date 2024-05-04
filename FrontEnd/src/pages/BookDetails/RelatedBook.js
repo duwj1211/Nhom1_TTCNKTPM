@@ -4,11 +4,28 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import ApiService from "../../service/api.service";
 import styles from './RelatedBook.module.css';
+import Arrow from '../../assets/images/arrow.svg';
 
 const cx = classNames.bind(styles);
 
 function RelatedBook({categories = [], slug = ''}) {
     const [books, setBooks] = useState([]);
+    const CustomPrevArrow = (props) => {
+        const { onClick } = props;
+        return (
+            <button className={cx("slick-prev")} onClick={onClick}>
+                <img src={Arrow} alt="SVG Image"/>
+            </button>
+        );
+    };
+    const CustomNextArrow = (props) => {
+        const { onClick } = props;
+        return (
+            <button className={cx("slick-next")} onClick={onClick}>
+                <img src={Arrow} alt="SVG Image"/>
+            </button>
+        );
+    };
     async function getBooks() {
         try {
         const response = await ApiService.get("books");
@@ -31,13 +48,13 @@ function RelatedBook({categories = [], slug = ''}) {
         slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: false,
-        arrow: true,
+        arrows: true,
     };
     
     return ( 
             <div className={cx('related-products')}>
                 <h2 className={cx('heading')}>Related products</h2>
-                <Slider {...settings} className={cx('slider')}>
+                <Slider {...settings} className={cx('slider')} prevArrow={<CustomPrevArrow />} nextArrow={<CustomNextArrow />}>
                     { relatedBooks.map((book) => (
                         <div key={book._id} className={cx('wrap-book-item')}>
                             <div className={cx('book-item')}>
