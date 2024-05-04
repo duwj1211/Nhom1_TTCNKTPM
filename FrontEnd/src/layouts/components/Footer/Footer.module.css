@@ -1,7 +1,7 @@
 .wrapper {
     background-image: linear-gradient(to right, rgba(252, 236, 236, 1) 0%, rgba(246, 255, 254, 1) 35%, rgba(255,249,242, 1) 100%);
     padding: 45px 56px 20px;
-    margin-top: 79px;
+    /* margin-top: 79px; */
 }
   
 .index-module_grid {
