@@ -7,7 +7,7 @@ import Home from "./pages/Home";
 import LoginForm from './pages/signIn';
 import Cart from './pages/Cart/Cart';
 import CheckOut from './pages/CheckOut/CheckOut';
-
+import BookDetails from './pages/BookDetails'
 
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
           <Route path="/signIn" index element={<LoginForm/>}/>
           <Route path="/Cart"  index element={<Cart/>}/>
           <Route path="/CheckOut" index element={<CheckOut/>}/>
+          <Route path="/BookDetails/:slug" exact element={<BookDetails />}/>
         </Route>
         </Routes>
       </div>
