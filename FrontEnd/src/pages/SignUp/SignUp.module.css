@@ -7,14 +7,38 @@
   object-fit: contain;
 }
 
-.signInWith {
-  margin: 0;
+
+.SgnUpFB {
+  position: absolute;
+  top: 800px;
+  left: 90px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
 }
 
-.signInWithContainer {
+.SgnUpGG {
+  position: absolute;
+  top: 800px;
+  left: 465px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+}
+
+.signUpWithFB {
+  margin: 10px 0 0 0;
+}
+
+
+.signUpWithContainer {
   position: absolute;
   top: calc(50% - 12px);
-  left: 79px;
+  left: calc(50% - 71.5px);
 }
 
 .logoContainer {
@@ -44,47 +68,82 @@
 
 .socialMediaFacebook {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 19px);
   left: 24px;
   width: 39px;
   height: 39px;
 }
 
-.inputField {
-  position: absolute;
-  top: calc(50% + 325px);
-  left: calc(50% - 353px);
-  border-radius: var(--br-5xs);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 301px;
-  height: 66px;
-}
 
 .techLogosGoogle {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 19px);
   left: 22px;
   border-radius: var(--br-49xl);
   width: 39px;
   height: 39px;
 }
 
+/* FirstName */
+.firstNameWrapper {
+  position: absolute;
+  top: 180px;
+  left: 100px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.firstName {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 137.5px);
+}
+
 .inputField1 {
   position: absolute;
-  top: 774px;
-  left: 448px;
+  top: 30px;
+  left: 10px;
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-200);
   box-sizing: border-box;
-  width: 288px;
+  width: 301px;
   height: 66px;
+  font-size: 30px;
+}
+
+/*LastName*/
+.lastNameWrapper {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.lastName {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 137.5px);
+}
+
+.inputField2 {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+  font-size: 30px;
 }
 
 /*Email*/
 .emailWrapper {
   position: absolute;
-  top: 170px;
+  top: 280px;
   left: 100px;
   box-sizing: border-box;
   width: 310px;
@@ -97,29 +156,22 @@
   left: 10px;
 }
 
-.inputField2 {
+.inputField3 {
   position: absolute;
   top: 30px;
   left: 10px;
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-200);
   box-sizing: border-box;
-  width: 500px;
-  height: 60px;
+  width: 400px;
+  height: 66px;
   font-size: 30px;
-}
-
-.alreadyHaveAn {
-  position: absolute;
-  top: 660px;
-  left: 123px;
-  color: var(--color-darkslategray-100);
 }
 
 /*Password*/
 .passwordWrapper {
   position: absolute;
-  top: 280px;
+  top: 380px;
   left: 100px;
   box-sizing: border-box;
   width: 400px;
@@ -132,41 +184,48 @@
   left: 10px;
 }
 
-.inputField3 {
+.inputField4 {
   position: absolute;
   top: 30px;
   left: 10px;
   border-radius: var(--br-5xs);
   border: 1px solid var(--color-darkslategray-200);
   box-sizing: border-box;
-  width: 500px;
-  height: 60px;
+  width: 400px;
+  height: 66px;
   font-size: 30px;
 }
 
 .hideIcon {
   position: absolute;
   top: 47px;
-  left: 470px;
+  left: 370px;
   width: 24px;
   height: 24px;
 }
 
-.signinAccount {
+.alreadyHaveAn {
   position: absolute;
-  top: calc(50% - 21px);
-  left: calc(50% - 108px);
+  top: 698px;
+  left: 119px;
+  color: var(--color-darkslategray-100);
 }
 
-.or,
-.signinAccountWrapper {
+.createAccount {
+  position: absolute;
+  top: calc(50% - 21px);
+  left: calc(50% - 107px);
+}
+
+.createAccountWrapper,
+.or {
   position: absolute;
   font-size: var(--font-size-9xl);
 }
 
-.signinAccountWrapper {
-  top: 550px;
-  left: 120px;
+.createAccountWrapper {
+  top: calc(50% + 132.5px);
+  left: calc(50% - 361px);
   border-radius: var(--br-5xs);
   background-color: var(--color-darkslategray-100);
   border: 1px solid var(--color-darkslategray-200);
@@ -174,34 +233,48 @@
   width: 618px;
   height: 82px;
   color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+
 .or {
-  top: 697px;
-  left: 415px;
+  top: 730px;
+  left: 411px;
   color: var(--color-darkslategray-100);
 }
 
-.crossIcon,
-.crossIcon1 {
+.crossIcon {
   position: absolute;
-  top: 448px;
-  left: 120px;
+  top: 10px;
+  left: -30px;
   width: 24px;
   height: 24px;
 }
 
 .crossIcon1 {
-  top: 398px;
+  position: absolute;
+  top: 55px;
+  left: -30px;
+  width: 24px;
+  height: 24px;
 }
 
-.passwordStrengthAtContainer {
+.passwordConditions {
   position: absolute;
-  top: 384px;
-  left: 160px;
-  line-height: 50px;
+  top: 480px;
+  left: 156px;
+  line-height: 35px;
   font-family: var(--font-frank-ruhl-libre);
 }
+
+.passwordDisplay {
+  display: flex;
+  top: 10px;
+}
+
+
 
 .homeIcon {
   position: absolute;
@@ -214,30 +287,30 @@
 .frameChild,
 .frameItem {
   position: absolute;
-  top: 720px;
-  left: 465px;
+  top: 752px;
+  left: 116px;
   max-height: 100%;
   width: 271px;
 }
 
 .frameItem {
-  left: 127px;
+  left: 466px;
 }
 
-.inputFieldParent {
+.frameParent {
   position: absolute;
-  top: 1px;
+  top: 0;
   right: 0;
   border-radius: var(--br-mini) 0 0 var(--br-mini);
   background-color: var(--primary);
   border: 1px solid var(--text2);
   box-sizing: border-box;
   width: 960px;
-  height: 898px;
+  height: 899px;
   overflow: hidden;
 }
 
-.signinAccount2 {
+.createAccount2 {
   position: absolute;
   top: 61px;
   left: 116px;
@@ -271,7 +344,7 @@
   height: 242px;
 }
 
-.signin {
+.signup {
   width: 100%;
   position: relative;
   border-radius: var(--br-xl) 0 0 var(--br-xl);
@@ -284,25 +357,49 @@
   font-family: var(--heading-24px-bold);
 }
 
+/* CSS cho screens nhỏ hơn 600px */
 @media (max-width: 600px) {
   .icon {
     position: absolute;
     top: 461px;
     left: 39px;
-    width: 445.5px;
-    height: 333.9px;
+    width: 100PX;
+    height: 30px;
     object-fit: contain;
     display: none;
   }
 
-  .signInWith {
-    margin: 0;
+  .SgnUpFB {
+    position: absolute;
+    top: 600px;
+    left: 50px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 301px;
+    height: 66px;
   }
 
-  .signInWithContainer {
+  .SgnUpGG {
+    position: absolute;
+    top: 700px;
+    left: 50px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 301px;
+    height: 66px;
+  }
+
+  .signUpWithFB {
+    margin: 10px 0 0 0;
+  }
+
+
+  .signUpWithContainer {
     position: absolute;
     top: calc(50% - 12px);
-    left: 79px;
+    left: calc(50% - 71.5px);
   }
 
   .logoContainer {
@@ -332,48 +429,85 @@
 
   .socialMediaFacebook {
     position: absolute;
-    top: calc(50% - 20px);
+    top: calc(50% - 19px);
     left: 24px;
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
   }
 
-  .inputField {
-    position: absolute;
-    top: calc(50% + 300px);
-    left: calc(50% - 176px);
-    border-radius: var(--br-5xs);
-    border: 1px solid var(--color-darkslategray-200);
-    box-sizing: border-box;
-    width: 270PX;
-    height: 50PX;
-  }
 
   .techLogosGoogle {
     position: absolute;
-    top: calc(50% - 20px);
+    top: calc(50% - 19px);
     left: 22px;
     border-radius: var(--br-49xl);
-    width: 40px;
-    height: 40px;
+    width: 39px;
+    height: 39px;
+  }
+
+  /* FirstName */
+  .firstNameWrapper {
+    position: absolute;
+    top: 130px;
+    left: 50px;
+    box-sizing: border-box;
+    width: 280px;
+    height: 70px;
+  }
+
+  .firstName {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 137.5px);
+    font-size: 15PX;
+
   }
 
   .inputField1 {
     position: absolute;
-    top: 810px;
-    left: 73px;
+    top: 25px;
+    left: 15px;
     border-radius: var(--br-5xs);
     border: 1px solid var(--color-darkslategray-200);
     box-sizing: border-box;
-    width: 270px;
-    height: 50px;
+    width: 200PX;
+    height: 30PX;
+    font-size: 14px;
+  }
+
+  /*LastName*/
+  .lastNameWrapper {
+    position: absolute;
+    top: 190PX;
+    left: 50PX;
+    box-sizing: border-box;
+    width: 280px;
+    height: 70px;
+  }
+
+  .lastName {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 137.5px);
+  }
+
+  .inputField2 {
+    position: absolute;
+    top: 25px;
+    left: 15PX;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 150PX;
+    height: 30PX;
+    font-size: 14px;
   }
 
   /*Email*/
   .emailWrapper {
     position: absolute;
-    top: 170px;
-    left: 30px;
+    top: 250px;
+    left: 50px;
     box-sizing: border-box;
     width: 310px;
     height: 100px;
@@ -382,34 +516,26 @@
   .email {
     position: absolute;
     top: 0px;
-    left: 10px;
+    left: calc(50% - 155px);
   }
 
-  .inputField2 {
+  .inputField3 {
     position: absolute;
-    top: 30px;
-    left: 10px;
+    top: 25px;
+    left: 15px;
     border-radius: var(--br-5xs);
     border: 1px solid var(--color-darkslategray-200);
     box-sizing: border-box;
-    width: 250PX;
-    height: 40PX;
-    font-size: 20px;
-
-  }
-
-  .alreadyHaveAn {
-    position: absolute;
-    top: 660px;
-    left: 30px;
-    color: var(--color-darkslategray-100);
+    width: 200PX;
+    height: 30PX;
+    font-size: 14px;
   }
 
   /*Password*/
   .passwordWrapper {
     position: absolute;
-    top: 260px;
-    left: 30px;
+    top: 310px;
+    left: 50px;
     box-sizing: border-box;
     width: 400px;
     height: 100px;
@@ -418,80 +544,104 @@
   .password {
     position: absolute;
     top: 0px;
-    left: 10px;
+    left: calc(50% - 200px);
   }
 
-  .inputField3 {
+  .inputField4 {
     position: absolute;
-    top: 30px;
-    left: 10px;
+    top: 25px;
+    left: 15px;
     border-radius: var(--br-5xs);
     border: 1px solid var(--color-darkslategray-200);
     box-sizing: border-box;
-    width: 200PX;
-    height: 40PX;
-    font-size: 30px;
+    width: 150PX;
+    height: 30PX;
+    font-size: 14px;
   }
 
   .hideIcon {
     position: absolute;
     top: 47px;
-    left: 470px;
+    left: 370px;
     width: 24px;
     height: 24px;
   }
 
-  .signinAccount {
+  .alreadyHaveAn {
     position: absolute;
-    top: calc(50% - 21px);
-    left: calc(50% - 108px);
+    top: 520px;
+    left: 40px;
+    color: var(--color-darkslategray-100);
   }
 
-  .or,
-  .signinAccountWrapper {
+  .createAccount {
     position: absolute;
-    font-size: 10PX;
+    top: calc(50% - 10px);
+    left: calc(50% - 40px);
   }
 
-  .signinAccountWrapper {
-    top: 550px;
-    left: 120px;
+  .createAccountWrapper,
+  .or {
+    position: absolute;
+    font-size: var(--font-size-9xl);
+  }
+
+  .createAccountWrapper {
+    top: 450PX;
+    left: 100PX;
     border-radius: var(--br-5xs);
     background-color: var(--color-darkslategray-100);
     border: 1px solid var(--color-darkslategray-200);
     box-sizing: border-box;
-    width: 210PX;
-    height: 70PX;
+    width: 200PX;
+    height: 45PX;
     color: var(--primary);
-    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10PX;
   }
+
 
   .or {
-    top: 700px;
-    left: 170px;
+    top: 550px;
+    left: 191px;
     color: var(--color-darkslategray-100);
-    font-size: 24px;
+    font-size: 20px;
   }
 
-  .crossIcon,
+  .crossIcon {
+    position: absolute;
+    top: 10px;
+    left: -30px;
+    width: 5px;
+    height: 5px;
+  }
+
   .crossIcon1 {
     position: absolute;
-    top: 448px;
-    left: 40px;
-    width: 24px;
-    height: 24px;
+    top: 55px;
+    left: -30px;
+    width: 5px;
+    height: 5px;
   }
 
-  .crossIcon1 {
-    top: 398px;
-  }
-
-  .passwordStrengthAtContainer {
+  .passwordConditions {
     position: absolute;
-    top: 384px;
-    left: 70px;
-    line-height: 50px;
+    top: 370px;
+    left: 65px;
+    line-height: 35px;
     font-family: var(--font-frank-ruhl-libre);
+  }
+
+  .passwordDisplay {
+    display: flex;
+    top: 10px;
+    font-size: 10PX;
+  }
+
+  P {
+    margin: 0 !important;
   }
 
   .homeIcon {
@@ -504,40 +654,42 @@
 
   .frameItem {
     position: absolute;
-    top: 720px;
-    left: 10px;
+    top: 565px;
+    left: 230px;
     max-height: 100%;
     width: 150px;
   }
 
   .frameChild {
     position: absolute;
-    top: 720px;
-    left: 200px;
+    top: 565px;
+    left: 20px;
     max-height: 100%;
     width: 150px;
   }
 
-  .inputFieldParent {
-    position: absolute;
-    top: 1px;
+  .frameParent {
+    position: relative;
+    top: 0;
     right: 0;
     border-radius: var(--br-mini) 0 0 var(--br-mini);
     background-color: var(--primary);
     border: 1px solid var(--text2);
     box-sizing: border-box;
-    width: 500PX;
-    height: 898px;
+    width: 400PX;
+    height: 900PX;
     overflow: hidden;
+    margin: auto;
   }
 
-  .signinAccount2 {
+  .createAccount2 {
     position: absolute;
-    top: 50px;
-    left: 100px;
-    font-size: 30PX;
+    top: 15px;
+    left: 120PX;
+    font-size: 25px;
     line-height: 150px;
     color: var(--color-sienna);
+
   }
 
   .vectorIcon {
@@ -566,8 +718,8 @@
     display: NONE;
   }
 
-  .signin {
-    width: 500PX;
+  .signup {
+    width: 100%;
     position: relative;
     border-radius: var(--br-xl) 0 0 var(--br-xl);
     background-color: var(--color-tan);
@@ -578,4 +730,21 @@
     color: var(--color-darkslategray-200);
     font-family: var(--heading-24px-bold);
   }
+
+  /* CSS for larger screens */
+  /* .signup {
+    width: 100%;
+    position: relative;
+    border-radius: var(--br-xl) 0 0 var(--br-xl);
+    background-color: var(--color-tan);
+    height: 899px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--title-16px-medium-size);
+    color: var(--color-darkslategray-200);
+    font-family: var(--heading-24px-bold);
+  } */
+
+  /* Sửa lại CSS cho screens nhỏ hơn 500px */
+
 }
