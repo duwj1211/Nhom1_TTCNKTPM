@@ -1,11 +1,19 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
-import { useState } from "react";
 const cx = classNames.bind(styles)
-
 function Header() {
+  const [searchParams] = useSearchParams();
+  const [inputValue, setInputValue] = useState(searchParams.get('q'));
+  const navigate = useNavigate();
+  function hadleSearch(e) {
+    e.preventDefault();
+    navigate(`/allbook?q=${inputValue}`);
+  }
+
   return (
     <header className={cx('wrap')}>
       <div className={cx('top-header')}>
@@ -26,12 +34,15 @@ function Header() {
           <div className={cx('logo')}>
             OneBook
           </div>
-          <div className={cx('search-wrap')}>
-            <input type='text' name='query' placeholder='Tìm kiếm' autoComplete='off' />
+          <form onSubmit={hadleSearch} className={cx('search-wrap')}>
+            <input type='text' value={inputValue} 
+            onChange={e => setInputValue(e.target.value)} 
+            placeholder='Tìm kiếm' 
+            autoComplete='off' spellCheck="false" />
             <div className={cx('search-btn')}>
               <i className="far fa-search"></i>
             </div>
-          </div>
+          </form>
           <div className={cx('header-action')}>
             <NavLink to='#'>
               <span className={cx('icon')}><i className="far fa-user"></i></span>

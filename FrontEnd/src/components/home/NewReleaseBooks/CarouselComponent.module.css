@@ -37,8 +37,19 @@
     font-weight: 400;
 }
 
-.item-content h6 {
+.item-price {
+    display: flex;
+    gap: 15px;
+}
+
+.final-price {
     color: rgba(237, 85, 59, 1);
     font-size: 16px;
     font-weight: 700;
+}
+
+.original-price {
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: line-through;
 }

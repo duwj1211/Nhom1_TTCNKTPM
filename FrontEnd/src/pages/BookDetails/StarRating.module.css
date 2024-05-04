@@ -1,0 +1,13 @@
+.wrap {
+    padding-left: 8px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 32px;
+    /* margin: 5px; */
+}
