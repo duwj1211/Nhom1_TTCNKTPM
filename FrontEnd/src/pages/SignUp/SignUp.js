@@ -10,6 +10,7 @@ const SignUp = () => {
 
     return (
         <div className={styles.signup}>
+            <img className={styles.icon} alt="" src="/440918--1@2x.png" />
             <div className={styles.frameParent}>
                 <div className={styles.firstNameWrapper}>
                     <b className={styles.firstName}>First Name</b>
@@ -88,10 +89,10 @@ const SignUp = () => {
                 </div>
             </div>
             <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <img className={styles.icon} alt="" src="/440918--1@2x.png" />
-            <div className={styles.discoverYourNext}>
+
+            {/* <div className={styles.discoverYourNext}>
                 Discover your next must read author.
-            </div>
+            </div> */}
         </div>
     );
 };

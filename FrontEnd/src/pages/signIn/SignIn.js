@@ -21,7 +21,7 @@ const SignIn = () => {
         console.log("Password:", password);
     };
     return (
-        <div className={styles.signin}>
+        < div className={styles.signin} >
             <img className={styles.icon} alt="" src="/440918--1@2x.png" />
             <div className={styles.inputFieldParent}>
                 <div className={styles.inputField}>
@@ -78,10 +78,11 @@ const SignIn = () => {
             </div>
 
             <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            <div className={styles.discoverYourNext}>
+            {/* <div className={styles.discoverYourNext}>
                 Discover your next must read author.
-            </div>
-        </div>
+            </div> */}
+        </div >
+        // </React.Fragment>
     );
 };
 
