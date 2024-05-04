@@ -1,9 +1,4 @@
 .main-content {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    max-width: 1200px;
-    height: fit-content ;
     background-color: #ffffff;
 }
 .main{
@@ -16,10 +11,6 @@
     font-size: 20px;
     font-weight: 700;
 }
-.inside-billing-order hr{
-    max-width: 500px;
-    width: 100%;
-}
 .required{
     color: red;
 }
@@ -28,13 +19,6 @@
 }
 .name{
     display: flex;
-}
-.fn,
-.ln{
-    max-width: 220px;
-}
-.fn{
-    margin-right: 60px;
 }
 .billing-details input,
 .additional-information input,
@@ -51,7 +35,6 @@
 .phone-number,
 .order-notes{
     margin-top: 5px;
-    max-width: 500px;
 }
 .fn label,
 .ln label,
@@ -73,7 +56,6 @@
     margin-top:30px;
 }
 .order-payment{
-    margin-left: 70px;
     height:fit-content;
     border: 1px solid #dddddd;
     max-width: 100%;
@@ -83,7 +65,6 @@
     max-width: 100%;
 }
 .your-order{
-    max-width: 400px;
     max-width: 100%;
     margin-left: 20px;
 }
@@ -91,7 +72,7 @@
 .your-order-table td{
     color: #565a61;
 }
-.container h4{
+.order-container h4{
     font-family: 'Times New Roman', Times, serif;
 }
 .imgName{
@@ -147,31 +128,36 @@
 .check{
     display: none;
 }
-.container input{
+.order-container input{
     display: none;
 }
-.container input:checked.visa-check ~ .category .visaMethod,
-.container input:checked.mastercard-check ~ .category .mastercardMethod,
-.container input:checked.local-check ~ .category .local-bankMethod,
-.container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod{
+.order-container input:checked.visa-check ~ .category .visaMethod,
+.order-container input:checked.mastercard-check ~ .category .mastercardMethod,
+.order-container input:checked.local-check ~ .category .local-bankMethod,
+.order-container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod{
     box-shadow: 0px 0px 0px 1px #6064b6;
 }
-.container input:checked.visa-check ~ .category .visaMethod .check,
-.container input:checked.mastercard-check ~ .category .mastercardMethod .check,
-.container input:checked.local-check ~ .category .local-bankMethod .check,
-.container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod .check{
+.order-container input:checked.visa-check ~ .category .visaMethod .check,
+.order-container input:checked.mastercard-check ~ .category .mastercardMethod .check,
+.order-container input:checked.local-check ~ .category .local-bankMethod .check,
+.order-container input:checked.payment-on-delivery-check ~ .category .payment-on-deliveryMethod .check{
     display: block;
 }
 .order{
     margin-top: 10px;
 }
 .btn-outline-custom{
-    width: 440px;
+    width: 100%;
     color: #5f4ecb;
     border-color: #5f4ecb;
 }
 .btn-outline-custom:hover{
     color: white;
-    background-color: #5f4ecb;
+    background-color: #ED553B;
 }
-
+.error-message {
+    font-size: 14px;
+    color: #ED553B;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}

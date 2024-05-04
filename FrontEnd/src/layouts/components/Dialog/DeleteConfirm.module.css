@@ -1,0 +1,32 @@
+.content-confirm{
+    color: #ED553B;
+}
+.large-title{
+    font-size: 24px;
+}
+.title-confirm,
+.sub-content-confirm{
+    color: #565a61;
+}
+.cancel-btn button{
+    color: rgb(66, 246, 66);
+    border: 1px solid;
+    border-color: rgb(66, 246, 66);
+}
+.cancel-btn button:hover{
+    color: white;
+    background-color: rgb(66, 246, 66);
+    border: 1px solid;
+    border-color: rgb(66, 246, 66);
+}
+.confirm-btn button{
+    color: red;
+    border: 1px solid;
+    border-color: #ED553B;
+}
+.confirm-btn button:hover{
+    color: white;
+    background-color: #ED553B;
+    border: 1px solid;
+    border-color: #ED553B;
+}

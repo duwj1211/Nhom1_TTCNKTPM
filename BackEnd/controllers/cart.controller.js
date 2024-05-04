@@ -3,6 +3,7 @@ const Cart = require('../models/cart.model');
 const User = require('../models/user.model');
 const Book = require('../models/book.model');
 const { populate } = require('dotenv');
+const { json } = require('express');
 
 const addToCart = async(req, res) => {
     try {
@@ -53,26 +54,29 @@ const addToCart = async(req, res) => {
 
 const deleteFromCart = async(req , res) =>{
     try{
-        const {userId , cartItemId} = req.params;
+        const {userId , cartItemId} = req.params;      
 
-        let cart = await Cart.findOne({user : userId}).populate({
+        const cart = await Cart.findOne({user : userId}).populate({
             path: 'items',
             populate: {
                 path: 'book'
             }
         });
-
+        
+        const cartItem = await CartItem.findOne({_id: cartItemId});
+        if(!cartItem){
+            return res.status(404).json({message: 'Không có sản phẩm này trong giỏ hàng'});
+        }
+        await CartItem.findOneAndDelete({ _id: cartItemId });
         for (let i = 0; i < cart.items.length; i++) {
             const item = cart.items[i];
-            if (item._id.equals(cartItemId)) {
-                cart.totalPriceOriginal -= (item.book.priceOriginal*item.quantity);
-                cart.totalPriceFinal -= (item.book.priceFinal*item.quantity);
+            if (item && item._id.equals(cartItemId)) {
+                cart.totalPriceOriginal -= (item.book.priceOriginal * item.quantity);
+                cart.totalPriceFinal -= (item.book.priceFinal * item.quantity);
                 cart.items.splice(i, 1);
                 break;
             }
-        }
-        
-        await CartItem.findOneAndDelete({ _id: cartItemId });
+        }        
         await cart.save();
         
         res.status(200).json({ message: 'Xóa sản phẩm khỏi giỏ hàng thành công' });
@@ -83,22 +87,20 @@ const deleteFromCart = async(req , res) =>{
 
 const updateQuantityOfCartItem = async (req, res) => {
     try {
-        const { userId, cartItemId, quantity } = req.body;
-        if (!userId || !cartItemId) {
-            return res.status(400).json({ message: 'Thiếu thông tin cần thiết' });
-        }
-
+        const { userId, cartItemId, quantity } = req.params;
+        
+        const updateQuantity = quantity || 1;
         const cart = await Cart.findOne({ user: userId }).populate({
             path: 'items',
             populate: {
                 path: 'book'
             }
-        });;
+        });
         if (!cart) {
             return res.status(404).json({ message: 'Không tìm thấy giỏ hàng cho người dùng này' });
         }
 
-        const cartItem = cart.items.find(item => item._id.equals(cartItemId));
+        const cartItem = await CartItem.findOne({_id : cartItemId});
         if (!cartItem) {
             return res.status(404).json({ message: `Không tìm thấy mục hàng với ID ${cartItemId}` });
         }
@@ -107,8 +109,14 @@ const updateQuantityOfCartItem = async (req, res) => {
             return res.status(400).json({ message: 'Số lượng sản phẩm phải lớn hơn 0' });
         }
 
-        cartItem.quantity = quantity;
+        cartItem.quantity = updateQuantity;
         await cartItem.save();
+
+        cart.items.forEach(item => {
+            if (item._id.equals(cartItemId)) {
+                item.quantity = updateQuantity;
+            }
+        });
 
         let totalPriceOriginal = 0;
         let totalPriceFinal = 0;
@@ -120,7 +128,7 @@ const updateQuantityOfCartItem = async (req, res) => {
 
         cart.totalPriceOriginal = totalPriceOriginal;
         cart.totalPriceFinal = totalPriceFinal;
-
+        
         await cart.save();
 
         res.status(200).json({ message: 'Số lượng sản phẩm đã được cập nhật thành công' });
@@ -132,7 +140,12 @@ const updateQuantityOfCartItem = async (req, res) => {
 const getCart = async(req, res) => {
     try {
         const userId = req.params.userId;
-        const cart = await Cart.findOne({ user: userId }).populate('items');
+        const cart = await Cart.findOne({ user: userId }).populate({
+            path: 'items',
+            populate: {
+                path: 'book'
+            }
+        });
 
         if (!cart) {
             return res.status(404).json({ message: 'Không tìm thấy giỏ hàng cho người dùng này' });
