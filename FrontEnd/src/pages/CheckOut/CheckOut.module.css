@@ -128,13 +128,13 @@ select {
     color: #565a61;
 }
 
-label .imgName {
+.main-content label .imgName {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-label:nth-child(2), label:nth-child(3) {
+.main-content label:nth-child(2), label:nth-child(3) {
     margin: 15px 0;
 }
 
