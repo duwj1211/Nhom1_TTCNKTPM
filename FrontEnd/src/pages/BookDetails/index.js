@@ -11,6 +11,7 @@ import RelatedBook from './RelatedBook';
 const cx = classNames.bind(styles);
 
 function BookDetails() {
+    const userId = '66084000eed56d34dfebdac1';
     const { slug } = useParams();
 
     const [book, setBook] = useState(null);
@@ -30,7 +31,7 @@ function BookDetails() {
           }
           getBook();
     }, [slug]);
-
+    
     const limitWord = (description, maxLength) => {
         const data = description.split(' ');
         if (data.length <= maxLength) {
@@ -43,9 +44,22 @@ function BookDetails() {
         setQuantity(e.target.value);
     };
 
-    // const handleAddToCart = () => {
-        
-    // }
+    const handleAddToCart = async (userId, bookId, quantity) => {
+        try{
+            const response = await ApiService.post('carts/add', {
+                userId,
+                bookId,
+                quantity
+            })
+            if(response.status === 200){
+                console.log("Successful");
+            }else{
+                console.log("Unsuccessful");
+            }
+        }catch(error){
+            console.error('Error add to cart:',error);
+        }
+    }
 
     return ( 
         <>
@@ -71,7 +85,7 @@ function BookDetails() {
                                             <form className={cx('cart')} action='' method='post'>
                                                 <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max='' step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}>    
                                                </input>
-                                                <button className={cx('btn')}>Add to cart</button>
+                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(userId,book._id,quantity)}>Add to cart</button>
                                             </form>
                                         </div>
                                     </div>
