@@ -1,0 +1,85 @@
+.heading {
+    margin-bottom: 48px;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.book-img {
+    padding: 30px;
+    border: 1px solid rgba(234, 232, 223, 1);
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    width: 220px;
+}
+
+.book-img img {
+    width: 100%;
+    height: 230px;
+}
+
+.book-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-content h4 {
+    color: rgba(57, 50, 128, 1);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.book-content .book-name {
+    color: rgba(136, 136, 136, 1);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.book-content .book-price {
+    color: rgba(237, 85, 59, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+.slick-next {
+    position: absolute;
+    top: 40%;
+    left: 101%;
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%;
+    background-color: rgba(234, 232, 223, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slick-next img{
+    transform: scaleX(-1);
+    width: 20px;
+    height: 20px;
+}
+.slick-prev {
+    position: absolute;
+    top: 40%;
+    right: 102%;
+    width: 36px; 
+    height: 36px; 
+    border-radius: 50%;
+    background-color: rgba(234, 232, 223, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slick-prev img{
+    width: 20px; 
+    height: 20px; 
+}
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: rgb(209, 209, 209);
+}

@@ -1,0 +1,144 @@
+.wrap-featured-book {
+    background: linear-gradient(to right, rgba(251, 238, 238, 1), rgba(247, 255, 254, 1));
+    padding: 20px;
+}
+
+.wrap-featured-book-img {
+    max-width: 50%;
+    border: 1px solid rgb(243, 243, 243);
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-left: 100px;
+}
+
+
+.featured-book-img img {
+    width: 100%;
+    height: auto;
+}
+
+.featured-book-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 10px;
+
+}
+
+.featured-book-content h2 {
+    color: rgba(57, 50, 128, 1);
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.featured-book-content hr {
+    width: 120px;
+    color: rgba(237, 85, 59, 1);
+    border-width: 3px;
+}
+
+.featured-book-content h6 {
+    color: rgba(136, 136, 136, 1);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.featured-book-content h3 {
+    color: rgba(57, 50, 128, 1);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: rgba(122, 122, 122, 1);
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    line-height: 25px;
+}
+
+.link-btn {
+    color: #393280;
+    padding: 12px 35px;
+    border: 1px solid #393280;
+    border-radius: 8px;
+    width: max-content;
+    margin-top: 65px;
+    transition: all .2s linear;
+}
+
+.link-btn:hover {
+    color: #FFF;
+    border-color: #ED553B;
+    background-color: #ED553B;
+}
+
+.item-price {
+    display: flex;
+    gap: 25px;
+}
+
+.final-price {
+    color: rgba(237, 85, 59, 1);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.original-price {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: line-through;
+}
+
+@media (max-width: 1024px) {
+    .wrap-featured-book-img {
+        margin-top: 60px;
+        margin-left: 60px;
+    }
+
+    .featured-book-content h2 {
+        font-size: 26px;
+    }
+
+    .featured-book-content h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wrap-featured-book-img {
+        margin-top: 70px;
+        margin-left: 80px;
+    }
+
+    .featured-book-content h2 {
+        font-size: 22px;
+    }
+
+    .featured-book-content h3 {
+        font-size: 20px;
+    }
+
+    .final-price, .original-price {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap-featured-book-img {
+        margin-left: 80px;
+    }
+
+    .featured-book-content h2 {
+        font-size: 20px;
+    }
+
+    .featured-book-content h3 {
+        font-size: 18px;
+    }
+
+    .final-price, .original-price {
+        font-size: 16px;
+    }
+}

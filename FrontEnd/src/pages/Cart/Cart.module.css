@@ -1,7 +1,3 @@
-*{
-    padding: 0;
-    margin: 0;
-}
 .main-content{
     background-color: #ffffff;
     width: 1200px;
@@ -23,6 +19,11 @@ td{
     width: 1000px;
     outline: 1px solid #dddddd;   
 }
+.table-list-books img {
+    max-width: 100px;
+    width: auto;
+    max-height: 200px;
+}
 .table-list-books th,
 .table-list-books td {
     font-weight: 700;
@@ -37,7 +38,10 @@ td{
 }
 .btn-outline-custom:hover{
     color: white;
-    background-color: #5f4ecb;
+    background-color: #ED553B;
+}
+.product-subtotal{
+    width: 200px;
 }
 .cart{
     width: 1000px;
@@ -48,32 +52,45 @@ td{
     height: fit-content;
     outline: 1px solid #dddddd;
 }
+.cart-total-table td span {
+    font-weight: 700;
+    color: #565a61;
+}
 .cart-totals{
-    width: 500px;
-    margin-left: 485px;
+    max-width: 500px;
+    margin-left: 490px;
     padding-bottom: 10px;
 }
+.remove-button{
+    border-radius: 50%;
+    color: #5f4ecb;
+}
+.remove-button:hover{
+    background-color: #ED553B;
+    color: #fbfbfb;
+}
 .process-checkout button{
-    width: 500px;
+    width: 495px;
 }
 .coupon{
     display: flex;
 }
 .apply-btn{
-    margin-left: 10px;
+    margin-left: 15px;
     margin-top: 5px;
-    height: 50px;
+    max-height: 50px;
 }
 .update-btn{
     margin-top: 5px;
-    margin-left: 512px;
-    height: 50px;
+    margin-left: 525px;
+    max-height: 50px;
 }
 .coupon-input{
     width: 260px;
 }
 .checkout-btn{
     height: 50px;
+    max-width: 495px;
 }
 .quantity-input{
     outline: 1px solid #dddddd;
@@ -81,7 +98,7 @@ td{
     height: 30px;
 }
 .cart-total-table th,
-.cart-total-tabletd {
+.cart-total-table td {
     color: #565a61;
 }
 .cart-total-table h2{
@@ -94,3 +111,41 @@ td{
 .cart-total-table thead tr th{
     background-color: #fbfbfb;
 }
+.processing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.loader-total {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid;
+    border-color: #fbfbfb #ED553B;
+    animation: l1 1s infinite;
+  }
+  @keyframes l1 {to{transform: rotate(.5turn)}}
+
+
+.loader-product-subtotal {
+    height: 30px;
+    aspect-ratio: 2.5;
+    --_g: no-repeat radial-gradient(farthest-side,#565a61 90%,#0000);
+    background: var(--_g), var(--_g), var(--_g), var(--_g);
+    background-size: 20% 50%;
+    animation: l44 1s infinite linear alternate; 
+  }
+  @keyframes l44 {
+    0%,
+    5%    {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+    12.5% {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+    25%   {background-position: calc(0*100%/3) 0   ,calc(1*100%/3) 0   ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+    37.5% {background-position: calc(0*100%/3) 100%,calc(1*100%/3) 0   ,calc(2*100%/3) 0   ,calc(3*100%/3) 50% }
+    50%   {background-position: calc(0*100%/3) 100%,calc(1*100%/3) 100%,calc(2*100%/3) 0   ,calc(3*100%/3) 0   }
+    62.5% {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 100%,calc(2*100%/3) 100%,calc(3*100%/3) 0   }
+    75%   {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 100%,calc(3*100%/3) 100%}
+    87.5% {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 100%}
+    95%,
+    100%  {background-position: calc(0*100%/3) 50% ,calc(1*100%/3) 50% ,calc(2*100%/3) 50% ,calc(3*100%/3) 50% }
+  }

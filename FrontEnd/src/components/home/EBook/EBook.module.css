@@ -1,11 +1,11 @@
 .ebook-wrap {
     display: flex;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .ebook-text {
     background: linear-gradient(to right, rgba(252, 236, 236, 1), rgba(246, 255, 254, 1));
-    padding: 50px 30px;
+    padding: 90px 30px;
 }
 
 .ebook-text h6 {
@@ -29,5 +29,28 @@
 
 .ebook-img {
     width: 100%;
-    height: 322px;
+    height: 402px;
+}
+
+@media (max-width: 768px) {
+    .ebook-img {
+        height: auto;
+    }
+
+    .ebook-text {
+        padding: 30px;
+    }
+
+    .ebook-text h6 {
+        font-size: 14px;
+    }
+
+    .ebook-text h3 {
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .ebook-text p {
+        font-size: 16px;
+    }
 }

@@ -1,0 +1,750 @@
+.icon {
+  position: absolute;
+  top: 461px;
+  left: 20px;
+  width: 400px;
+  height: 300px;
+  object-fit: contain;
+}
+
+
+.SgnUpFB {
+  position: absolute;
+  top: 800px;
+  left: 90px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+}
+
+.SgnUpGG {
+  position: absolute;
+  top: 800px;
+  left: 465px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+}
+
+.signUpWithFB {
+  margin: 10px 0 0 0;
+}
+
+
+.signUpWithContainer {
+  position: absolute;
+  top: calc(50% - 12px);
+  left: calc(50% - 71.5px);
+}
+
+.logoContainer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: var(--br-31xl);
+  background-color: var(--color-royalblue);
+}
+
+.capa2Icon {
+  position: absolute;
+  height: 50%;
+  width: 27.18%;
+  top: 25.13%;
+  right: 35.9%;
+  bottom: 24.87%;
+  left: 36.92%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.socialMediaFacebook {
+  position: absolute;
+  top: calc(50% - 19px);
+  left: 24px;
+  width: 39px;
+  height: 39px;
+}
+
+
+.techLogosGoogle {
+  position: absolute;
+  top: calc(50% - 19px);
+  left: 22px;
+  border-radius: var(--br-49xl);
+  width: 39px;
+  height: 39px;
+}
+
+/* FirstName */
+.firstNameWrapper {
+  position: absolute;
+  top: 180px;
+  left: 100px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.firstName {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 137.5px);
+}
+
+.inputField1 {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+  font-size: 30px;
+}
+
+/*LastName*/
+.lastNameWrapper {
+  position: absolute;
+  top: 180px;
+  left: 450px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.lastName {
+  position: absolute;
+  top: 0px;
+  left: calc(50% - 137.5px);
+}
+
+.inputField2 {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 301px;
+  height: 66px;
+  font-size: 30px;
+}
+
+/*Email*/
+.emailWrapper {
+  position: absolute;
+  top: 280px;
+  left: 100px;
+  box-sizing: border-box;
+  width: 310px;
+  height: 100px;
+}
+
+.email {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+}
+
+.inputField3 {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 400px;
+  height: 66px;
+  font-size: 30px;
+}
+
+/*Password*/
+.passwordWrapper {
+  position: absolute;
+  top: 380px;
+  left: 100px;
+  box-sizing: border-box;
+  width: 400px;
+  height: 100px;
+}
+
+.password {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+}
+
+.inputField4 {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  border-radius: var(--br-5xs);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 400px;
+  height: 66px;
+  font-size: 30px;
+}
+
+.hideIcon {
+  position: absolute;
+  top: 47px;
+  left: 370px;
+  width: 24px;
+  height: 24px;
+}
+
+.alreadyHaveAn {
+  position: absolute;
+  top: 698px;
+  left: 119px;
+  color: var(--color-darkslategray-100);
+}
+
+.createAccount {
+  position: absolute;
+  top: calc(50% - 21px);
+  left: calc(50% - 107px);
+}
+
+.createAccountWrapper,
+.or {
+  position: absolute;
+  font-size: var(--font-size-9xl);
+}
+
+.createAccountWrapper {
+  top: calc(50% + 132.5px);
+  left: calc(50% - 361px);
+  border-radius: var(--br-5xs);
+  background-color: var(--color-darkslategray-100);
+  border: 1px solid var(--color-darkslategray-200);
+  box-sizing: border-box;
+  width: 618px;
+  height: 82px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.or {
+  top: 730px;
+  left: 411px;
+  color: var(--color-darkslategray-100);
+}
+
+.crossIcon {
+  position: absolute;
+  top: 10px;
+  left: -30px;
+  width: 24px;
+  height: 24px;
+}
+
+.crossIcon1 {
+  position: absolute;
+  top: 55px;
+  left: -30px;
+  width: 24px;
+  height: 24px;
+}
+
+.passwordConditions {
+  position: absolute;
+  top: 480px;
+  left: 156px;
+  line-height: 35px;
+  font-family: var(--font-frank-ruhl-libre);
+}
+
+.passwordDisplay {
+  display: flex;
+  top: 10px;
+}
+
+
+
+.homeIcon {
+  position: absolute;
+  top: 33px;
+  left: 863px;
+  width: 34px;
+  height: 30px;
+}
+
+.frameChild,
+.frameItem {
+  position: absolute;
+  top: 752px;
+  left: 116px;
+  max-height: 100%;
+  width: 271px;
+}
+
+.frameItem {
+  left: 466px;
+}
+
+.frameParent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: var(--br-mini) 0 0 var(--br-mini);
+  background-color: var(--primary);
+  border: 1px solid var(--text2);
+  box-sizing: border-box;
+  width: 960px;
+  height: 899px;
+  overflow: hidden;
+}
+
+.createAccount2 {
+  position: absolute;
+  top: 61px;
+  left: 116px;
+  font-size: var(--font-size-21xl);
+  line-height: 150px;
+  color: var(--color-sienna);
+}
+
+.vectorIcon {
+  position: absolute;
+  height: 4.61%;
+  width: 3.4%;
+  top: 3.62%;
+  right: 93.89%;
+  bottom: 91.78%;
+  left: 2.71%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.discoverYourNext {
+  position: absolute;
+  top: 248px;
+  left: 76px;
+  font-size: var(--font-size-29xl);
+  line-height: 100px;
+  font-family: var(--font-frank-ruhl-libre);
+  display: inline-block;
+  width: 408px;
+  height: 242px;
+}
+
+.signup {
+  width: 100%;
+  position: relative;
+  border-radius: var(--br-xl) 0 0 var(--br-xl);
+  background-color: var(--color-tan);
+  height: 899px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--title-16px-medium-size);
+  color: var(--color-darkslategray-200);
+  font-family: var(--heading-24px-bold);
+}
+
+/* CSS cho screens nhỏ hơn 600px */
+@media (max-width: 600px) {
+  .icon {
+    position: absolute;
+    top: 461px;
+    left: 39px;
+    width: 100PX;
+    height: 30px;
+    object-fit: contain;
+    display: none;
+  }
+
+  .SgnUpFB {
+    position: absolute;
+    top: 600px;
+    left: 50px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 301px;
+    height: 66px;
+  }
+
+  .SgnUpGG {
+    position: absolute;
+    top: 700px;
+    left: 50px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 301px;
+    height: 66px;
+  }
+
+  .signUpWithFB {
+    margin: 10px 0 0 0;
+  }
+
+
+  .signUpWithContainer {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 71.5px);
+  }
+
+  .logoContainer {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: var(--br-31xl);
+    background-color: var(--color-royalblue);
+  }
+
+  .capa2Icon {
+    position: absolute;
+    height: 50%;
+    width: 27.18%;
+    top: 25.13%;
+    right: 35.9%;
+    bottom: 24.87%;
+    left: 36.92%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+
+  .socialMediaFacebook {
+    position: absolute;
+    top: calc(50% - 19px);
+    left: 24px;
+    width: 39px;
+    height: 39px;
+  }
+
+
+  .techLogosGoogle {
+    position: absolute;
+    top: calc(50% - 19px);
+    left: 22px;
+    border-radius: var(--br-49xl);
+    width: 39px;
+    height: 39px;
+  }
+
+  /* FirstName */
+  .firstNameWrapper {
+    position: absolute;
+    top: 130px;
+    left: 50px;
+    box-sizing: border-box;
+    width: 280px;
+    height: 70px;
+  }
+
+  .firstName {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 137.5px);
+    font-size: 15PX;
+
+  }
+
+  .inputField1 {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 200PX;
+    height: 30PX;
+    font-size: 14px;
+  }
+
+  /*LastName*/
+  .lastNameWrapper {
+    position: absolute;
+    top: 190PX;
+    left: 50PX;
+    box-sizing: border-box;
+    width: 280px;
+    height: 70px;
+  }
+
+  .lastName {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 137.5px);
+  }
+
+  .inputField2 {
+    position: absolute;
+    top: 25px;
+    left: 15PX;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 150PX;
+    height: 30PX;
+    font-size: 14px;
+  }
+
+  /*Email*/
+  .emailWrapper {
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    box-sizing: border-box;
+    width: 310px;
+    height: 100px;
+  }
+
+  .email {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 155px);
+  }
+
+  .inputField3 {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 200PX;
+    height: 30PX;
+    font-size: 14px;
+  }
+
+  /*Password*/
+  .passwordWrapper {
+    position: absolute;
+    top: 310px;
+    left: 50px;
+    box-sizing: border-box;
+    width: 400px;
+    height: 100px;
+  }
+
+  .password {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 200px);
+  }
+
+  .inputField4 {
+    position: absolute;
+    top: 25px;
+    left: 15px;
+    border-radius: var(--br-5xs);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 150PX;
+    height: 30PX;
+    font-size: 14px;
+  }
+
+  .hideIcon {
+    position: absolute;
+    top: 47px;
+    left: 370px;
+    width: 24px;
+    height: 24px;
+  }
+
+  .alreadyHaveAn {
+    position: absolute;
+    top: 520px;
+    left: 40px;
+    color: var(--color-darkslategray-100);
+  }
+
+  .createAccount {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 40px);
+  }
+
+  .createAccountWrapper,
+  .or {
+    position: absolute;
+    font-size: var(--font-size-9xl);
+  }
+
+  .createAccountWrapper {
+    top: 450PX;
+    left: 100PX;
+    border-radius: var(--br-5xs);
+    background-color: var(--color-darkslategray-100);
+    border: 1px solid var(--color-darkslategray-200);
+    box-sizing: border-box;
+    width: 200PX;
+    height: 45PX;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10PX;
+  }
+
+
+  .or {
+    top: 550px;
+    left: 191px;
+    color: var(--color-darkslategray-100);
+    font-size: 20px;
+  }
+
+  .crossIcon {
+    position: absolute;
+    top: 10px;
+    left: -30px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .crossIcon1 {
+    position: absolute;
+    top: 55px;
+    left: -30px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .passwordConditions {
+    position: absolute;
+    top: 370px;
+    left: 65px;
+    line-height: 35px;
+    font-family: var(--font-frank-ruhl-libre);
+  }
+
+  .passwordDisplay {
+    display: flex;
+    top: 10px;
+    font-size: 10PX;
+  }
+
+  P {
+    margin: 0 !important;
+  }
+
+  .homeIcon {
+    position: absolute;
+    top: 33px;
+    left: 863px;
+    width: 34px;
+    height: 30px;
+  }
+
+  .frameItem {
+    position: absolute;
+    top: 565px;
+    left: 230px;
+    max-height: 100%;
+    width: 150px;
+  }
+
+  .frameChild {
+    position: absolute;
+    top: 565px;
+    left: 20px;
+    max-height: 100%;
+    width: 150px;
+  }
+
+  .frameParent {
+    position: relative;
+    top: 0;
+    right: 0;
+    border-radius: var(--br-mini) 0 0 var(--br-mini);
+    background-color: var(--primary);
+    border: 1px solid var(--text2);
+    box-sizing: border-box;
+    width: 400PX;
+    height: 900PX;
+    overflow: hidden;
+    margin: auto;
+  }
+
+  .createAccount2 {
+    position: absolute;
+    top: 15px;
+    left: 120PX;
+    font-size: 25px;
+    line-height: 150px;
+    color: var(--color-sienna);
+
+  }
+
+  .vectorIcon {
+    position: absolute;
+    height: 4.61%;
+    width: 3.4%;
+    top: 3.62%;
+    right: 93.89%;
+    bottom: 91.78%;
+    left: 2.71%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+
+  .discoverYourNext {
+    position: absolute;
+    top: 248px;
+    left: 76px;
+    font-size: var(--font-size-29xl);
+    line-height: 100px;
+    font-family: var(--font-frank-ruhl-libre);
+    display: inline-block;
+    width: 408px;
+    height: 242px;
+    display: NONE;
+  }
+
+  .signup {
+    width: 100%;
+    position: relative;
+    border-radius: var(--br-xl) 0 0 var(--br-xl);
+    background-color: var(--color-tan);
+    height: 899px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--title-16px-medium-size);
+    color: var(--color-darkslategray-200);
+    font-family: var(--heading-24px-bold);
+  }
+
+  /* CSS for larger screens */
+  /* .signup {
+    width: 100%;
+    position: relative;
+    border-radius: var(--br-xl) 0 0 var(--br-xl);
+    background-color: var(--color-tan);
+    height: 899px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--title-16px-medium-size);
+    color: var(--color-darkslategray-200);
+    font-family: var(--heading-24px-bold);
+  } */
+
+  /* Sửa lại CSS cho screens nhỏ hơn 500px */
+
+}

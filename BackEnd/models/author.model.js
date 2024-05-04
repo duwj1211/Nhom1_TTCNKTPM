@@ -8,8 +8,7 @@ const AuthorSchema = mongoose.Schema({
   avatar: { type: String, require: false },
   description: { type: String, require: false },
   country: { type: String, require: false },
-  slug: {type: String, slug: 'fullName'}, 
-  books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }]
+  slug: {type: String, slug: 'fullName'},
 }, {
   timestamps: true
 })

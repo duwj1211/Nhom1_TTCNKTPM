@@ -3,8 +3,7 @@ import ApiService from "../../../service/api.service";
 import Slider from "react-slick";
 import classNames from "classnames/bind";
 import styles from "./CarouselComponent.module.css";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -32,19 +31,48 @@ function CarouselComponent() {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
     <Slider {...settings} className={cx("slider")}>
       {books.map((book) => (
-        <div key={book._id} className={cx("book-item")}>
-          <div className={cx("item-img")}>
-            <img src={book.avatar} alt="Book item"></img>
-          </div>
-          <div className={cx("item-content")}>
-            <h4>{book.name}</h4>
-            <h5>{book.publisher}</h5>
-            <h6>{book.priceOriginal / 1000}.000 VNĐ</h6>
+        <div key={book.id} className={cx("wrap-book-item")}>
+          <div className={cx("book-item")}>
+            <Link to={`/BookDetails/${book.slug}`} className={cx("item-img")}>
+              <img src={book.avatar} alt="Book item"></img>
+            </Link>
+            <div className={cx("item-content")}>
+              <Link to={`/BookDetails/${book.slug}`}>{book.name}</Link>
+              <h5>{book.publisher}</h5>
+              <div className={cx("item-price")}>
+                <h6 className={cx("final-price")}>
+                  {(book.priceFinal / 1000).toFixed(3)} VNĐ
+                </h6>
+                <h6 className={cx("original-price")}>
+                  {(book.priceOriginal / 1000).toFixed(3)} VNĐ
+                </h6>
+              </div>
+            </div>
           </div>
         </div>
       ))}
