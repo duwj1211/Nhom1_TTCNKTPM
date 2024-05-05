@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import ApiService from "../../service/api.service";
 import TabsComponent  from './TabsComponent';
 import BookReview from './BookReview';
-import Breadcrumb from './Breadcrumb';
 import RelatedBook from './RelatedBook';
 
 const cx = classNames.bind(styles);

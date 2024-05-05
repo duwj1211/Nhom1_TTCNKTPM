@@ -1,7 +1,7 @@
 import classNames from "classnames/bind";
 import styles from "./Categories.module.css";
 import { Link } from "react-router-dom";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 const cx = classNames.bind(styles);
 
