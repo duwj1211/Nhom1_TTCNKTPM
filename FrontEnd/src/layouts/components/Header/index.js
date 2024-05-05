@@ -25,9 +25,8 @@ function Header() {
   }
   useEffect(() => {
     const token = getCookie('token');
-    console.log(token);
     if (!token) {
-      // navigate("/login");
+      setIsLogin(false);
     } else {
       setIsLogin(true);
     }

@@ -7,6 +7,7 @@
   background-color: #e0e5e9;
   font-family: Roboto, sans-serif;
   color: #333;
+  position: relative;
 }
 
 .inner {
@@ -129,6 +130,75 @@
 }
 .link-register a:hover {
   text-decoration: underline;
+}
+.err-message {
+  font-size: 14px;
+  color: #ff3333;
+}
+.success {
+  color: #0ca34b;
+}
+.success a {
+  text-decoration: underline;
+}
+.dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px 48px;
+	background: white;
+	max-width: 400px;
+	border-radius: 20px;
+	border: 0;
+	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+  width: 100%;
+  visibility: hidden;
+  z-index: 99;
+}
+.dialog.open {
+  opacity: 1;
+	animation: fadeIn 1s ease both;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  visibility: hidden;
+  z-index: 9;
+}
+.dialog.open + .overlay {
+  animation: fadeIn 1s ease both;
+  background: rgb(255 255 255 / 40%);
+  z-index: 2;
+  backdrop-filter: blur(1px);
+}
+.close {
+  filter: grayscale(1);
+  border: none;
+  background: none;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  transition: ease filter, transform 0.3s;
+  cursor: pointer;
+  transform-origin: center;
+}
+.close:hover {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+    visibility: hidden;
+	}
+	to {
+    visibility: visible;
+		opacity: 1;
+	}
 }
 @-webkit-keyframes hvr-icon-wobble-horizontal{
   16.65%{

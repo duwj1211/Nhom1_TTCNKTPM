@@ -1,7 +1,7 @@
 import styles from "./SignIn.module.css";
 import classNames from "classnames/bind";
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ApiService from '../../service/api.service';
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
@@ -47,19 +47,6 @@ const SignIn = () => {
             }
         }
     };
-    const verifyToken = async () => {
-        try {
-            const  response = await ApiService.post("auth/verify-token");
-            if (response.status === 200) {
-                navigate("/");
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
-    useEffect(() => {
-        verifyToken();
-    }, []);
     return (
         <div className={cx("wrapper")}>
             <div className={cx("inner")}>
