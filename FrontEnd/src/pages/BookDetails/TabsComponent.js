@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import styles from './TabsComponent.module.css';
 
 const cx = classNames.bind(styles);
@@ -8,8 +7,6 @@ const cx = classNames.bind(styles);
 function TabsComponent({tabs = []}) {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const [allTabs, setAllTabs] = useState(tabs);
-
-    const { id } = useParams();
   
     const activateTab = (index) => {
         setActiveTabIndex(index);

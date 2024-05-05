@@ -38,7 +38,6 @@ export default function CheckOut() {
   }
   useEffect(() => {
     fetchCartData();
-    console.log(cart);
 }, [])
   const [errors, setErrors] = useState({});
   useEffect(() => {
