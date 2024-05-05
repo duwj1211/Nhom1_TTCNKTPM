@@ -19,7 +19,7 @@ export default function Cart(){
     const [changingItemId, setChangingItemId] = useState(null);
     
     const handleButtonClick = () => {
-        window.location.href = "/CheckOut"
+        window.location.href = "/checkout"
     }
     const debounceOnChange = debounce((newValue, cartItemId) =>{
         setIsDebouncing(true);
@@ -90,7 +90,6 @@ export default function Cart(){
 
     useEffect(() => {
         fetchCartData();
-        console.log(cart);
     }, [])
 
     return(

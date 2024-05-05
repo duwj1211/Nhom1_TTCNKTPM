@@ -51,7 +51,7 @@ const SignIn = () => {
                     />
                 </div>
                 <div className={styles.passwordWrapper}>
-                    <b className={styles.password}>Password</b>
+                    <b className={styles.password}>Mật khẩu</b>
                     <input
                         type="password"
                         className={styles.inputField3}
@@ -68,12 +68,14 @@ const SignIn = () => {
                     <p className={styles.signInWith}>Password strength</p>
                     <p className={styles.signInWith}>At least 10 characters</p>
                 </div>
-                <img className={styles.homeIcon} alt="" src="/home.svg" />
+                <NavLink to='/'>
+                    <img className={styles.homeIcon} alt="" src="/home.svg" />
+                </NavLink>
                 <img className={styles.frameChild} alt="" src="/vector-2.svg" />
                 <img className={styles.frameItem} alt="" src="/vector-2.svg" />
-                <b className={styles.signinAccount2}>SignIn Account</b>
+                <b className={styles.signinAccount2}>Đăng nhập</b>
                 <div className={styles.alreadyHaveAn}>
-                    <NavLink to='/SignUp' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Sign up</span></NavLink>
+                    <NavLink to='/signup' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Đăng ký tại đây</span></NavLink>
                 </div>
             </div>
 

@@ -38,7 +38,7 @@ function BookList() {
 
   useEffect(() => {
     setSearchQuery(searchParams.get("q"));
-  }, [location.search]);
+  }, [location.search, searchParams]);
 
   useEffect(() => {
     async function fetchData() {
@@ -56,6 +56,7 @@ function BookList() {
           setBooks(response.data.books);
           setCurrentPage(response.data.currentPage);
           setTotalPage(response.data.totalPages);
+          window.scrollTo(0, 0);
         }
       } catch (err) {
         console.error(err);
@@ -78,9 +79,9 @@ function BookList() {
   return (
     <div className={cx("all-book")}>
       <div className={cx("all-book-nav")}>
-        <a className={cx("nav-home")} href="/">
+        <Link className={cx("nav-home")} to="/">
           HOME
-        </a>
+        </Link>
         <p>/</p>
         <div>BOOKS</div>
       </div>
@@ -113,7 +114,7 @@ function BookList() {
                 {books.map((book, index) => {
                   return (
                     <div key={book._id} className={cx("col-6 col-md-4")}>
-                      <Link key={book._id} to={`/DetailBook/${book.slug}`}>
+                      <Link key={book._id} to={`/detail/${book.slug}`}>
                         <Book book={book} />
                       </Link>
                     </div>

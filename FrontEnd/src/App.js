@@ -19,13 +19,15 @@ function App() {
         <Routes>
         <Route path='' element={<DefaultLayout />}>
           <Route index element={<Home />} />
-          <Route path="/SignIn" index element={<SignIn />} />
-          <Route path="/SignUp" index element={<SignUp />} />
-          <Route path="/Cart"  index element={<Cart/>}/>
-          <Route path="/CheckOut" index element={<CheckOut/>}/>
-          <Route path="/BookDetails/:slug" exact element={<BookDetails />}/>
-          <Route path="/AllBook" index element={<BookList />} />
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/checkout" element={<CheckOut/>}/>
+          <Route path="/detail/:slug" exact element={<BookDetails />}/>
+          <Route path="/books" element={<BookList />} />
+          <Route path="/category/:cate" element={<BookList />} />
         </Route>
+        
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
         </Routes>
       </div>
     </BrowserRouter>

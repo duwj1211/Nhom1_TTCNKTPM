@@ -14,7 +14,7 @@ function RelatedBook({categories = [], slug = ''}) {
         const { onClick } = props;
         return (
             <button className={cx("slick-prev")} onClick={onClick}>
-                <img src={Arrow} alt="SVG Image"/>
+                <img src={Arrow} alt="prev"/>
             </button>
         );
     };
@@ -22,7 +22,7 @@ function RelatedBook({categories = [], slug = ''}) {
         const { onClick } = props;
         return (
             <button className={cx("slick-next")} onClick={onClick}>
-                <img src={Arrow} alt="SVG Image"/>
+                <img src={Arrow} alt="next"/>
             </button>
         );
     };
@@ -58,11 +58,11 @@ function RelatedBook({categories = [], slug = ''}) {
                     { relatedBooks.map((book) => (
                         <div key={book._id} className={cx('wrap-book-item')}>
                             <div className={cx('book-item')}>
-                                <a href={`/BookDetails/${book.slug}`} className={cx('book-img')}>
+                                <Link to={`/detail/${book.slug}`} className={cx('book-img')}>
                                     <img src={book.avatar} alt='Ảnh Sách' />
-                                </a>
+                                </Link>
                                 <div className={cx('book-content')}> 
-                                    <a href={`/BookDetails/${book.slug}`} className={cx('book-name')}>{book.name}</a>
+                                    <Link to={`/detail/${book.slug}`} className={cx('book-name')}>{book.name}</Link>
                                     <div className={cx('book-price')}>{book.priceOriginal / 1000}.000 VNĐ</div>
                                 </div>
                             </div>
