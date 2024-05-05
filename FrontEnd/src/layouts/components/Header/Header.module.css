@@ -139,7 +139,7 @@
   font-weight: 600;
   transition: all .2s linear;
 }
-.nav-link:hover, .nav-link.active {
+.nav-link:hover, .nav-link.active, .nav-child:hover, .nav-child.active {
   color: #ED553B;
 }
 .nav-link span {
@@ -150,6 +150,31 @@
 }
 .nav-link:last-child  span {
   border: 0;
+}
+.nav-parent {
+  position: relative;
+}
+.nav-parent:hover .child-wrap {
+  display: block;
+}
+.child-wrap {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 8px 12px;
+  left: -100px;
+  top: calc(100% + 10px);
+  z-index: 99;
+  width: 100%;
+  min-width: 600px;
+  display: none;
+}
+.nav-child {
+  padding: 8px 0;
+  display: inline-block;
+  line-height: 16px;
+  font-weight: 500;
 }
 
 @media (max-width: 991px) {

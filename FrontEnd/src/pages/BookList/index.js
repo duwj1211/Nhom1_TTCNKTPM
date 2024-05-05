@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 import ApiService from "../../service/api.service";
 import classNames from "classnames/bind";
 import styles from "./BookList.module.css";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams, useParams } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 function BookList() {
   const location = useLocation();
   const [searchParams] = useSearchParams();
-
+  const { cate } = useParams();
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
   const [sortBy, setSortBy] = useState("sold");
   const [orderBy, setOrderBy] = useState("desc");
-  const [category, setCategory] = useState("desc");
+  const [category, setCategory] = useState(cate ? cate : "");
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q"));
 
   const listSort = [
@@ -41,6 +41,10 @@ function BookList() {
   }, [location.search, searchParams]);
 
   useEffect(() => {
+    setCategory(cate);
+  }, [cate])
+
+  useEffect(() => {
     async function fetchData() {
       try {
         const response = await ApiService.get("books", {
@@ -50,6 +54,7 @@ function BookList() {
             limit: 12,
             sortBy: sortBy,
             orderBy: orderBy,
+            category: category
           },
         });
         if (response.status === 200) {
@@ -63,7 +68,7 @@ function BookList() {
       }
     }
     fetchData();
-  }, [searchQuery, currentPage, sortBy, orderBy]);
+  }, [searchQuery, currentPage, sortBy, orderBy, category]);
 
   function handleSortChange(event) {
     const selectedSort = event.target.value;
