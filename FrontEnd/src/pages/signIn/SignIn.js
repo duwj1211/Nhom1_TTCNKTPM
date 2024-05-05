@@ -1,11 +1,18 @@
 import styles from "./SignIn.module.css";
-import { NavLink } from 'react-router-dom';
-import cx from 'classnames';
-import React, { useState } from "react";
+import classNames from "classnames/bind";
+import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import ApiService from '../../service/api.service';
+import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
+const cx = classNames.bind(styles);
 const SignIn = () => {
+    const cookies = new Cookies();
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMsg, setErrorMsg] = useState("")
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -14,77 +21,75 @@ const SignIn = () => {
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
     };
+    
 
-    const handleSubmit = () => {
-        // Xử lý yêu cầu đăng nhập tại đây
-        console.log("Email:", email);
-        console.log("Password:", password);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setErrorMsg("");
+        try {
+            const response = await ApiService.post("auth/login", {
+                email: email,
+                password: password
+            })
+            if (response.status === 200) {
+                cookies.set("token", response.data.token, {
+                    path: "/",
+                    maxAge: 7 * 24 * 60 * 60,
+                });
+                localStorage.setItem("userInfo", JSON.stringify(response.data.user))
+                localStorage.setItem("token", JSON.stringify(response.data.token))
+                navigate("/");
+            }
+        } catch (err) {
+            console.log(err);
+            if (err.response && err.response.status === 401) {
+                setErrorMsg(err.response.data.message)
+            }
+        }
     };
+    const verifyToken = async () => {
+        try {
+            const  response = await ApiService.post("auth/verify-token");
+            if (response.status === 200) {
+                navigate("/");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(() => {
+        verifyToken();
+    }, []);
     return (
-        < div className={styles.signin} >
-            <img className={styles.icon} alt="" src="/440918--1@2x.png" />
-            <div className={styles.inputFieldParent}>
-                <div className={styles.inputField}>
-                    <b className={styles.signInWithContainer}>
-                        <p className={styles.signInWith}>Sign in with Facebook</p>
-                    </b>
-                    <div className={styles.socialMediaFacebook}>
-                        <div className={styles.logoContainer} />
-                        <img className={styles.capa2Icon} alt="" src="/capa-2.svg" />
+        <div className={cx("wrapper")}>
+            <div className={cx("inner")}>
+                <img className={cx('image-holder')} src="https://colorlib.com/etc/regform/colorlib-regform-17/images/registration-form-1.jpg" alt="" />
+                <form>
+                    <h3>Đăng nhập</h3>
+                    <div className={cx("form-wrapper")}>
+                        <input type="text" placeholder="Email" className={cx("form-control")} 
+                            onChange={handleEmailChange}
+                        />
                     </div>
-                </div>
-                <div className={styles.inputField1}>
-                    <b className={styles.signInWithContainer}>Sign in with Google</b>
-                    <img
-                        className={styles.techLogosGoogle}
-                        alt=""
-                        src="/tech-logos--google.svg"
-                    />
-                </div>
-                <div className={styles.emailWrapper}>
-                    <b className={styles.email}>Email</b>
-                    <input
-                        type="email"
-                        className={styles.inputField2}
-                        value={email}
-                        onChange={handleEmailChange}
-                    />
-                </div>
-                <div className={styles.passwordWrapper}>
-                    <b className={styles.password}>Mật khẩu</b>
-                    <input
-                        type="password"
-                        className={styles.inputField3}
-                        value={password}
-                        onChange={handlePasswordChange}
-                    />
-                    <img className={styles.hideIcon} alt="" src="/hide.svg" />
-                </div>
-                <button onClick={handleSubmit} className={styles.signinAccountWrapper}>Sign In</button>
-                <div className={styles.or}>or</div>
-                <img className={styles.crossIcon} alt="" src="/cross.svg" />
-                <img className={styles.crossIcon1} alt="" src="/cross.svg" />
-                <div className={styles.passwordStrengthAtContainer}>
-                    <p className={styles.signInWith}>Password strength</p>
-                    <p className={styles.signInWith}>At least 10 characters</p>
-                </div>
-                <NavLink to='/'>
-                    <img className={styles.homeIcon} alt="" src="/home.svg" />
-                </NavLink>
-                <img className={styles.frameChild} alt="" src="/vector-2.svg" />
-                <img className={styles.frameItem} alt="" src="/vector-2.svg" />
-                <b className={styles.signinAccount2}>Đăng nhập</b>
-                <div className={styles.alreadyHaveAn}>
-                    <NavLink to='/signup' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Đăng ký tại đây</span></NavLink>
-                </div>
+                    <div className={cx("form-wrapper")}>
+                        <input type="password" placeholder="Mật khẩu" className={cx("form-control")} 
+                            onChange={handlePasswordChange}
+                        />
+                    </div>
+                    <div className={cx('err-message')}>
+                        { !!errorMsg && errorMsg}
+                    </div>
+                    <button onClick={handleSubmit}>
+                        Đăng nhập
+                        <i className="far fa-arrow-right"></i>
+                    </button>
+                    <div className={cx("link-register")}>
+                        Bạn chưa có tài khoản? 
+                        <Link to="/signup"> Đăng ký ngay</Link>
+                    </div>
+                </form>
             </div>
-
-            <img className={styles.vectorIcon} alt="" src="/vector.svg" />
-            {/* <div className={styles.discoverYourNext}>
-                Discover your next must read author.
-            </div> */}
-        </div >
-        // </React.Fragment>
+        </div>
     );
 };
 

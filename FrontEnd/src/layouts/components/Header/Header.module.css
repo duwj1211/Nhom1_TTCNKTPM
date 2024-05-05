@@ -73,6 +73,37 @@
 .header-action a:hover {
   color: #ED553B;
 }
+.header-action .account {
+  position: relative;
+}
+.header-action .child-action {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 8px 12px;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 99;
+  min-width: 150px;
+  display: none;
+}
+.child-action > div:hover {
+  color: #ED553B;
+  cursor: pointer;
+}
+.header-action .child-action::before {
+  content: "";
+  width: 100%;
+  height: 12px;
+  background-color: transparent;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+}
+.account:hover .child-action {
+  display: block;
+}
 .device {
   height: 16px;
   width: 2px;
@@ -125,42 +156,4 @@
   .search-wrap {
       /* width: 290px; */
   }
-}
-.user-header .icon{
-  margin-top: 9px;
-  margin-left: -5px;
-  font-size: 20px;
-  width: 24px;
-  color: #212524;
-  position: relative;
-}
-.user-header .account-header{
-  display: flex;
-  flex-direction: column;
-  width: 150px;
-  position: absolute;
-  top: 28px;
-  right: 0;
-  background: #fff;
-  z-index: 99;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0px 8px 16px rgba(159,184,192,0.25);;
-}
-.user-header{
-  display: flex;
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 20px;
-  bottom: 47px;
-  cursor: pointer;
-}
-.user-header .account-header a{
-  display: block;
-  margin-bottom: 5px;
-  color: #333333;
-  cursor: pointer;
-  text-decoration: none;
-  background-color: transparent;
 }

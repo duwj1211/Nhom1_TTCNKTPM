@@ -48,9 +48,9 @@
     transition: all .2s linear;
 }
 
-input[type=email]:focus,
-input[type=text]:focus,
-textarea:focus {
+.wrap-review-form input[type=email]:focus,
+.wrap-review-form input[type=text]:focus,
+.wrap-review-form textarea:focus {
     color: #111;
     border-style: dotted;
     border-color: #ddd;

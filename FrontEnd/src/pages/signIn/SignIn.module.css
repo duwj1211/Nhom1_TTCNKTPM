@@ -1,581 +1,211 @@
-.icon {
-  position: absolute;
-  top: 461px;
-  left: 20px;
-  width: 400px;
-  height: 300px;
-  object-fit: contain;
+.wrapper {
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  background-color: #e0e5e9;
+  font-family: Roboto, sans-serif;
+  color: #333;
 }
 
-.signInWith {
-  margin: 0;
+.inner {
+  padding: 20px;
+  background: #fff;
+  max-width: 850px;
+  margin: auto;
+  display: flex;
 }
 
-.signInWithContainer {
-  position: absolute;
-  top: calc(50% - 12px);
-  left: 79px;
+.image-holder {
+  width: 50%;
 }
-
-.logoContainer {
-  position: absolute;
-  height: 100%;
+.image-holder img {
   width: 100%;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  border-radius: var(--br-31xl);
-  background-color: var(--color-royalblue);
 }
 
-.capa2Icon {
-  position: absolute;
-  height: 50%;
-  width: 27.18%;
-  top: 25.13%;
-  right: 35.9%;
-  bottom: 24.87%;
-  left: 36.92%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
+.inner form {
+  width: 50%;
+  padding-top: 36px;
+  padding-left: 45px;
+  padding-right: 45px;
 }
 
-.socialMediaFacebook {
-  position: absolute;
-  top: calc(50% - 20px);
-  left: 24px;
-  width: 39px;
-  height: 39px;
+.inner h3 {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
-.inputField {
-  position: absolute;
-  top: calc(50% + 325px);
-  left: calc(50% - 353px);
-  border-radius: var(--br-5xs);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 301px;
-  height: 66px;
-}
-
-.techLogosGoogle {
-  position: absolute;
-  top: calc(50% - 20px);
-  left: 22px;
-  border-radius: var(--br-49xl);
-  width: 39px;
-  height: 39px;
-}
-
-.inputField1 {
-  position: absolute;
-  top: 774px;
-  left: 448px;
-  border-radius: var(--br-5xs);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 288px;
-  height: 66px;
-}
-
-/*Email*/
-.emailWrapper {
-  position: absolute;
-  top: 170px;
-  left: 100px;
-  box-sizing: border-box;
-  width: 310px;
-  height: 100px;
-}
-
-.email {
-  position: absolute;
-  top: 0px;
-  left: 10px;
-}
-
-.inputField2 {
-  position: absolute;
-  top: 30px;
-  left: 10px;
-  border-radius: var(--br-5xs);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 500px;
-  height: 60px;
-  font-size: 30px;
-}
-
-.alreadyHaveAn {
-  position: absolute;
-  top: 660px;
-  left: 123px;
-  color: var(--color-darkslategray-100);
-}
-
-/*Password*/
-.passwordWrapper {
-  position: absolute;
-  top: 280px;
-  left: 100px;
-  box-sizing: border-box;
-  width: 400px;
-  height: 100px;
-}
-
-.password {
-  position: absolute;
-  top: 0px;
-  left: 10px;
-}
-
-.inputField3 {
-  position: absolute;
-  top: 30px;
-  left: 10px;
-  border-radius: var(--br-5xs);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 500px;
-  height: 60px;
-  font-size: 30px;
-}
-
-.hideIcon {
-  position: absolute;
-  top: 47px;
-  left: 470px;
-  width: 24px;
-  height: 24px;
-}
-
-.signinAccount {
-  position: absolute;
-  top: calc(50% - 21px);
-  left: calc(50% - 108px);
-}
-
-.or,
-.signinAccountWrapper {
-  position: absolute;
-  font-size: var(--font-size-9xl);
-}
-
-.signinAccountWrapper {
-  top: 550px;
-  left: 120px;
-  border-radius: var(--br-5xs);
-  background-color: var(--color-darkslategray-100);
-  border: 1px solid var(--color-darkslategray-200);
-  box-sizing: border-box;
-  width: 618px;
-  height: 82px;
-  color: var(--primary);
-}
-
-.or {
-  top: 697px;
-  left: 415px;
-  color: var(--color-darkslategray-100);
-}
-
-.crossIcon,
-.crossIcon1 {
-  position: absolute;
-  top: 448px;
-  left: 120px;
-  width: 24px;
-  height: 24px;
-}
-
-.crossIcon1 {
-  top: 398px;
-}
-
-.passwordStrengthAtContainer {
-  position: absolute;
-  top: 384px;
-  left: 160px;
-  line-height: 50px;
-  font-family: var(--font-frank-ruhl-libre);
-}
-
-.homeIcon {
-  position: absolute;
-  top: 33px;
-  left: 863px;
-  width: 34px;
-  height: 30px;
-}
-
-.frameChild,
-.frameItem {
-  position: absolute;
-  top: 720px;
-  left: 465px;
-  max-height: 100%;
-  width: 271px;
-}
-
-.frameItem {
-  left: 127px;
-}
-
-.inputFieldParent {
-  position: absolute;
-  top: 1px;
-  right: 0;
-  border-radius: var(--br-mini) 0 0 var(--br-mini);
-  background-color: var(--primary);
-  border: 1px solid var(--text2);
-  box-sizing: border-box;
-  width: 960px;
-  height: 898px;
-  overflow: hidden;
-}
-
-.signinAccount2 {
-  position: absolute;
-  top: 61px;
-  left: 116px;
-  font-size: var(--font-size-21xl);
-  line-height: 150px;
-  color: var(--color-sienna);
-}
-
-.vectorIcon {
-  position: absolute;
-  height: 4.61%;
-  width: 3.4%;
-  top: 3.62%;
-  right: 93.89%;
-  bottom: 91.78%;
-  left: 2.71%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-
-.discoverYourNext {
-  position: absolute;
-  top: 248px;
-  left: 76px;
-  font-size: var(--font-size-29xl);
-  line-height: 100px;
-  font-family: var(--font-frank-ruhl-libre);
-  display: inline-block;
-  width: 408px;
-  height: 242px;
-}
-
-.signin {
-  width: 100%;
+.form-wrapper {
   position: relative;
-  border-radius: var(--br-xl) 0 0 var(--br-xl);
-  background-color: var(--color-tan);
-  height: 899px;
-  overflow: hidden;
-  text-align: left;
-  font-size: var(--title-16px-medium-size);
-  color: var(--color-darkslategray-200);
-  font-family: var(--heading-24px-bold);
 }
 
-@media (max-width: 600px) {
-  .icon {
-    position: absolute;
-    top: 461px;
-    left: 39px;
-    width: 445.5px;
-    height: 333.9px;
-    object-fit: contain;
-    display: none;
+.form-control {
+  border: 1px solid #333;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  display: block;
+  width: 100%;
+  height: 30px;
+  padding: 0;
+  margin-bottom: 25px;
+  outline: none;
+}
+
+.inner button {
+  border: none;
+  width: 164px;
+  height: 51px;
+  margin: auto;
+  margin-top: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #333;
+  font-size: 15px;
+  color: #fff;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+}
+.form-group{
+  display:flex
+}
+.form-group input{
+  width:50%
+}
+.form-group input:first-child{
+  margin-right:25px
+}
+.form-wrapper{
+  position:relative
+}
+.form-wrapper i{
+  position:absolute;
+  bottom:9px;
+  right:0
+}
+.form-control::-webkit-input-placeholder{
+  font-size:16px;
+  color:#333;
+}
+.form-control::-moz-placeholder{
+  font-size:16px;
+  color:#333;
+}
+.form-control:-ms-input-placeholder{
+  font-size:16px;
+  color:#333;
+}
+.form-control:-moz-placeholder{
+  font-size:16px;
+  color:#333;
+}
+.inner button i {
+  margin-left:10px;
+  -webkit-transform:translateZ(0);
+  transform:translateZ(0)
+}
+.inner button:hover i,button:focus i,button:active i{
+  -webkit-animation-name:hvr-icon-wobble-horizontal;
+  animation-name:hvr-icon-wobble-horizontal;
+  -webkit-animation-duration:1s;
+  animation-duration:1s;
+  -webkit-animation-timing-function:ease-in-out;
+  animation-timing-function:ease-in-out;
+  -webkit-animation-iteration-count:1;
+  animation-iteration-count:1
+}
+.link-register {
+  margin-top: 30px;
+}
+.link-register a:hover {
+  text-decoration: underline;
+}
+.err-message {
+  font-size: 14px;
+  color: #ff3333;
+}
+@-webkit-keyframes hvr-icon-wobble-horizontal{
+  16.65%{
+      -webkit-transform:translateX(6px);
+      transform:translateX(6px)
   }
-
-  .signInWith {
-    margin: 0;
+  33.3%{
+      -webkit-transform:translateX(-5px);
+      transform:translateX(-5px)
   }
-
-  .signInWithContainer {
-    position: absolute;
-    top: calc(50% - 12px);
-    left: 79px;
+  49.95%{
+      -webkit-transform:translateX(4px);
+      transform:translateX(4px)
   }
-
-  .logoContainer {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: var(--br-31xl);
-    background-color: var(--color-royalblue);
+  66.6%{
+      -webkit-transform:translateX(-2px);
+      transform:translateX(-2px)
   }
-
-  .capa2Icon {
-    position: absolute;
-    height: 50%;
-    width: 27.18%;
-    top: 25.13%;
-    right: 35.9%;
-    bottom: 24.87%;
-    left: 36.92%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
+  83.25%{
+      -webkit-transform:translateX(1px);
+      transform:translateX(1px)
   }
-
-  .socialMediaFacebook {
-    position: absolute;
-    top: calc(50% - 20px);
-    left: 24px;
-    width: 40px;
-    height: 40px;
+  100%{
+      -webkit-transform:translateX(0);
+      transform:translateX(0)
   }
-
-  .inputField {
-    position: absolute;
-    top: calc(50% + 300px);
-    left: calc(50% - 176px);
-    border-radius: var(--br-5xs);
-    border: 1px solid var(--color-darkslategray-200);
-    box-sizing: border-box;
-    width: 270PX;
-    height: 50PX;
+}
+@keyframes hvr-icon-wobble-horizontal{
+  16.65%{
+      -webkit-transform:translateX(6px);
+      transform:translateX(6px)
   }
-
-  .techLogosGoogle {
-    position: absolute;
-    top: calc(50% - 20px);
-    left: 22px;
-    border-radius: var(--br-49xl);
-    width: 40px;
-    height: 40px;
+  33.3%{
+      -webkit-transform:translateX(-5px);
+      transform:translateX(-5px)
   }
-
-  .inputField1 {
-    position: absolute;
-    top: 810px;
-    left: 73px;
-    border-radius: var(--br-5xs);
-    border: 1px solid var(--color-darkslategray-200);
-    box-sizing: border-box;
-    width: 270px;
-    height: 50px;
+  49.95%{
+      -webkit-transform:translateX(4px);
+      transform:translateX(4px)
   }
-
-  /*Email*/
-  .emailWrapper {
-    position: absolute;
-    top: 170px;
-    left: 30px;
-    box-sizing: border-box;
-    width: 310px;
-    height: 100px;
+  66.6%{
+      -webkit-transform:translateX(-2px);
+      transform:translateX(-2px)
   }
-
-  .email {
-    position: absolute;
-    top: 0px;
-    left: 10px;
+  83.25%{
+      -webkit-transform:translateX(1px);
+      transform:translateX(1px)
   }
-
-  .inputField2 {
-    position: absolute;
-    top: 30px;
-    left: 10px;
-    border-radius: var(--br-5xs);
-    border: 1px solid var(--color-darkslategray-200);
-    box-sizing: border-box;
-    width: 250PX;
-    height: 40PX;
-    font-size: 20px;
-
+  100%{
+      -webkit-transform:translateX(0);
+      transform:translateX(0)
   }
-
-  .alreadyHaveAn {
-    position: absolute;
-    top: 660px;
-    left: 30px;
-    color: var(--color-darkslategray-100);
+}
+@media(max-width:991px){
+  .inner form{
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:30px
   }
-
-  /*Password*/
-  .passwordWrapper {
-    position: absolute;
-    top: 260px;
-    left: 30px;
-    box-sizing: border-box;
-    width: 400px;
-    height: 100px;
+}
+@media(max-width:767px){
+  .inner{
+      display:block
   }
-
-  .password {
-    position: absolute;
-    top: 0px;
-    left: 10px;
+  .inner .image-holder{
+      width:100%
   }
-
-  .inputField3 {
-    position: absolute;
-    top: 30px;
-    left: 10px;
-    border-radius: var(--br-5xs);
-    border: 1px solid var(--color-darkslategray-200);
-    box-sizing: border-box;
-    width: 200PX;
-    height: 40PX;
-    font-size: 30px;
+  .inner form{
+      width:100%;
+      padding:40px 0 30px
   }
-
-  .hideIcon {
-    position: absolute;
-    top: 47px;
-    left: 470px;
-    width: 24px;
-    height: 24px;
-  }
-
-  .signinAccount {
-    position: absolute;
-    top: calc(50% - 21px);
-    left: calc(50% - 108px);
-  }
-
-  .or,
-  .signinAccountWrapper {
-    position: absolute;
-    font-size: 10PX;
-  }
-
-  .signinAccountWrapper {
-    top: 550px;
-    left: 120px;
-    border-radius: var(--br-5xs);
-    background-color: var(--color-darkslategray-100);
-    border: 1px solid var(--color-darkslategray-200);
-    box-sizing: border-box;
-    width: 210PX;
-    height: 70PX;
-    color: var(--primary);
-    font-size: 24px;
-  }
-
-  .or {
-    top: 700px;
-    left: 170px;
-    color: var(--color-darkslategray-100);
-    font-size: 24px;
-  }
-
-  .crossIcon,
-  .crossIcon1 {
-    position: absolute;
-    top: 448px;
-    left: 40px;
-    width: 24px;
-    height: 24px;
-  }
-
-  .crossIcon1 {
-    top: 398px;
-  }
-
-  .passwordStrengthAtContainer {
-    position: absolute;
-    top: 384px;
-    left: 70px;
-    line-height: 50px;
-    font-family: var(--font-frank-ruhl-libre);
-  }
-
-  .homeIcon {
-    position: absolute;
-    top: 33px;
-    left: 863px;
-    width: 34px;
-    height: 30px;
-  }
-
-  .frameItem {
-    position: absolute;
-    top: 720px;
-    left: 10px;
-    max-height: 100%;
-    width: 150px;
-  }
-
-  .frameChild {
-    position: absolute;
-    top: 720px;
-    left: 200px;
-    max-height: 100%;
-    width: 150px;
-  }
-
-  .inputFieldParent {
-    position: absolute;
-    top: 1px;
-    right: 0;
-    border-radius: var(--br-mini) 0 0 var(--br-mini);
-    background-color: var(--primary);
-    border: 1px solid var(--text2);
-    box-sizing: border-box;
-    width: 500PX;
-    height: 898px;
-    overflow: hidden;
-  }
-
-  .signinAccount2 {
-    position: absolute;
-    top: 50px;
-    left: 100px;
-    font-size: 30PX;
-    line-height: 150px;
-    color: var(--color-sienna);
-  }
-
-  .vectorIcon {
-    position: absolute;
-    height: 4.61%;
-    width: 3.4%;
-    top: 3.62%;
-    right: 93.89%;
-    bottom: 91.78%;
-    left: 2.71%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-
-  .discoverYourNext {
-    position: absolute;
-    top: 248px;
-    left: 76px;
-    font-size: var(--font-size-29xl);
-    line-height: 100px;
-    font-family: var(--font-frank-ruhl-libre);
-    display: inline-block;
-    width: 408px;
-    height: 242px;
-    display: NONE;
-  }
-
-  .signin {
-    width: 500PX;
-    position: relative;
-    border-radius: var(--br-xl) 0 0 var(--br-xl);
-    background-color: var(--color-tan);
-    height: 899px;
-    overflow: hidden;
-    text-align: left;
-    font-size: var(--title-16px-medium-size);
-    color: var(--color-darkslategray-200);
-    font-family: var(--heading-24px-bold);
+  button{
+      margin-top:60px
   }
 }
