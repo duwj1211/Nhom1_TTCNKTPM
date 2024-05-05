@@ -34,9 +34,9 @@
     height: 90px;
 }
 
-input[type=email], 
-input[type=text], 
-textarea {
+.review-form input[type=email], 
+.review-form input[type=text], 
+.review-form textarea {
     color: #666;
     padding: .75em;
     /* height: auto; */

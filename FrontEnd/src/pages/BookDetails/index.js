@@ -24,6 +24,7 @@ function BookDetails() {
               if (response.status === 200) {
                 const item = response.data;
                 setBook(item);
+                window.scrollTo(0, 0);
               }
             } catch (error) {
               console.error("Error find book:", error);

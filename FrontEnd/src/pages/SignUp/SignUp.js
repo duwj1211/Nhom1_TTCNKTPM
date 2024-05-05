@@ -13,7 +13,7 @@ const SignUp = () => {
             <img className={styles.icon} alt="" src="/440918--1@2x.png" />
             <div className={styles.frameParent}>
                 <div className={styles.firstNameWrapper}>
-                    <b className={styles.firstName}>First Name</b>
+                    <b className={styles.firstName}>Họ</b>
                     <input
                         type="text"
                         className={styles.inputField1}
@@ -22,7 +22,7 @@ const SignUp = () => {
                     />
                 </div>
                 <div className={styles.lastNameWrapper}>
-                    <b className={styles.lastName}>Last Name</b>
+                    <b className={styles.lastName}>Tên</b>
                     <input
                         type="text"
                         className={styles.inputField2}
@@ -40,7 +40,7 @@ const SignUp = () => {
                     />
                 </div>
                 <div className={styles.passwordWrapper}>
-                    <b className={styles.password}>Password</b>
+                    <b className={styles.password}>Mật khẩu</b>
                     <input
                         type="password"
                         className={styles.inputField4}
@@ -51,10 +51,10 @@ const SignUp = () => {
                 </div>
                 <div className={styles.createAccountWrapper}>
                     <b className={styles.createAccount}>
-                        Create Account
+                        Đăng ký ngay
                     </b>
                 </div>
-                <div className={styles.or}>or</div>
+                {/* <div className={styles.or}>or</div> */}
                 <div className={styles.passwordConditions}>
                     <div className={styles.passwordDisplay}>
                         <img className={styles.crossIcon} alt="" src="/cross.svg" />
@@ -65,11 +65,13 @@ const SignUp = () => {
                         <p>At least 10 characters</p>
                     </div>
                 </div>
-                <img className={styles.homeIcon} alt="" src="/home.svg" />
-                <img className={styles.frameChild} alt="" src="/vector-2.svg" />
-                <img className={styles.frameItem} alt="" src="/vector-2.svg" />
-                <b className={styles.createAccount2}>Create Account</b>
-                <div className={styles.SgnUpFB}>
+                <NavLink to='/'>
+                    <img className={styles.homeIcon} alt="" src="/home.svg" />
+                </NavLink>
+                {/* <img className={styles.frameChild} alt="" src="/vector-2.svg" />
+                <img className={styles.frameItem} alt="" src="/vector-2.svg" /> */}
+                <b className={styles.createAccount2}>Đăng ký</b>
+                {/* <div className={styles.SgnUpFB}>
                     <b className={styles.signUpWithContainer}>
                         <p className={styles.signUpWith}>Sign up with Facebook</p>
                     </b>
@@ -83,9 +85,9 @@ const SignUp = () => {
                         <p className={styles.signUpWith}>Sign up with Google</p>
                     </b>
                     <img className={styles.techLogosGoogle} alt="" src="/tech-logos--google.svg" />
-                </div>
+                </div> */}
                 <div className={styles.alreadyHaveAn}>
-                    <NavLink to='/SignIn' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Already have an account? Login</span></NavLink>
+                    <NavLink to='/login' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Bạn đã có tài khoản? Đăng nhập</span></NavLink>
                 </div>
             </div>
             <img className={styles.vectorIcon} alt="" src="/vector.svg" />

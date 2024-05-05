@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.css';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ function Header() {
   const navigate = useNavigate();
   function hadleSearch(e) {
     e.preventDefault();
-    navigate(`/allbook?q=${inputValue}`);
+    navigate(`/books?q=${inputValue}`);
   }
 
   return (
@@ -20,7 +20,7 @@ function Header() {
         <div className='container d-flex align-items-center justify-content-between'>
           <div className='d-flex align-items-center'>
             <i className="fas fa-phone-alt"></i>
-            <span className='ms-2'>+84 989382479</span>
+            <span className='ms-2'>+84 98998888</span>
           </div>
           <div className='d-flex align-items-centen gap-4'>
             <span className={cx('social-icon')}><i className="fab fa-facebook-f"></i></span>
@@ -31,9 +31,9 @@ function Header() {
       </div>
       <div className='container'>
         <div className={cx('main-header')}>
-          <div className={cx('logo')}>
-            OneBook
-          </div>
+          <Link to='/' className={cx('logo')}>
+            <span className={cx('highlight')}>One</span>book
+          </Link>
           <form onSubmit={hadleSearch} className={cx('search-wrap')}>
             <input type='text' value={inputValue} 
             onChange={e => setInputValue(e.target.value)} 
@@ -46,10 +46,10 @@ function Header() {
           <div className={cx('header-action')}>
             <NavLink to='#'>
               <span className={cx('icon')}><i className="far fa-user"></i></span>
-              <NavLink to='/SignIn' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tài khoản</span></NavLink>
+              <NavLink to='/login' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Đăng nhập</span></NavLink>
             </NavLink>
             <div className={cx('device')}></div>
-            <NavLink to='#'>
+            <NavLink to='/cart'>
               <span className={cx('icon')}><i className="far fa-shopping-bag"></i></span>
               <span className='d-none d-md-inline'>Giỏ hàng</span>
             </NavLink>
@@ -57,10 +57,10 @@ function Header() {
         </div>
         <div className={cx('nav-header')}>
           <NavLink to='/' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Trang chủ</span></NavLink>
-          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Sách</span></NavLink>
-          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink>
-          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tác giả</span></NavLink>
-          <NavLink to='/Cart' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink>
+          <NavLink to='/books' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Sách</span></NavLink>
+          <NavLink to='/new-release' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink>
+          <NavLink to='/authors' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tác giả</span></NavLink>
+          <NavLink to='/contact' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink>
         </div>
       </div>
     </header>
