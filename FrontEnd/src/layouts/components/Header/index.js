@@ -8,7 +8,7 @@ import ApiService from '../../../service/api.service'
 const cx = classNames.bind(styles)
 function Header() {
   const [searchParams] = useSearchParams();
-  const [inputValue, setInputValue] = useState(searchParams.get('q'));
+  const [inputValue, setInputValue] = useState(searchParams.get('q') || "" );
   const [isLogin, setIsLogin] = useState(false);
   const [categories, setCategories] = useState([]);
   const navigate = useNavigate();

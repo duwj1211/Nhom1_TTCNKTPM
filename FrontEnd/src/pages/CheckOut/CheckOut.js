@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import ApiService from '../../service/api.service';
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 
@@ -43,7 +44,7 @@ export default function CheckOut() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await ApiService.get(
+        const response = await axios.get(
           "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json"
         );
         setCities(response.data);
