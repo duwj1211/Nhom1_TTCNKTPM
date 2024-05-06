@@ -3,20 +3,20 @@ import { Link } from "react-router-dom";
 import ApiService from "../../service/api.service";
 import classNames from "classnames/bind";
 import styles from "./BookList.module.css";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams, useParams } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
 function BookList() {
   const location = useLocation();
   const [searchParams] = useSearchParams();
-
+  const { cate } = useParams();
   const [books, setBooks] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
   const [sortBy, setSortBy] = useState("sold");
   const [orderBy, setOrderBy] = useState("desc");
-  const [category, setCategory] = useState("desc");
+  const [category, setCategory] = useState(cate ? cate : "");
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q"));
 
   const listSort = [
@@ -38,7 +38,11 @@ function BookList() {
 
   useEffect(() => {
     setSearchQuery(searchParams.get("q"));
-  }, [location.search]);
+  }, [location.search, searchParams]);
+
+  useEffect(() => {
+    setCategory(cate);
+  }, [cate])
 
   useEffect(() => {
     async function fetchData() {
@@ -50,19 +54,21 @@ function BookList() {
             limit: 12,
             sortBy: sortBy,
             orderBy: orderBy,
+            category: category
           },
         });
         if (response.status === 200) {
           setBooks(response.data.books);
           setCurrentPage(response.data.currentPage);
           setTotalPage(response.data.totalPages);
+          window.scrollTo(0, 0);
         }
       } catch (err) {
         console.error(err);
       }
     }
     fetchData();
-  }, [searchQuery, currentPage, sortBy, orderBy]);
+  }, [searchQuery, currentPage, sortBy, orderBy, category]);
 
   function handleSortChange(event) {
     const selectedSort = event.target.value;
@@ -78,9 +84,9 @@ function BookList() {
   return (
     <div className={cx("all-book")}>
       <div className={cx("all-book-nav")}>
-        <a className={cx("nav-home")} href="/">
+        <Link className={cx("nav-home")} to="/">
           HOME
-        </a>
+        </Link>
         <p>/</p>
         <div>BOOKS</div>
       </div>
@@ -113,7 +119,7 @@ function BookList() {
                 {books.map((book, index) => {
                   return (
                     <div key={book._id} className={cx("col-6 col-md-4")}>
-                      <Link key={book._id} to={`/DetailBook/${book.slug}`}>
+                      <Link key={book._id} to={`/detail/${book.slug}`}>
                         <Book book={book} />
                       </Link>
                     </div>

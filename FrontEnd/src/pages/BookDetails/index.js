@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import ApiService from "../../service/api.service";
 import TabsComponent  from './TabsComponent';
 import BookReview from './BookReview';
-import Breadcrumb from './Breadcrumb';
 import RelatedBook from './RelatedBook';
 
 const cx = classNames.bind(styles);
@@ -24,6 +23,7 @@ function BookDetails() {
               if (response.status === 200) {
                 const item = response.data;
                 setBook(item);
+                window.scrollTo(0, 0);
               }
             } catch (error) {
               console.error("Error find book:", error);

@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 
@@ -12,9 +13,12 @@ const bookRoute = require("./routes/book.route");
 const categoryRoute = require("./routes/category.route");
 const cartRoute = require("./routes/cart.route");
 const orderRoute = require("./routes/order.route");
+const order_paymentRoute = require("./routes/order-route.route");
+
 
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -40,6 +44,7 @@ app.use("/api/books", bookRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
+app.use("/api/order-payment",order_paymentRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello from Node API Server Updated");

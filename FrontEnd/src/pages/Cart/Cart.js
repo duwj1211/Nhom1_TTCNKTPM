@@ -19,7 +19,7 @@ export default function Cart(){
     const [changingItemId, setChangingItemId] = useState(null);
     
     const handleButtonClick = () => {
-        window.location.href = "/CheckOut"
+        window.location.href = "/checkout"
     }
     const debounceOnChange = debounce((newValue, cartItemId) =>{
         setIsDebouncing(true);
@@ -90,7 +90,6 @@ export default function Cart(){
 
     useEffect(() => {
         fetchCartData();
-        console.log(cart);
     }, [])
 
     return(
@@ -136,10 +135,10 @@ export default function Cart(){
                                         </button>
                                     </td>
                                     <td className={cx("product-thumbnail")}>
-                                        <Link to={`/${item.book.slug}`}><img alt={item.book.name} src={item.book.avatar} sizes='60'></img></Link>						
+                                        <Link to={`/detail/${item.book.slug}`}><img alt={item.book.name} src={item.book.avatar} sizes='60'></img></Link>						
                                     </td>
                                     <td className={cx("product-name")}data-title="Product">
-                                        <Link to={`/${item.book.slug}`}>{item.book.name}</Link>						
+                                        <Link to={`/detail/${item.book.slug}`}>{item.book.name}</Link>						
                                     </td>
                                     <td className={cx("product-price")} data-title="Price">
                                         <span>{(item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND</span>						

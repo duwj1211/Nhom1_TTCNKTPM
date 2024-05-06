@@ -28,7 +28,7 @@ function TopBanner() {
   const slides = [
     {
       title: "Sách bán chạy nhất",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.",
+      content: "Khám phá những tựa sách bán chạy nhất trên thị trường! Từ tiểu thuyết hấp dẫn đến sách tự học, chúng tôi tự hào giới thiệu bộ sưu tập đa dạng để đáp ứng mọi sở thích và nhu cầu đọc sách của bạn.",
       image: require('../../../assets/images/top-banner.png')
     },
     {
@@ -38,7 +38,7 @@ function TopBanner() {
     },
     {
       title: "Sách mới phát hành",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo",
+      content: "Khám phá sự mới mẻ với những cuốn sách mới phát hành! Tận hưởng hành trình phiêu lưu qua các trang sách mới nhất từ các tác giả tài năng và đa dạng thể loại",
       image: require('../../../assets/images/top-banner-3.png')
     },
     {

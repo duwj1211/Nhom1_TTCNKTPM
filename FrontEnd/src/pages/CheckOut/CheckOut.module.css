@@ -11,7 +11,7 @@ h1, h3 {
     /* font-family: 'Times New Roman', Times, serif; */
 }
 
-h3 {
+.main-content h3 {
     font-size: 20px;
     font-weight: 700;
 }
@@ -20,8 +20,8 @@ h3 {
     color: red;
 }
 
-input {
-    width: 100px;
+.main-content input {
+    width: 100%;
 }
 
 .billing-order {
@@ -152,6 +152,7 @@ select {
 
 .local-bank img {
     width: 55px;
+    height: 40px;
 }
 
 .check {

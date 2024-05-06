@@ -34,9 +34,9 @@
     height: 90px;
 }
 
-input[type=email], 
-input[type=text], 
-textarea {
+.review-form input[type=email], 
+.review-form input[type=text], 
+.review-form textarea {
     color: #666;
     padding: .75em;
     /* height: auto; */
@@ -48,9 +48,9 @@ textarea {
     transition: all .2s linear;
 }
 
-input[type=email]:focus,
-input[type=text]:focus,
-textarea:focus {
+.wrap-review-form input[type=email]:focus,
+.wrap-review-form input[type=text]:focus,
+.wrap-review-form textarea:focus {
     color: #111;
     border-style: dotted;
     border-color: #ddd;

@@ -1,13 +1,15 @@
 import classNames from "classnames/bind";
 import styles from "./CheckOut.module.css";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
+import ApiService from '../../service/api.service';
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 
 export default function CheckOut() {
+  const [cart, setCart] = useState();
   const [cities, setCities] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [wards, setWards] = useState([]);
@@ -23,6 +25,21 @@ export default function CheckOut() {
     district: "",
     ward: "",
   });
+  const fetchCartData = async () => {
+    try {
+        const response = await ApiService.get('carts/user/66084000eed56d34dfebdac1');
+        if (response.status === 200) {
+            setCart(response.data.cart);
+        } else {
+            console.log('Error get cart');
+        }
+    } catch (error) {
+        console.error('Error fetching cart:', error);
+    }
+  }
+  useEffect(() => {
+    fetchCartData();
+}, [])
   const [errors, setErrors] = useState({});
   useEffect(() => {
     const fetchData = async () => {
@@ -99,13 +116,26 @@ export default function CheckOut() {
     }
     return errors;
   };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const validationErrors = validateForm(formState);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      //call api submit form
+      try{
+          const YOUR_DOMAIN = 'http://localhost:3000';
+          const response = await ApiService.post("order-payment/create",{
+              orderCode: Number(String(Date.now()).slice(-6)),
+              amount: 2000,
+              description: 'Thanh toan don hang',
+              returnUrl: `${YOUR_DOMAIN}`,
+              cancelUrl: `${YOUR_DOMAIN}/CheckOut`
+          })
+          const link_payment = response.data.data.checkoutUrl;
+          window.location.href = link_payment;
+          console.log(response);
+      }catch(error){
+        console.error('Error creating payment link:', error);
+      }
     }
   };
 
@@ -116,7 +146,7 @@ export default function CheckOut() {
           <h1>Checkout</h1>
         </div>
         <div>
-          <p>Có mã giảm giá? Nhấn vào đây để nhập mã của bạn</p>
+          <p>Thông tin thanh toán</p>
         </div>
         <div className={cx("row gy-4")}>
           <div className={cx("col-12 col-md-7")}>
@@ -269,30 +299,36 @@ export default function CheckOut() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="cart_item">
+                      {cart && cart.items.map((item, index) => (
+                      <React.Fragment key ={index}>
+                      <tr className={cx("cart_item")}>
                         <td className="product-name">
-                          Ark Forging&nbsp;
-                          <strong className="product-quantity">×&nbsp;2</strong>
+                          {item.book.name}&nbsp;
+                          <strong className="product-quantity">×&nbsp;{item.quantity}</strong>
                         </td>
                         <td className="product-total">
                           <span>
                             <bdi>
-                              <span className="woocommerce-Price-currencySymbol">
-                                $
+                              <span>
+                                {(item.book.priceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                               </span>
-                              40.00
+                              VND
                             </bdi>
                           </span>
                         </td>
                       </tr>
+                      </React.Fragment>
+                      ))}
                     </tbody>
                     <tfoot>
+                      {cart && (
+                      <React.Fragment>
                       <tr className="cart-subtotal">
                         <th>Tổng phụ</th>
                         <td>
                           <span>
                             <bdi>
-                              <span>$</span>40.00
+                              <span>{(cart.totalPriceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>VND
                             </bdi>
                           </span>
                         </td>
@@ -303,12 +339,14 @@ export default function CheckOut() {
                           <strong>
                             <span>
                               <bdi>
-                                <span>$</span>40.00
+                                <span>{(cart.totalPriceFinal).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>VND
                               </bdi>
                             </span>
                           </strong>
                         </td>
                       </tr>
+                      </React.Fragment>
+                      )}
                     </tfoot>
                   </table>
                 </div>
@@ -317,18 +355,6 @@ export default function CheckOut() {
                     <h3>Chọn phương thức thanh toán</h3>
                   </div>
                   <form>
-                    <input
-                      type="radio"
-                      name="payment"
-                      id="visa"
-                      className={cx("visa-check")}
-                    />
-                    <input
-                      type="radio"
-                      name="payment"
-                      id="mastercard"
-                      className={cx("mastercard-check")}
-                    />
                     <input
                       type="radio"
                       name="payment"
@@ -342,52 +368,14 @@ export default function CheckOut() {
                       className={cx("payment-on-delivery-check")}
                     />
                     <div className={cx("category")}>
-                      <label htmlFor="visa" className={cx("visaMethod")}>
-                        <div className={cx("imgName")}>
-                          <div className={cx("imgContainer", "visa")}>
-                            <img
-                              src="https://i.ibb.co/vjQCN4y/Visa-Card.png"
-                              alt=""
-                            />
-                          </div>
-                          <span className="name">Thẻ Visa</span>
-                        </div>
-                        <span className={cx("check")}>
-                          <FontAwesomeIcon
-                            icon={faCircleCheck}
-                            style={{ color: "#6064b6" }}
-                          />
-                        </span>
-                      </label>
-                      <label
-                        htmlFor="mastercard"
-                        className={cx("mastercardMethod")}
-                      >
-                        <div className={cx("imgName")}>
-                          <div className={cx("imgContainer", "mastercard")}>
-                            <img
-                              src="https://i.ibb.co/vdbBkgT/mastercard.jpg"
-                              alt=""
-                            />
-                          </div>
-                          <span className="name">Thẻ Mastercard</span>
-                        </div>
-                        <span className={cx("check")}>
-                          <FontAwesomeIcon
-                            icon={faCircleCheck}
-                            style={{ color: "#6064b6" }}
-                          />
-                        </span>
-                      </label>
                       <label htmlFor="local" className={cx("local-bankMethod")}>
                         <div className={cx("imgName")}>
                           <div className={cx("imgContainer", "local-bank")}>
                             <img
-                              src="https://www.kindpng.com/picc/m/207-2077709_banks-icon-banks-icon-hd-png-download.png"
-                              alt=""
+                              src="https://i.ibb.co/0K2tB6Q/qr-code-1.png"
                             ></img>
                           </div>
-                          <span className="name">Ngân hàng nội địa</span>
+                          <span className="name">Chuyển khoản ngân hàng (Quét mã QR)</span>
                         </div>
                         <span className={cx("check")}>
                           <FontAwesomeIcon
@@ -430,7 +418,7 @@ export default function CheckOut() {
                       type="button"
                       className={cx("btn", "btn-outline-custom")}
                     >
-                      Tiến hành thanh toán
+                      Tiến hành đặt hàng
                     </button>
                   </div>
                 </div>

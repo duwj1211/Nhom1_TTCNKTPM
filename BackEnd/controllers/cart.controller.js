@@ -157,9 +157,43 @@ const getCart = async(req, res) => {
     }
 }
 
+//User chưa đăng nhập
+const getCartByBookIds = async(req, res) => {
+    try {
+        const cartItems = req.body;
+        const cart = {
+            items: [],
+            totalPriceFinal: 0,
+            totalPriceOriginal: 0,
+            user: null
+        };
+        if (cartItems && cartItems.length > 0) {
+            for (let item of cartItems) {
+                const book = await Book
+                    .findOne({_id: item._id})
+                    .select('_id slug fullName avatar priceOriginal priceFinal');
+                if (book) {
+                    cart.items.push({
+                        book,
+                        quantity: item.quantity
+                    });
+                    cart.totalPriceOriginal += book.priceOriginal * item.quantity;
+                    cart.totalPriceFinal += book.priceFinal * item.quantity;
+                }
+            }
+            res.status(200).json({cart});
+        } else {
+            res.status(200).json({ cart: [] });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 module.exports = {
     deleteFromCart,
     addToCart,
     updateQuantityOfCartItem,
-    getCart
+    getCart,
+    getCartByBookIds
 }
