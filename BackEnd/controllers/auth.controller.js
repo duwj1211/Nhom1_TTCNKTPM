@@ -53,7 +53,7 @@ const verifyToken = async (req, res) => {
     if (token) {
       jwt.verify(token, JWT_SECRET, (err, user) => {
         if (err) {
-          return res.status(403).json({ message: 'Token không hợp lệ' }); // Invalid token
+          return res.status(401).json({ message: 'Token không hợp lệ' }); // Invalid token
         }
       });
       return res.status(200).json({message: "Token hợp lệ"});

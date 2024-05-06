@@ -11,6 +11,7 @@ import SignUp from './pages/SignUp/SignUp';
 import BookDetails from './pages/BookDetails';
 import BookList from "./pages/BookList";
 import OrderList from "./pages/Order/orderList";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/books" element={<BookList />} />
           <Route path="/category/:cate" element={<BookList />} />
           <Route path="/order" element={<OrderList />} />
+          <Route path="/account" element={<Profile />} />
         </Route>
         
         <Route path="/login" element={<SignIn />} />
