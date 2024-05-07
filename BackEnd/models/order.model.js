@@ -9,11 +9,14 @@ const OrderSchema = mongoose.Schema({
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'OrderItem' }],
   totalPriceOriginal: { type: Number, require: true },
   totalPriceFinal: { type: Number, require: false },
-  status: { type: Number, require: true, default: 0},
+  status: { type: Number, require: true, default: -1},
   shippingAddress: { type: String, require: true },
   shippingFee: { type: Number, require: false },
   totalPrice: { type: Number, require: true },
   note: { type: String, require: false },
+  orderCode: {type: Number, require: true},
+  link_payment: {type: String, require: false},
+  banking: {type: Number, require: false, default: 1},
 }, { timestamps: true })
 
 const Order = mongoose.model("Order", OrderSchema);

@@ -5,7 +5,7 @@ const { json } = require('express');
 const create_payment = async function (req, res) {
   const { description, returnUrl, cancelUrl, amount } = req.body;
   const body = {
-    orderCode: Number(String(new Date().getTime()).slice(-6)),
+    orderCode: req.body.orderCode,
     amount,
     description,
     cancelUrl,
@@ -41,11 +41,11 @@ const create_payment = async function (req, res) {
 
 const get_order_information = async function (req, res) {
   try {
-    const order = await payOS.getPaymentLinkInfomation(req.params.orderId);
+    const order = await payOS.getPaymentLinkInformation(req.params.orderId);
     if (!order) {
       return res.json({
         error: -1,
-        message: "failed",
+        message: "no order!",
         data: null,
       });
     }
@@ -58,7 +58,7 @@ const get_order_information = async function (req, res) {
     console.log(error);
     return res.json({
       error: -1,
-      message: "failed",
+      message: "failed to get",
       data: null,
     });
   }
@@ -66,9 +66,7 @@ const get_order_information = async function (req, res) {
 
 const cancel_payment = async function (req, res) {
   try {
-    const { orderId } = req.params;
-    const body = req.body;
-    const order = await payOS.cancelPaymentLink(orderId, body.cancellationReason);
+    const order = await payOS.cancelPaymentLink(req.params.orderId);
     if (!order) {
       return res.json({
         error: -1,

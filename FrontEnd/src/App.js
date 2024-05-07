@@ -12,6 +12,7 @@ import BookDetails from './pages/BookDetails';
 import BookList from "./pages/BookList";
 import OrderList from "./pages/Order/orderList";
 import Profile from "./pages/Profile";
+import OrderDetail from "./pages/Order/orderDetail";
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path="/category/:cate" element={<BookList />} />
           <Route path="/order" element={<OrderList />} />
           <Route path="/account" element={<Profile />} />
+          <Route path="/order/detail/:orderId" element={<OrderDetail/>}/>
         </Route>
         
         <Route path="/login" element={<SignIn />} />
