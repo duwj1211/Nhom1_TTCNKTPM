@@ -33,6 +33,9 @@
 
 .content img {
     width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .content h3 {

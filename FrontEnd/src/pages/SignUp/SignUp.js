@@ -47,7 +47,7 @@ const SignUp = () => {
     return (
         <div className={cx("wrapper")}>
             <div className={cx("inner")}>
-                <img className={cx('image-holder')} src="https://colorlib.com/etc/regform/colorlib-regform-17/images/registration-form-1.jpg" alt="" />
+                <img className={cx('image-holder')} src={require("../../assets/images/banner-login.jpg")} alt="" />
                 <form>
                     <h3>Đăng ký ngay</h3>
                     <div className={cx("form-wrapper")}>

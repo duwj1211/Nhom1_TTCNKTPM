@@ -8,7 +8,7 @@
   text-decoration: none;
 }
 .logo .highlight {
-  color: #228b22;
+  color: rgba(237, 85, 59, 1);
 }
 .top-header {
   padding: 8px 0;
@@ -81,11 +81,11 @@
   background-color: #fff;
   border: 1px solid #999;
   border-radius: 4px;
-  padding: 8px 12px;
+  padding: 4px 0;
   right: 0;
   top: calc(100% + 8px);
   z-index: 99;
-  min-width: 150px;
+  min-width: max-content;
   display: none;
 }
 .child-action > div:hover {
@@ -102,6 +102,10 @@
   right: 0;
 }
 .account:hover .child-action {
+  display: block;
+}
+.child-action .child-item {
+  padding: 4px 16px 4px;
   display: block;
 }
 .device {

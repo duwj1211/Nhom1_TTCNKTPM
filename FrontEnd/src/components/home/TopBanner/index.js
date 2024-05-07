@@ -29,22 +29,26 @@ function TopBanner() {
     {
       title: "Sách bán chạy nhất",
       content: "Khám phá những tựa sách bán chạy nhất trên thị trường! Từ tiểu thuyết hấp dẫn đến sách tự học, chúng tôi tự hào giới thiệu bộ sưu tập đa dạng để đáp ứng mọi sở thích và nhu cầu đọc sách của bạn.",
-      image: require('../../../assets/images/top-banner.png')
+      image: require('../../../assets/images/top-banner.png'),
+      to: "books"
     },
     {
-      title: "The Assignment",
-      content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo",
-      image: require('../../../assets/images/top-banner-2.png')
+      title: "Khoa học viễn tưởng",
+      content: "Thể loại \"Khoa học viễn tưởng\" mở ra một thế giới nơi sức mạnh của trí tưởng tượng con người được thể hiện một cách vô tận.",
+      image: require('../../../assets/images/top-banner-2.webp'),
+      to: "category/khoa-hoc-vien-tuong"
     },
     {
       title: "Sách mới phát hành",
       content: "Khám phá sự mới mẻ với những cuốn sách mới phát hành! Tận hưởng hành trình phiêu lưu qua các trang sách mới nhất từ các tác giả tài năng và đa dạng thể loại",
-      image: require('../../../assets/images/top-banner-3.png')
+      image: require('../../../assets/images/top-banner-3.png'),
+      to: "books"
     },
     {
       title: "Sách triết học",
       content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo",
-      image: require('../../../assets/images/top-banner-4.png')
+      image: require('../../../assets/images/top-banner-4.png'),
+      to: "category/triet-hoc"
     },
   ]
   let sliderRef = useRef(null)
@@ -63,7 +67,7 @@ function TopBanner() {
                   <div className={cx('info')}>
                     <h2 className={cx('title')}>{slide.title}</h2>
                     <p className={cx('content')}>{slide.content}</p>
-                    <Link to='/' className={cx('link-btn')}>Tìm hiểu thêm</Link>
+                    <Link to={slide.to} className={cx('link-btn')}>Tìm hiểu thêm</Link>
                     <div className={cx('slick-dots')}>
                       {slides.map((slide, index) => {
                         return (
