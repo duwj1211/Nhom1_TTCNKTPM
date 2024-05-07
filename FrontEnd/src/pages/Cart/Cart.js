@@ -9,7 +9,8 @@ import { debounce } from 'lodash';
 const cx = classNames.bind(styles);
 
 
-export default function Cart(){
+
+function Cart(){
     const [cart, setCart] = useState();
     const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
     const [selectedCartItem, setSelectedCartItem] = useState(null);
@@ -17,14 +18,14 @@ export default function Cart(){
     const [isDebouncing, setIsDebouncing] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [changingItemId, setChangingItemId] = useState(null);
-    
+
     const handleButtonClick = () => {
         window.location.href = "/checkout"
     }
     const debounceOnChange = debounce((newValue, cartItemId) =>{
         setIsDebouncing(true);
         setChangingItemId(cartItemId);
-        updateQuantity('66084000eed56d34dfebdac1',cartItemId,newValue).then(() => {
+        updateQuantity(cartItemId,newValue).then(() => {
             fetchCartData();
             
         }).finally(() => {
@@ -36,7 +37,7 @@ export default function Cart(){
     const fetchCartData = async () => {
         try {
             setLoading(true);
-            const response = await ApiService.get('carts/user/66084000eed56d34dfebdac1');
+            const response = await ApiService.get(`carts/user/`);
             if (response.status === 200) {
                 setCart(response.data.cart);
             } else {
@@ -49,9 +50,9 @@ export default function Cart(){
             setChangingItemId(null);
         }
     }
-    const updateQuantity = async( userId, cartItemId, quantity) =>{
+    const updateQuantity = async(cartItemId, quantity) =>{
         try{
-            const response = await ApiService.post(`carts/updateQuantity/66084000eed56d34dfebdac1/${cartItemId}/${quantity}`);
+            const response = await ApiService.post(`carts/updateQuantity/${cartItemId}/${quantity}`);
             if(response.status === 200){
                 console.log("Successful");
             }
@@ -64,7 +65,7 @@ export default function Cart(){
             console.error('Error update cart quantity:',error);
         }
     }
-    const deleteCartItem = async (userId, cartItemId, productName) => {
+    const deleteCartItem = async (cartItemId, productName) => {
         console.log(productName);
         try {
             setSelectedCartItem(cartItemId);
@@ -76,7 +77,7 @@ export default function Cart(){
     }
     const handleDeleteConfirmation = async () => {
         try {
-            const response = await ApiService.delete(`carts/delete/66084000eed56d34dfebdac1/${selectedCartItem}`);
+            const response = await ApiService.delete(`carts/delete/${selectedCartItem}`);
             if (response.status === 200) {
                 fetchCartData();
             } else {
@@ -87,7 +88,6 @@ export default function Cart(){
         }
         setDeleteConfirmationOpen(false);
     }
-
     useEffect(() => {
         fetchCartData();
     }, [])
@@ -126,7 +126,7 @@ export default function Cart(){
                                 <React.Fragment key={index}>
                                 <tr>
                                     <td className={cx("product-remove")}>
-                                        <button type='button' className={cx("remove-button")} onClick={() => deleteCartItem('66084000eed56d34dfebdac1',item._id,item.book.name)}>
+                                        <button type='button' className={cx("remove-button")} onClick={() => deleteCartItem(item._id,item.book.name)}>
                                             <span className="ahfb-svg-iconset ast-inline-flex">
                                                 <svg className="ast-mobile-svg ast-close-svg" fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                                     <path d="M5.293 6.707l5.293 5.293-5.293 5.293c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0l5.293-5.293 5.293 5.293c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-5.293-5.293 5.293-5.293c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-5.293 5.293-5.293-5.293c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414z"></path>
@@ -216,7 +216,7 @@ export default function Cart(){
                                             <tr>
                                                 <td colSpan="2">
                                                     <div className={cx("process-checkout")}>
-                                                        <button type='button' className={cx("checkout-btn","btn","btn-outline-custom")} onClick={handleButtonClick}>Tiến hành thanh toán</button>
+                                                        <button type='button' className={cx("checkout-btn","btn","btn-outline-custom")} onClick={handleButtonClick} disabled={cart.items.length === 0}>Tiến hành thanh toán</button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -231,6 +231,7 @@ export default function Cart(){
         </div>
     );
 }
+export default Cart
 
 
 
