@@ -46,11 +46,12 @@
     margin-top: 25px;
     font-size: 16px;
     color: rgba(237, 85, 59, 1);
+    align-items: center;
+    column-gap: 12px;
 }
 
-.view-all-products p {
-    margin-right: 10px;
-    margin-top: -5px;
+.view-all-products a {
+    color: rgba(237, 85, 59, 1);
 }
 
 @media (max-width: 1024px) {

@@ -93,7 +93,11 @@ function Header() {
                   <span className='d-none d-md-inline'>Tài khoản</span>
                 </NavLink>
                 <div className={cx('child-action')}>
-                  <div onClick={handleLogout}>
+                  <NavLink to='/order' className={cx('child-item')}>
+                    <span className={cx('icon')}><i className="far fa-shopping-cart"></i></span>
+                    <span className='d-none d-md-inline'>Xem đơn hàng</span>
+                  </NavLink>
+                  <div onClick={handleLogout} className={cx('child-item')}>
                     <span className={cx('icon')}><i className="fal fa-sign-out"></i></span>
                     <span>Đăng xuất</span>
                   </div>
