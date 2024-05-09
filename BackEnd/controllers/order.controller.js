@@ -26,7 +26,7 @@ const addToOrder = async(req , res) =>{
                 totalPriceOriginal: 0,
                 totalPriceFinal: 0,
                 status: -1,
-                shippingAddress: "Ha Noi",
+                shippingAddress: req.body.shippingAddress,
                 shippingFee: 0,
                 totalPrice: 0,
                 note: null,

@@ -66,6 +66,9 @@ const SignIn = () => {
                     <div className={cx('err-message')}>
                         { !!errorMsg && errorMsg}
                     </div>
+                    <div className={cx("forgoet-password")}>
+                        <Link to="/reset-password">Quên mật khẩu</Link>
+                    </div>
                     <button onClick={handleSubmit}>
                         Đăng nhập
                         <i className="far fa-arrow-right"></i>
