@@ -8,6 +8,7 @@ import Cart from './pages/Cart/Cart';
 import CheckOut from './pages/CheckOut/CheckOut';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 import BookDetails from './pages/BookDetails';
 import BookList from "./pages/BookList";
 import OrderList from "./pages/Order/orderList";
@@ -34,6 +35,7 @@ function App() {
         
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/reset-password" element={<ResetPassword/>}/>
         </Routes>
       </div>
     </BrowserRouter>

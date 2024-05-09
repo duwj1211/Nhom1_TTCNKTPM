@@ -138,6 +138,7 @@ export default function CheckOut() {
             const res = await ApiService.post("orders/add",{
               orderCode: reqestOrderCode,
               link_payment: link_payment,
+              shippingAddress: selectedCity + selectedDistrict + selectedWard,
             });
             if(res.status === 200){
               console.log("success");
