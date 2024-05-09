@@ -1,11 +1,12 @@
 import classNames from 'classnames/bind';
+import style from './orderDetail.module.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ApiService from '../../service/api.service';
 import CancelConfirm from '../../layouts/components/Dialog/CancelConfirm';
 
 
-const cx = classNames.bind('styles');
+const cx = classNames.bind(style);
 
 
 function formatDate(dateTimeString) {
@@ -77,15 +78,18 @@ export default function OrderDetail(){
                 onClose={() => setCancelConfirmationOpen(false)}
                 onConfirm={handleCancelConfirmation}
         />
+        <div className={cx('container')}>
         {order && order.banking === 1 ? (
-            <div>
+            <div className={cx('')}>
+            <div className={cx('mt-5 mb-2')}>Mã đơn hàng: {order.orderCode}
+            </div>
                 {order.status === -1 && (
                     <div>
                         <div>Đơn hàng đang chờ thanh toán</div>
-                        <button onClick={() => window.location.href = order.link_payment}>
+                        <button onClick={() => window.location.href = order.link_payment} className={cx('checkin-btn')}>
                             Thanh toán ngay
                         </button>
-                        <button type='button' onClick={() => cancelOrder(order.orderCode)}>
+                        <button type='button' onClick={() => cancelOrder(order.orderCode)}  className={cx('cancel-btn')}>
                             Hủy đơn hàng
                         </button>
                     </div>
@@ -102,11 +106,8 @@ export default function OrderDetail(){
                 Thanh toán khi nhận hàng
             </div>
         )
-        }
-            <div>
-                Xin chào
-            </div>
-            <table className={cx("your-order-table", "table")}>
+      }
+            <table className={cx("your-order-table", "table", "mt-4")}>
                     <thead>
                       <tr>
                         <th className="product-name">Sản phẩm</th>
@@ -189,6 +190,7 @@ export default function OrderDetail(){
                       )}
                     </tfoot>
             </table>
+        </div>
         </>
     )
 }
