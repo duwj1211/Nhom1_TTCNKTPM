@@ -108,7 +108,7 @@ const changePasswordForgot = async (req, res) => {
       if(!user){
         return res.status(404).json({message: "Email chưa được đăng ký"});
       }else{
-        const otpIsValid = await bcrypt.compare(otp, user.otp);
+        const otpIsValid = await bcrypt.compare(otp, user.passwordResetOTP);
         const otpExpiryTime = new Date(user.otpExpiryTime);
         if (!otpIsValid || otpExpiryTime < new Date()) {
           return res.status(403).json({message: "Mã OTP không hợp lệ hoặc đã hết hạn"});
@@ -121,7 +121,7 @@ const changePasswordForgot = async (req, res) => {
         return res.status(200).json({user});
       }
   } catch (error) {
-    
+    return res.status(500).json({message: error.message});
   }
 }
 
