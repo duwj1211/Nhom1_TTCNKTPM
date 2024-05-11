@@ -10,13 +10,10 @@ import RelatedBook from './RelatedBook';
 const cx = classNames.bind(styles);
 
 function BookDetails() {
-    const userId = '66084000eed56d34dfebdac1';
     const { slug } = useParams();
-
     const [book, setBook] = useState(null);
     const [quantity, setQuantity] = useState(1);
-
-    useEffect(() => {
+    useEffect(() => { 
         async function getBook() {
             try {
               const response = await ApiService.get(`books/${slug}`);
@@ -44,10 +41,9 @@ function BookDetails() {
         setQuantity(e.target.value);
     };
 
-    const handleAddToCart = async (userId, bookId, quantity) => {
+    const handleAddToCart = async (bookId, quantity) => {
         try{
             const response = await ApiService.post('carts/add', {
-                userId,
                 bookId,
                 quantity
             })
@@ -85,7 +81,7 @@ function BookDetails() {
                                             <form className={cx('cart')} action='' method='post'>
                                                 <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max='' step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}>    
                                                </input>
-                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(userId,book._id,quantity)}>Add to cart</button>
+                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Add to cart</button>
                                             </form>
                                         </div>
                                     </div>

@@ -8,10 +8,12 @@ import Cart from './pages/Cart/Cart';
 import CheckOut from './pages/CheckOut/CheckOut';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 import BookDetails from './pages/BookDetails';
 import BookList from "./pages/BookList";
 import OrderList from "./pages/Order/orderList";
 import Profile from "./pages/Profile";
+import OrderDetail from "./pages/Order/orderDetail";
 
 
 function App() {
@@ -28,10 +30,12 @@ function App() {
           <Route path="/category/:cate" element={<BookList />} />
           <Route path="/order" element={<OrderList />} />
           <Route path="/account" element={<Profile />} />
+          <Route path="/order/detail/:orderId" element={<OrderDetail/>}/>
         </Route>
         
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/reset-password" element={<ResetPassword/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -13,18 +13,8 @@ function Categories() {
           <Row>
             <Col md={6}>
               <div className={cx("title")}>
-                <p>Categories</p>
-                <h3>Explore our Top Categories</h3>
-              </div>
-            </Col>
-            <Col md={6}>
-              <div className={cx("text")}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu
-                feugiat amet, libero ipsum enim pharetra hac. Urna commodo,
-                lacus ut magna velit eleifend. Amet, quis urna, a eu.Lorem ipsum
-                dolor sit amet, consectetur adipiscing elit. Sed eu feugiat
-                amet, libero ipsum ipsum dolor sit amet, consectetur adipiscing
-                elit. Sed eu feugiat amet, libero ipsum..
+                <p>Danh mục</p>
+                <h3>Khám phá những thể lại sách hay nhất</h3>
               </div>
             </Col>
           </Row>
@@ -32,46 +22,40 @@ function Categories() {
         <div className={cx("categories-content")}>
           <Row>
             <Col md={4}>
-              <div className={cx("content")}>
+              <Link to="category/van-hoc-kinh-dien" className={cx("content")}>
                 <img
                   src={require("../../../assets/images/categories1.png")}
                   alt=""
                 ></img>
-                <h3>Higher Education</h3>
+                <h3>Văn học kinh điển</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo,
-                  lacus ut mat,
+                Thể loại "Văn học kinh điển" chính là kho báu vô giá, nơi chứa đựng những tác phẩm lớn đã làm lay động trái tim và khơi gợi trí tưởng tượng của bao thế hệ độc giả. Những cuốn sách này không chỉ là sản phẩm của nghệ thuật viết lách siêu phàm, mà từng trang giấy còn vang vọng hồn cốt của văn minh nhân loại, phản chiếu đa chiều từ bóng tối tới ánh sáng của xã hội qua từng kỷ nguyên.
                 </p>
-              </div>
+              </Link>
             </Col>
             <Col md={4}>
-              <div className={cx("content")}>
+              <Link to="category/tam-ly-hoc" className={cx("content")}>
                 <img
                   src={require("../../../assets/images/categories2.png")}
                   alt=""
                 ></img>
-                <h3>Management Books</h3>
+                <h3>Tâm lý học</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo,
-                  lacus ut mat,
+                Thể loại "Tâm lý học" quy tụ những cuốn sách mang đến cánh cửa hiểu biết sâu sắc về bản chất con người, niềm vui và nỗi buồn, động cơ và hành vi. Mỗi trang sách là một chuyến viễn du đến tâm hồn, thông qua các nghiên cứu, lý thuyết và ứng dụng thực tiễn, giúp bạn tự khám phá, phát triển bản thân và hiểu được những người xung quanh mình.
                 </p>
-              </div>
+              </Link>
             </Col>
             <Col md={4}>
-              <div className={cx("content")}>
+              <Link to="category/khoa-hoc-vien-tuong" className={cx("content")}>
                 <img
-                  src={require("../../../assets/images/categories3.png")}
+                  src={require("../../../assets/images/khoa-hoc-vien-tuong.webp")}
                   alt=""
                 ></img>
-                <h3>Engineering Books</h3>
+                <h3>Khoa học viễn tưởng</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo,
-                  lacus ut mat,
+                Thể loại "Khoa học viễn tưởng" mở ra một thế giới nơi sức mạnh của trí tưởng tượng con người được thể hiện một cách vô tận. Nơi giới hạn giữa thực tại và tưởng tượng bị xóa nhòa, và bạn được thư giãn cùng những chuyến phiêu lưu kỳ ảo xuyên qua không gian và thời gian, khám phá các hành tinh kỳ bí. Cuộn tròn trên ghế sofa và chuẩn bị cho một hành trình đầy phấn khích đang chờ đợi bạn!
                 </p>
-              </div>
+              </Link>
             </Col>
           </Row>
         </div>

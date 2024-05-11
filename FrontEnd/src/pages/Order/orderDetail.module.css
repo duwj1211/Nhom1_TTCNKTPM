@@ -1,0 +1,17 @@
+.checkin-btn, .cancel-btn {
+  border: none;
+  outline: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  margin-top: 16px;
+  color: #fff;
+  font-weight: 500;
+}
+
+.checkin-btn {
+  background-color: #26aa99;
+  margin-right: 16px;
+}
+.cancel-btn {
+  background-color: rgba(237, 85, 59, 1);
+}

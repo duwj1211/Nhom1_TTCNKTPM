@@ -27,7 +27,7 @@ export default function CheckOut() {
   });
   const fetchCartData = async () => {
     try {
-        const response = await ApiService.get('carts/user/66084000eed56d34dfebdac1');
+        const response = await ApiService.get('carts/user');
         if (response.status === 200) {
             setCart(response.data.cart);
         } else {
@@ -120,19 +120,39 @@ export default function CheckOut() {
     event.preventDefault();
     const validationErrors = validateForm(formState);
     setErrors(validationErrors);
+    let reqestOrderCode  = Number(String(new Date().getTime()).slice(-10));
     if (Object.keys(validationErrors).length === 0) {
       try{
+        try{
           const YOUR_DOMAIN = 'http://localhost:3000';
+          console.log(reqestOrderCode);
           const response = await ApiService.post("order-payment/create",{
-              orderCode: Number(String(Date.now()).slice(-6)),
-              amount: 2000,
-              description: 'Thanh toan don hang',
-              returnUrl: `${YOUR_DOMAIN}`,
-              cancelUrl: `${YOUR_DOMAIN}/CheckOut`
+            orderCode: reqestOrderCode,
+            amount: 2000,
+            description: 'Thanh toan don hang',
+            returnUrl: `${YOUR_DOMAIN}`,
+            cancelUrl: `${YOUR_DOMAIN}/order`,
           })
           const link_payment = response.data.data.checkoutUrl;
+          try{
+            const res = await ApiService.post("orders/add",{
+              orderCode: reqestOrderCode,
+              link_payment: link_payment,
+              shippingAddress: selectedCity + selectedDistrict + selectedWard,
+            });
+            if(res.status === 200){
+              console.log("success");
+            }else{
+              console.log("Error add item to order");
+            }
+          }catch(error){
+            console.error('Error add to order', error);
+          }
           window.location.href = link_payment;
           console.log(response);
+        }catch(error){
+          console.error('Error creating orderId:',error);
+        } 
       }catch(error){
         console.error('Error creating payment link:', error);
       }
