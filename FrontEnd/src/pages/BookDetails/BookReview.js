@@ -50,7 +50,7 @@ function BookReview() {
                         </p>
                         <p className={cx('comment-form-cookies-consent')}>
                             <input id='wp-comment-cookies-consent' name='wp-comment-cookies-consent' type='checkbox' value='yes' /> 
-                            <label for='wp-comment-cookies-consent'>Save my name, email, and website in this browser for the next time I comment.</label>
+                            <label className={cx('save')} for='wp-comment-cookies-consent'>Save my name, email, and website in this browser for the next time I comment.</label>
                         </p>
                         <p className={cx('form-submit')}>
                             <input name='submit' type='submit' id='submit' className={cx('submit-btn')} value='Submit' /> 

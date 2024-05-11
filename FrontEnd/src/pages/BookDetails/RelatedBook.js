@@ -49,6 +49,29 @@ function RelatedBook({categories = [], slug = ''}) {
         slidesToScroll: 1,
         autoplay: false,
         arrows: true,
+        responsive: [
+            {
+              breakpoint: 1200,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+              }
+            },
+            {
+              breakpoint: 991,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              }
+            },
+            {
+              breakpoint: 767,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }
+          ]
     };
     
     return ( 
