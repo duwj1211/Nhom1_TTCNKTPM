@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 import ApiService from '../../service/api.service';
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +18,7 @@ export default function CheckOut() {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedWard, setSelectedWard] = useState("");
+  const [isBanking, setIsBanking] = useState(null);
   const [formState, setFormState] = useState({
     fullName: "",
     detailAddress: "",
@@ -89,7 +92,9 @@ export default function CheckOut() {
     setSelectedWard(selectedWardId);
     deleteError("ward");
   };
-
+  const handlePaymentMethodSelect = (method) => {
+    setIsBanking(method);
+  };
   const validateForm = (values) => {
     let errors = {};
     // Họ tên không được để trống
@@ -122,45 +127,93 @@ export default function CheckOut() {
     setErrors(validationErrors);
     let reqestOrderCode  = Number(String(new Date().getTime()).slice(-10));
     if (Object.keys(validationErrors).length === 0) {
-      try{
+      //Tạo địa chỉ giao hàng
+      const selectedCityData = cities.find((city) => city.Id === selectedCity);
+      const selectedDistrictData = districts.find(
+        (district) => district.Id === selectedDistrict
+      );
+      const selectedWardData = wards.find((ward) => ward.Id === selectedWard);
+      const address = `${selectedWardData.Name}` + ", " + `${selectedDistrictData.Name}` + ", " + `${selectedCityData.Name}`;
+      
+      if(isBanking === 1){//Nếu người dùng chọn thanh toán chuyển khoản
         try{
-          const YOUR_DOMAIN = 'http://localhost:3000';
-          console.log(reqestOrderCode);
-          const response = await ApiService.post("order-payment/create",{
-            orderCode: reqestOrderCode,
-            amount: 2000,
-            description: 'Thanh toan don hang',
-            returnUrl: `${YOUR_DOMAIN}`,
-            cancelUrl: `${YOUR_DOMAIN}/order`,
-          })
-          const link_payment = response.data.data.checkoutUrl;
           try{
-            const res = await ApiService.post("orders/add",{
+            const YOUR_DOMAIN = 'http://localhost:3000';
+            console.log(reqestOrderCode);
+            const response = await ApiService.post("order-payment/create",{
               orderCode: reqestOrderCode,
-              link_payment: link_payment,
-              shippingAddress: selectedCity + selectedDistrict + selectedWard,
-            });
-            if(res.status === 200){
-              console.log("success");
-            }else{
-              console.log("Error add item to order");
+              amount: 2000,
+              description: 'Thanh toan don hang',
+              returnUrl: `${YOUR_DOMAIN}`,
+              cancelUrl: `${YOUR_DOMAIN}/order`,
+            })
+            const link_payment = response.data.data.checkoutUrl;
+            try{
+              const res = await ApiService.post("orders/add",{
+                orderCode: reqestOrderCode,
+                link_payment: link_payment,
+                shippingAddress: address,
+              });
+              if(res.status === 200){
+                console.log("success");
+              }else{
+                console.log("Error add item to order");
+              }
+            }catch(error){
+              console.error('Error add to order', error);
             }
+            window.location.href = link_payment;
+            console.log(response);
           }catch(error){
-            console.error('Error add to order', error);
-          }
-          window.location.href = link_payment;
-          console.log(response);
+            console.error('Error creating orderId:',error);
+          } 
         }catch(error){
-          console.error('Error creating orderId:',error);
-        } 
-      }catch(error){
-        console.error('Error creating payment link:', error);
+          console.error('Error creating payment link:', error);
+        }
+      }else if(isBanking === 0){//Nếu người dùng chọn thanh toán khi nhận hàng
+        try{
+          const res = await ApiService.post("orders/add",{
+            banking: 0,
+            shippingAddress: address,
+          });
+          if(res.status === 200){
+            console.log("success");
+            window.location.href = "/";
+          }else{
+            console.log("Error add item to order");
+          }
+        }catch(error){
+          console.error('Error add to order', error);
+        }
+      }else{//Nếu người dùng chưa chọn hình thức thanh toán
+        toast.error('Bạn chưa chọn phương thức thanh toán!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+        });
       }
     }
   };
 
   return (
     <div className={cx("main-content", "container")}>
+      <ToastContainer 
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="light"
+      />
       <div className={cx("main")}>
         <div className={cx("header")}>
           <h1>Checkout</h1>
@@ -379,13 +432,17 @@ export default function CheckOut() {
                       type="radio"
                       name="payment"
                       id="local"
+                      checked={isBanking === 1}
                       className={cx("local-check")}
+                      onChange={() => handlePaymentMethodSelect(1)}
                     />
                     <input
                       type="radio"
                       name="payment"
                       id="payment-on-delivery"
+                      checked={isBanking === 0}
                       className={cx("payment-on-delivery-check")}
+                      onChange={() => handlePaymentMethodSelect(0)}
                     />
                     <div className={cx("category")}>
                       <label htmlFor="local" className={cx("local-bankMethod")}>

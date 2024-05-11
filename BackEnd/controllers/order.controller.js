@@ -46,7 +46,7 @@ const addToOrder = async(req , res) =>{
             }
             order.totalPriceOriginal = cart.totalPriceOriginal;
             order.totalPriceFinal = cart.totalPriceFinal
-            order.totalPrice = order.totalPriceOriginal + order.totalPriceFinal + order.shippingFee;
+            order.totalPrice = order.totalPriceFinal + order.shippingFee;
             await order.save();
     
             for(const cItem of cart.items){
