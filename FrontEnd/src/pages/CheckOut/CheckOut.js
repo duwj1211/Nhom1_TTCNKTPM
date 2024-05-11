@@ -152,7 +152,7 @@ export default function CheckOut() {
               const res = await ApiService.post("orders/add",{
                 orderCode: reqestOrderCode,
                 link_payment: link_payment,
-                shippingAddress: address,
+                shippingAddress: formState.detailAddress + ", "+ address,
               });
               if(res.status === 200){
                 console.log("success");
@@ -174,7 +174,7 @@ export default function CheckOut() {
         try{
           const res = await ApiService.post("orders/add",{
             banking: 0,
-            shippingAddress: address,
+            shippingAddress: formState.detailAddress + ", "+ address,
           });
           if(res.status === 200){
             console.log("success");
