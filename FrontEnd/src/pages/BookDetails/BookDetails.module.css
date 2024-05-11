@@ -21,7 +21,6 @@
 } */
 
 .big-img {
-    float: left;
     width: 40%;
     margin-bottom: 32px;
 }
@@ -34,13 +33,10 @@
 }
 
 .grid {
-    float: right;
     width: 48%;
     display: flex;
     flex-direction: column;
 }
-
-
 
 .book-title {
     color: rgba(57, 50, 128, 1);
