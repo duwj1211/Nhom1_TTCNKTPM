@@ -14,7 +14,7 @@ const OrderSchema = mongoose.Schema({
   shippingFee: { type: Number, require: false },
   totalPrice: { type: Number, require: true },
   note: { type: String, require: false },
-  orderCode: {type: Number, require: true},
+  orderCode: {type: Number, require: false},
   link_payment: {type: String, require: false},
   banking: {type: Number, require: false, default: 1},
 }, { timestamps: true })

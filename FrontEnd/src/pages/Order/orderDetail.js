@@ -10,15 +10,13 @@ const cx = classNames.bind(style);
 
 
 function formatDate(dateTimeString) {
-    const dateObject = new Date(dateTimeString);
-    
-    const hours = dateObject.getUTCHours().toString().padStart(2, '0');
-    const minutes = dateObject.getUTCMinutes().toString().padStart(2, '0');
-    const day = dateObject.getUTCDate().toString().padStart(2, '0');
-    const month = (dateObject.getUTCMonth() + 1).toString().padStart(2, '0');
-    const year = dateObject.getUTCFullYear();
-
-    return `${hours}:${minutes} ${day}/${month}/${year}`;
+  const dateObject = new Date(dateTimeString);
+  const day = dateObject.getDate();
+  const month = dateObject.getMonth() + 1;
+  const year = dateObject.getFullYear();
+  const hours = dateObject.getHours().toString().padStart(2, '0'); 
+  const minutes = dateObject.getMinutes().toString().padStart(2, '0'); 
+  return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
 
@@ -181,6 +179,18 @@ export default function OrderDetail(){
                               <bdi>
                                 <span>{order.banking === 1 ? "Chuyển khoản ngân hàng" : 
                                        order.banking === 0 ? "COD (Thanh toán khi nhận hàng)" : ""}</span>
+                              </bdi>
+                            </span>
+                          </strong>
+                        </td>
+                      </tr>
+                      <tr className="order-address">
+                        <th>Địa chỉ nhận hàng</th>
+                        <td>
+                          <strong>
+                            <span>
+                              <bdi>
+                                <span>{order.shippingAddress}</span>
                               </bdi>
                             </span>
                           </strong>
