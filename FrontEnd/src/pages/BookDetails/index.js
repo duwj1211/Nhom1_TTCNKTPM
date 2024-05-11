@@ -39,8 +39,15 @@ function BookDetails() {
         return data.slice(0, maxLength).join(' ') + '...';
     };
 
-    const handleChange = (e) => {
-        setQuantity(e.target.value);
+    const handleChange = (event, maxQuantity) => {
+        let value = event.target.value;
+        if(value > maxQuantity){
+            value = maxQuantity
+            event.target.value = maxQuantity;
+        }else{
+            event.target.value = event.target.value;
+        }
+        setQuantity(maxQuantity);
     };
 
     const handleAddToCart = async (bookId, quantity) => {
@@ -115,7 +122,7 @@ function BookDetails() {
                                             </p>
                                             <div className={cx('remain-quantity')}><span>Số lượng còn: </span>{book.quantity}</div>
                                             <div className={cx('cart')}>
-                                                <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}></input>
+                                                <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' placeholder='' inputMode='numeric' autoComplete='on' onChange={(e) => handleChange(e, book.quantity)}></input>
                                                 <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Add to cart</button>
                                                 <ToastContainer 
                                                     position="top-right"
