@@ -37,7 +37,7 @@ const ResetPassword = () => {
     }
     useEffect(() => {
         handlePassWordMatch();
-    }, [newPassword, confirmNewPassword]);
+    }, [confirmNewPassword]);
     const handlePassWordMatch = (e) => {
         if (newPassword !== confirmNewPassword) {
             setConfirmNewPasswordError("Mật khẩu không trùng khớp!");

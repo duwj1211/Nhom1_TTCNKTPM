@@ -145,13 +145,18 @@ function Cart(){
                                     </td>
                                     <td className={cx("product-quantity")} data-title="Quantity">
                                         <div >
-                                            <input className={cx("quantity-input")} type="number" id="quantity_660abf30afbb2"  aria-label="Product quantity" size="4" min="1" max="" step="1" placeholder="" inputMode="numeric" autoComplete="on" onChange={(event)=> {
+                                            <input className={cx("quantity-input")} type="number" id="quantity_660abf30afbb2"  aria-label="Product quantity" size="4" min="1" max={item.book.quantity} step="1" placeholder="" inputMode="numeric" autoComplete="on" onChange={(event)=> {
                                                 const newValue = event.target.value;
                                                 if(!newValue){
                                                     event.target.value = 1;
                                                     event.target.select();
                                                     debounceOnChange(1, item._id);
-                                                }else{
+                                                }else if(newValue > item.book.quantity){
+                                                    event.target.value = item.book.quantity;
+                                                    event.target.select();
+                                                    debounceOnChange(item.book.quantity, item._id);
+                                                }
+                                                else{
                                                     debounceOnChange(newValue, item._id);
                                                 }}
                                                 } defaultValue={item.quantity}
