@@ -17,8 +17,8 @@ function BookList() {
   const [sortBy, setSortBy] = useState("sold");
   const [orderBy, setOrderBy] = useState("desc");
   const [category, setCategory] = useState(cate ? cate : "");
-  const [minPrice, setMinPrice] = useState(cate ? cate : "");
-  const [maxPrice, setMaxPrice] = useState(cate ? cate : "");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q"));
 
   const listSort = [

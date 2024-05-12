@@ -64,6 +64,8 @@ td{
 .remove-button{
     border-radius: 50%;
     color: #5f4ecb;
+    padding: 4px;
+    font-size: 16px;
 }
 .remove-button:hover{
     background-color: #ED553B;
