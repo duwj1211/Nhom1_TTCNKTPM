@@ -218,3 +218,6 @@ input[type=number]:focus {
         min-height: 50px;
     }
 }
+.yellow-star{
+    color: rgb(255, 221, 0);
+}
