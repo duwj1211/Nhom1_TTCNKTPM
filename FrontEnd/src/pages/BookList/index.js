@@ -17,6 +17,8 @@ function BookList() {
   const [sortBy, setSortBy] = useState("sold");
   const [orderBy, setOrderBy] = useState("desc");
   const [category, setCategory] = useState(cate ? cate : "");
+  const [minPrice, setMinPrice] = useState(cate ? cate : "");
+  const [maxPrice, setMaxPrice] = useState(cate ? cate : "");
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q"));
 
   const listSort = [
@@ -44,29 +46,31 @@ function BookList() {
     setCategory(cate);
   }, [cate])
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const response = await ApiService.get("books", {
-          params: {
-            search: searchQuery,
-            page: currentPage,
-            limit: 12,
-            sortBy: sortBy,
-            orderBy: orderBy,
-            category: category
-          },
-        });
-        if (response.status === 200) {
-          setBooks(response.data.books);
-          setCurrentPage(response.data.currentPage);
-          setTotalPage(response.data.totalPages);
-          window.scrollTo(0, 0);
-        }
-      } catch (err) {
-        console.error(err);
+  async function fetchData() {
+    try {
+      const response = await ApiService.get("books", {
+        params: {
+          search: searchQuery,
+          page: currentPage,
+          limit: 12,
+          sortBy: sortBy,
+          orderBy: orderBy,
+          category: category,
+          minPrice: minPrice,
+          maxPrice: maxPrice
+        },
+      });
+      if (response.status === 200) {
+        setBooks(response.data.books);
+        setCurrentPage(response.data.currentPage);
+        setTotalPage(response.data.totalPages);
+        window.scrollTo(0, 0);
       }
+    } catch (err) {
+      console.error(err);
     }
+  }
+  useEffect(() => {
     fetchData();
   }, [searchQuery, currentPage, sortBy, orderBy, category]);
 
@@ -81,6 +85,18 @@ function BookList() {
     setCurrentPage(pageNumber);
   }
 
+  function handleChangePrice(e) {
+    const {name, value} = e.target;
+    if (name === 'minPrice') {
+      setMinPrice(value);
+    } else if (name === 'maxPrice') {
+      setMaxPrice(value);
+    }
+  }
+  function filterPrice() {
+    fetchData();
+  }
+
   return (
     <div className={cx("all-book")}>
       <div className={cx("all-book-nav")}>
@@ -93,7 +109,7 @@ function BookList() {
       <div className="container py-4">
         <div className={cx("row")}>
           <div className={cx("col-0 col-md-3")}>
-            <Filter />
+            <Filter handleChangePrice={handleChangePrice} handleFilter={filterPrice}/>
           </div>
           <div className={cx("col-12 col-md-9")}>
             <div className={cx("sort-and-paging")}>
@@ -139,7 +155,7 @@ function BookList() {
   );
 }
 
-function Filter({ handleFilter }) {
+function Filter({ handleFilter, handleChangePrice }) {
   const [isPriceCollapsed, setPriceCollapsed] = useState(false);
   const [isCategoryCollapsed, setCategoryCollapsed] = useState(true);
   const [isAuthorCollapsed, setAuthorCollapsed] = useState(true);
@@ -170,11 +186,11 @@ function Filter({ handleFilter }) {
         {!isPriceCollapsed && (
           <>
             <div className={cx("input")}>
-              <input type="number" name="minPrice" />
+              <input type="number" name="minPrice" onChange={handleChangePrice}/>
               <div>-</div>
-              <input type="number" name="maxPrice" />
+              <input type="number" name="maxPrice" onChange={handleChangePrice}/>
             </div>
-            <button onClick={handleFilter}>Filter</button>
+            <button onClick={handleFilter}>Lọc</button>
           </>
         )}
       </div>

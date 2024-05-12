@@ -107,16 +107,21 @@ function BookDetails() {
                                                 <p className={cx('book-final-price')}>{(book.priceFinal / 1000).toFixed(3)} VNĐ</p>
                                                 <p className={cx('book-original-price')}>{(book.priceOriginal / 1000).toFixed(3)} VNĐ</p>
                                             </div>
-                                            <p className={cx('book-desc')}>
+                                            <div>
+                                                <div className={cx('fw-medium mb-2')}>Tác giả: {book.author.fullName}</div>
+                                                <div className={cx('fw-medium mb-2')}>Dịch giả: {book.translator}</div>
+                                                <div className={cx('fw-medium mb-2')}>Nhà xuất bản: {book.publisher}</div>
+                                            </div>
+                                            {/* <p className={cx('book-desc')}>
                                                 {limitWord(book.description, 50)}
                                                 <a className={cx('read-more-desc')} href="#description-tabs">
                                                     Read More
                                                 </a>
-                                            </p>
-                                            <div className={cx('remain-quantity')}><span>Số lượng còn: </span>{book.quantity}</div>
+                                            </p> */}
+                                            <div className={cx('remain-quantity', 'mb-4')}><span>Số lượng còn: </span>{book.quantity}</div>
                                             <div className={cx('cart')}>
                                                 <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}></input>
-                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Add to cart</button>
+                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Thêm vào giỏ hàng</button>
                                                 <ToastContainer 
                                                     position="top-right"
                                                     autoClose={5000}
