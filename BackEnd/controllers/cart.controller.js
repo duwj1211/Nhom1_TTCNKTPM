@@ -32,7 +32,11 @@ const addToCart = async(req, res) => {
                 }
             }
             if (existingItem) {
-                existingItem.quantity += quantity; 
+                if (existingItem.quantity + quantity > book.quantity) {
+                    existingItem.quantity = book.quantity; // Gán số lượng của existingItem bằng số lượng sách có sẵn trong book
+                } else {
+                    existingItem.quantity += quantity; 
+                } 
                 await existingItem.save();
             } else {
                 const newCartItem = new CartItem({ book: bookId, quantity });
