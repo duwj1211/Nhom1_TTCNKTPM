@@ -113,7 +113,10 @@ function BookDetails() {
                                                     Read More
                                                 </a>
                                             </p>
-                                            <div className={cx('remain-quantity')}><span>Số lượng còn: </span>{book.quantity}</div>
+                                            <div className={cx('remain-quantity')}>
+                                                <span>Còn hàng:&nbsp;</span> 
+                                                <span>{book.quantity} sản phẩm</span>
+                                            </div>
                                             <div className={cx('cart')}>
                                                 <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}></input>
                                                 <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Add to cart</button>
