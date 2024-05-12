@@ -76,7 +76,7 @@ function RelatedBook({categories = [], slug = ''}) {
     
     return ( 
             <div className={cx('related-products')}>
-                <h2 className={cx('heading')}>Related products</h2>
+                <h2 className={cx('heading')}>Có thể bạn cũng thích</h2>
                 <Slider {...settings} className={cx('slider')} prevArrow={<CustomPrevArrow />} nextArrow={<CustomNextArrow />}>
                     { relatedBooks.map((book) => (
                         <div key={book._id} className={cx('wrap-book-item')}>

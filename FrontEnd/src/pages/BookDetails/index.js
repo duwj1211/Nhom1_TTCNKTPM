@@ -116,6 +116,11 @@ function BookDetails() {
                                                 <p className={cx('book-final-price')}>{(book.priceFinal / 1000).toFixed(3)} VNĐ</p>
                                                 <p className={cx('book-original-price')}>{(book.priceOriginal / 1000).toFixed(3)} VNĐ</p>
                                             </div>
+                                            <div>
+                                                <div className={cx('fw-medium mb-2')}>Tác giả: {book.author.fullName}</div>
+                                                <div className={cx('fw-medium mb-2')}>Dịch giả: {book.translator}</div>
+                                                <div className={cx('fw-medium mb-2')}>Nhà xuất bản: {book.publisher}</div>
+                                            </div>
                                             <p className={cx('book-desc')}>
                                                 {limitWord(book.description, 50)}
                                                 <a className={cx('read-more-desc')} href="#description-tabs">
