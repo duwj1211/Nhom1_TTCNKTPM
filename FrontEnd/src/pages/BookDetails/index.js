@@ -1,6 +1,8 @@
 import classNames from 'classnames/bind';
 import styles from './BookDetails.module.css';
 import React, { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useParams } from 'react-router-dom';
 import ApiService from "../../service/api.service";
 import TabsComponent  from './TabsComponent';
@@ -48,11 +50,41 @@ function BookDetails() {
                 quantity
             })
             if(response.status === 200){
+                toast.success('Thêm vào giỏ hàng thành công!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    progress: undefined,
+                    theme: "light",
+                });
                 console.log("Successful");
             }else{
+                toast.error('Thêm vào giỏ hàng thất bại!', {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
                 console.log("Unsuccessful");
             }
         }catch(error){
+            toast.error('Thêm vào giỏ hàng thất bại!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
             console.error('Error add to cart:',error);
         }
     }
@@ -71,18 +103,38 @@ function BookDetails() {
                                     <div className={cx('grid')}>
                                         <div className={cx('book-info')}>
                                             <h4 className={cx('book-title')}>{book.name}</h4>
-                                            <p className={cx('book-price')}>{book.priceOriginal / 1000}.000 VNĐ</p>
-                                            <p className={cx('book-desc')}>
+                                            <div className={cx('book-price')}>
+                                                <p className={cx('book-final-price')}>{(book.priceFinal / 1000).toFixed(3)} VNĐ</p>
+                                                <p className={cx('book-original-price')}>{(book.priceOriginal / 1000).toFixed(3)} VNĐ</p>
+                                            </div>
+                                            <div>
+                                                <div className={cx('fw-medium mb-2')}>Tác giả: {book.author.fullName}</div>
+                                                <div className={cx('fw-medium mb-2')}>Dịch giả: {book.translator}</div>
+                                                <div className={cx('fw-medium mb-2')}>Nhà xuất bản: {book.publisher}</div>
+                                            </div>
+                                            {/* <p className={cx('book-desc')}>
                                                 {limitWord(book.description, 50)}
                                                 <a className={cx('read-more-desc')} href="#description-tabs">
                                                     Read More
                                                 </a>
-                                            </p>
-                                            <form className={cx('cart')} action='' method='post'>
-                                                <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max='' step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}>    
-                                               </input>
-                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Add to cart</button>
-                                            </form>
+                                            </p> */}
+                                            <div className={cx('remain-quantity', 'mb-4')}><span>Số lượng còn: </span>{book.quantity}</div>
+                                            <div className={cx('cart')}>
+                                                <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}></input>
+                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Thêm vào giỏ hàng</button>
+                                                <ToastContainer 
+                                                    position="top-right"
+                                                    autoClose={5000}
+                                                    hideProgressBar={false}
+                                                    newestOnTop={false}
+                                                    closeOnClick
+                                                    rtl={false}
+                                                    pauseOnFocusLoss={false}
+                                                    draggable={false}
+                                                    pauseOnHover={false}
+                                                    theme="light"
+                                                />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

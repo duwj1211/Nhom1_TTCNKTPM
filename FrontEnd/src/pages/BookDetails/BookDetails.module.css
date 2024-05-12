@@ -11,18 +11,17 @@
 
 .content-area {
     background-color: #fff;
-    margin: 64px 0;
+    margin: 44px 0;
     padding: 80px 100px;
 }
-/* 
+
 .details {
     display: flex;
     justify-content: space-between;
-} */
+}
 
 .big-img {
-    float: left;
-    width: 40%;
+    width: 30%;
     margin-bottom: 32px;
 }
 
@@ -34,13 +33,10 @@
 }
 
 .grid {
-    float: right;
-    width: 48%;
+    width: 60%;
     display: flex;
     flex-direction: column;
 }
-
-
 
 .book-title {
     color: rgba(57, 50, 128, 1);
@@ -48,10 +44,24 @@
 }
 
 .book-price {
+    margin: 12px 0;
+    display: flex;
+    gap: 25px;
+    position: relative;
+}
+
+.book-final-price {
     color: rgba(237, 85, 59, 1);
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
     margin-bottom: 8px;
+}
+
+.book-original-price {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 8px;
+    text-decoration: line-through;
 }
 
 .book-desc {
@@ -67,22 +77,6 @@
 
 .cart {
     position: relative;
-}
-
-.cart::before {
-    content: ' ';
-    position: absolute;
-    width: 100%;
-    height: 1px;
-    top: 64px;
-    opacity: 0.2;
-    background: #565a61;
-}
-
-
-.quantity-container {
-    /* width: 50%; */
-
 }
 
 .quantity {
@@ -129,23 +123,98 @@ input[type=number]:focus {
     margin-bottom: 64px;
 }
 
-
 @media (min-width: 544px) {
     .container {
         max-width: 100%;
     }
 }
 
-@media (min-width: 922px) {
+@media (min-width: 992px) {
     .container {
         max-width: 1240px;
     }
+    .cart::before {
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        top: 64px;
+        opacity: 0.2;
+        background: #565a61;
+    }
+}
 
-    .big-img {
-        width: 50%;
+@media (max-width: 991px) {
+    .content-area {
+        padding: 32px;
     }
     
+    .details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .big-img {
+        width: 80%;
+    }
+
     .grid {
-        width: 46%;
+        width: 100%;
+    }
+
+    .quantity {
+        width: 30%;
+    }
+
+    .quantity,
+    .btn {
+        min-height: 50px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .content-area {
+        padding: 32px;
+    }
+
+    .details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .big-img {
+        width: 100%;
+    }
+
+    .grid {
+        width: 100%;
+    }
+
+    .book-price {
+        display: block;
+        margin-bottom: 24px;
+    }
+
+    .book-price::before {
+        content: ' ';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        top: 75px;
+        opacity: 0.2;
+        background: #565a61;
+    }
+
+    .quantity {
+        width: 100%;
+        min-height: 50px;
+    }
+
+    .btn {
+        margin-top: 16px;
+        width: 100%;
+        margin-left: 0px;
+        min-height: 50px;
     }
 }

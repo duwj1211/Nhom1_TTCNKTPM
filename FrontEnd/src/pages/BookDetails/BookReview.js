@@ -25,32 +25,32 @@ function BookReview() {
                             </span>
                         </p>
                         <div className={cx('comment-form-rating')}>
-                            <label for='rating'>Your rating&nbsp;
+                            <label htmlFor='rating'>Your rating&nbsp;
                                 <span className={cx('required')}>*</span>
                             </label>
                             <StarRating />
                         </div>
                         <p className={cx('comment-form-comment')}>
-                            <label for='comment'>Your review&nbsp;
+                            <label htmlFor='comment'>Your review&nbsp;
                                 <span className={cx('required')}>*</span>
                             </label>
-                            <textarea autocomplete='new-password' className={cx('comment')} cols='45' rows='8' required></textarea>
+                            <textarea autoComplete='new-password' className={cx('comment')} cols='45' rows='8' required></textarea>
                         </p>
                         <p className={cx('comment-form-author')}>
-                            <label for='author'>Name&nbsp;
+                            <label htmlFor='author'>Name&nbsp;
                                 <span className={cx('required')}>*</span>
                             </label>
                             <input id='author' name='author' type='text' size='30' required />
                         </p>
                         <p className={cx('comment-form-email')}>
-                            <label for='email'>Email&nbsp;
+                            <label htmlFor='email'>Email&nbsp;
                                 <span className={cx('required')}>*</span>
                             </label>
                             <input id='email' name='email' type='email' size='30' required />
                         </p>
                         <p className={cx('comment-form-cookies-consent')}>
                             <input id='wp-comment-cookies-consent' name='wp-comment-cookies-consent' type='checkbox' value='yes' /> 
-                            <label for='wp-comment-cookies-consent'>Save my name, email, and website in this browser for the next time I comment.</label>
+                            <label className={cx('save')} htmlFor='wp-comment-cookies-consent'>Save my name, email, and website in this browser for the next time I comment.</label>
                         </p>
                         <p className={cx('form-submit')}>
                             <input name='submit' type='submit' id='submit' className={cx('submit-btn')} value='Submit' /> 
