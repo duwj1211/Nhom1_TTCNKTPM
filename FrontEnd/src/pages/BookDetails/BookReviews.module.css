@@ -1,6 +1,21 @@
 .wrap-review-form {
     width: 100%;
     padding-left: 0;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.wrap-review-form::-webkit-scrollbar {
+    width: 8px; 
+}
+
+.wrap-review-form::-webkit-scrollbar-thumb {
+    background-color: rgba(95, 95, 95, 0.5);
+    border-radius: 4px;
+}
+
+.wrap-review-form::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .review-form {
@@ -10,9 +25,6 @@
 
 .review-form p {
     margin: 2px 0 6px;
-}
-.user-review{
-    display: flex;
 }
 .comment-form-comment label,
 .comment-form-rating label {
@@ -108,6 +120,39 @@
     line-height: 16px;
     border-radius: 4px;
 }
+
+.users-reviews {
+    margin-top: 15px;
+}
+
+.review-box {
+    background-color: #f2f2f2;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.user-review-rating{
+    display: flex;
+    margin-left: 6px;
+}
+
+.user-name {
+    margin-left: 10px;
+}
+  
+.user-comment {
+    margin: 0px 10px 10px 10px;
+}
+
+.user-rating{
+    margin-right: 5px;
+}
+
+.date-rating {
+    color: #6969697a;
+}
+  
+
 
 @media (max-width: 767px) {
     .review-form .comment-form-author,
