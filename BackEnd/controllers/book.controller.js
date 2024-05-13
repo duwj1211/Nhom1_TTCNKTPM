@@ -146,7 +146,7 @@ const addReviewBook = async(req, res ) => {
       const review = new Review({
         content: content,
         rating: rating,
-        user: req.body.userId,
+        user: req.user.userId,
       })
       await review.save();
       book.reviews.push(review);
