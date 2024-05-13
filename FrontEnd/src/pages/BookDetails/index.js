@@ -8,6 +8,11 @@ import ApiService from "../../service/api.service";
 import TabsComponent  from './TabsComponent';
 import BookReview from './BookReview';
 import RelatedBook from './RelatedBook';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +20,8 @@ function BookDetails() {
     const { slug } = useParams();
     const [book, setBook] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [reviews,setReviews] = useState([]);
+    const [averageRating, setAverageRating] = useState()
     useEffect(() => { 
         async function getBook() {
             try {
@@ -22,6 +29,8 @@ function BookDetails() {
               if (response.status === 200) {
                 const item = response.data;
                 setBook(item);
+                setReviews(item.reviews);
+                calculateAverageRating(item.reviews);
                 window.scrollTo(0, 0);
               }
             } catch (error) {
@@ -38,7 +47,16 @@ function BookDetails() {
         }
         return data.slice(0, maxLength).join(' ') + '...';
     };
-
+    const calculateAverageRating = async(reviews) => {
+        if (reviews.length === 0) return 0;
+        let totalRating = 0;
+        console.log(reviews);
+        reviews.forEach(item => {
+            totalRating += item.rating;
+        });
+        const averageRating = totalRating / reviews.length
+        setAverageRating(averageRating.toFixed(1));
+    };
     const handleChange = (event, maxQuantity) => {
         let value = event.target.value;
         if(value > maxQuantity){
@@ -147,9 +165,12 @@ function BookDetails() {
                                                     theme="light"
                                                 />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </div>    
+                                    </div>    
+                                </div>  
+                                <div className='average-rating'>
+                                        {averageRating}/5 <FontAwesomeIcon icon={faStar} className={cx('yellow-star')}/> ({reviews.length} đánh giá)
+                                </div>  
                             </div>
                             <div className={cx('tab-list-container')}>
                                 <TabsComponent 

@@ -7,6 +7,6 @@ const ReviewSchema = mongoose.Schema({
   createdAt: { type: Date, default: new Date() }
 })
 
-const Review = mongoose.model("Review", ReviewSchema);
+const Reviews = mongoose.model("Reviews", ReviewSchema);
 
-module.exports = Review;
+module.exports = Reviews;

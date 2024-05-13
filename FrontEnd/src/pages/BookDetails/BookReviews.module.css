@@ -11,7 +11,9 @@
 .review-form p {
     margin: 2px 0 6px;
 }
-
+.user-review{
+    display: flex;
+}
 .comment-form-comment label,
 .comment-form-rating label {
     font-size: 1.2em;
