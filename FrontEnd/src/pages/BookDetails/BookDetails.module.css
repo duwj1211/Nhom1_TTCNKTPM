@@ -75,6 +75,16 @@
     color: #393280;
 }
 
+.remain-quantity span {
+    color: #008000;
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 16px;
+}
+
 .cart {
     position: relative;
 }
@@ -98,7 +108,7 @@
     width: 50%;
 }
 
-input[type=number] {
+.cart input[type=number] {
     color: #666;
     padding: .3em;
     height: auto;
@@ -107,9 +117,10 @@ input[type=number] {
     background: #fafafa;
     box-shadow: none;
     transition: all .2s linear;
+    width: 80px;
 }
 
-input[type=number]:focus {
+.cart input[type=number]:focus {
     color: #000;
     border-style: dotted;
     border-color: #ddd;
