@@ -6,11 +6,15 @@ import styles from './StarRating.module.css'
 
 const cx = classNames.bind(styles)
 
-function StarRating() {
+function StarRating({ onRatingChange }) {
     const [rating, setRating] = useState(null);
     const [hover, setHover] = useState(null);
     const [totalStars, setTotalStars] = useState(5);
 
+    const handleRatingChange = (currentRating) => {
+        setRating(currentRating);
+        onRatingChange(currentRating);
+    };
 
     return ( 
         <div className={cx('wrap')}>
@@ -32,7 +36,7 @@ function StarRating() {
                         color:
                         currentRating <= (hover || rating) ? "#ffc107" : "#e4e5e9",
                     }}
-                    onMouseEnter={() => setHover(currentRating)}
+                    onMouseEnter={() => handleRatingChange(currentRating)}
                     onMouseLeave={() => setHover(null)}
                     >
                     &#9733;

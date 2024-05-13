@@ -1,7 +1,10 @@
 const Book = require('../models/book.model');
 const Author = require('../models/author.model');
 const Category = require('../models/category.model');
-const {StatusBook} = require('../constant')
+const Review = require('../models/review.model');
+const {StatusBook} = require('../constant');
+const { populate } = require('dotenv');
+const { patch } = require('../routes/book.route');
 
 const searchBooks = async (req, res) => {
   const search = req.query.search || '';
@@ -76,7 +79,13 @@ const getBookBySlug = async (req, res) => {
     const book = await Book
       .findOne({slug: slug})
       .populate('categories')
-      .populate('author', '_id slug fullName avatar');
+      .populate('author', '_id slug fullName avatar')
+      .populate({
+        path:'reviews',
+        populate: {
+          path: 'user'
+        }
+      });
     if (book) {
       res.status(200).json(book);
     } else {
@@ -124,6 +133,30 @@ const updateBookById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const addReviewBook = async(req, res ) => {
+  try{
+    if(req.user.userId){
+      const slug = req.params.slug;
+      const content = req.body.content;
+      const rating = req.body.rating;
+      const book = await Book.findOne({slug: slug}).populate('reviews');
+      if(!book){
+        return res.status(404).json("Không tìm thấy thông sách");
+      }
+      const review = new Review({
+        content: content,
+        rating: rating,
+        user: req.user.userId,
+      })
+      await review.save();
+      book.reviews.push(review);
+      await book.save();
+      return res.status(200).json("Thêm review thành công");
+    }
+  }catch(error){
+    return res.status(500).json({message: error.message});
+  }
+}
 
 module.exports = {
   searchBooks,
@@ -132,4 +165,5 @@ module.exports = {
   getBookByAuthor,
   createBook,
   updateBookById,
+  addReviewBook
 };

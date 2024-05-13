@@ -8,6 +8,11 @@ import ApiService from "../../service/api.service";
 import TabsComponent  from './TabsComponent';
 import BookReview from './BookReview';
 import RelatedBook from './RelatedBook';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +20,8 @@ function BookDetails() {
     const { slug } = useParams();
     const [book, setBook] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const [reviews,setReviews] = useState([]);
+    const [averageRating, setAverageRating] = useState()
     useEffect(() => { 
         async function getBook() {
             try {
@@ -22,6 +29,8 @@ function BookDetails() {
               if (response.status === 200) {
                 const item = response.data;
                 setBook(item);
+                setReviews(item.reviews);
+                calculateAverageRating(item.reviews);
                 window.scrollTo(0, 0);
               }
             } catch (error) {
@@ -38,9 +47,27 @@ function BookDetails() {
         }
         return data.slice(0, maxLength).join(' ') + '...';
     };
-
-    const handleChange = (e) => {
-        setQuantity(e.target.value);
+    const calculateAverageRating = async(reviews) => {
+        if (reviews.length === 0) return 0;
+        let totalRating = 0;
+        console.log(reviews);
+        reviews.forEach(item => {
+            totalRating += item.rating;
+        });
+        const averageRating = totalRating / reviews.length
+        setAverageRating(averageRating.toFixed(1));
+    };
+    const handleChange = (event, maxQuantity) => {
+        let value = event.target.value;
+        if(value > maxQuantity){
+            event.target.value = maxQuantity;
+            value = maxQuantity
+        }
+        else if(!value){
+            value = 1;
+            event.target.value = 1;
+        }
+        setQuantity(value);
     };
 
     const handleAddToCart = async (bookId, quantity) => {
@@ -112,16 +139,19 @@ function BookDetails() {
                                                 <div className={cx('fw-medium mb-2')}>Dịch giả: {book.translator}</div>
                                                 <div className={cx('fw-medium mb-2')}>Nhà xuất bản: {book.publisher}</div>
                                             </div>
-                                            {/* <p className={cx('book-desc')}>
+                                            <p className={cx('book-desc')}>
                                                 {limitWord(book.description, 50)}
                                                 <a className={cx('read-more-desc')} href="#description-tabs">
                                                     Read More
                                                 </a>
-                                            </p> */}
-                                            <div className={cx('remain-quantity', 'mb-4')}><span>Số lượng còn: </span>{book.quantity}</div>
+                                            </p>
+                                            <div className={cx('remain-quantity')}>
+                                                <span>Còn hàng:&nbsp;</span> 
+                                                <span>{book.quantity} sản phẩm</span>
+                                            </div>
                                             <div className={cx('cart')}>
-                                                <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' value={quantity} placeholder='' inputMode='numeric' autoComplete='on' onChange={handleChange}></input>
-                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Thêm vào giỏ hàng</button>
+                                                <input className={cx('quantity')} type='number' id='quantity'  aria-label='Product quantity' size='4' min='1' max={book.quantity} step='1' placeholder='' inputMode='numeric' autoComplete='on' defaultValue="1" onChange={(e) => handleChange(e, book.quantity)}></input>
+                                                <button type='button' className={cx('btn')} onClick={() => handleAddToCart(book._id,quantity)}>Add to cart</button>
                                                 <ToastContainer 
                                                     position="top-right"
                                                     autoClose={5000}
@@ -135,9 +165,12 @@ function BookDetails() {
                                                     theme="light"
                                                 />
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </div>    
+                                    </div>    
+                                </div>  
+                                <div className='average-rating'>
+                                        {averageRating}/5 <FontAwesomeIcon icon={faStar} className={cx('yellow-star')}/> ({reviews.length} đánh giá)
+                                </div>  
                             </div>
                             <div className={cx('tab-list-container')}>
                                 <TabsComponent 
