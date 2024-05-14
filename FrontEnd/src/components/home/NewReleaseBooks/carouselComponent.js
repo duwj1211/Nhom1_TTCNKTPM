@@ -63,7 +63,9 @@ function CarouselComponent() {
               <img src={book.avatar} alt="Book item"></img>
             </Link>
             <div className={cx("item-content")}>
-              <Link to={`/detail/${book.slug}`}>{book.name}</Link>
+              <Link to={`/detail/${book.slug}`} className={cx("item-name")}>
+                {book.name}
+              </Link>
               <h5>{book.publisher}</h5>
               <div className={cx("item-price")}>
                 <h6 className={cx("final-price")}>

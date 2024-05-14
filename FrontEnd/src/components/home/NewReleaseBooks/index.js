@@ -10,7 +10,7 @@ function NewReleaseBooks() {
       <div className={cx("small-title")}>SOME QUALITY ITEMS</div>
       <div className={cx("wrap-big-title")}>
         <hr></hr>
-        <div className={cx("big-title")}>Sách mới phát hành</div>
+        <div className={cx("big-title")}>SÁCH MỚI PHÁT HÀNH</div>
         <hr></hr>
       </div>
       <CarouselComponent />

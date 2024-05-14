@@ -44,7 +44,7 @@ function BookList() {
 
   useEffect(() => {
     setCategory(cate);
-  }, [cate])
+  }, [cate]);
 
   async function fetchData() {
     try {
@@ -57,7 +57,7 @@ function BookList() {
           orderBy: orderBy,
           category: category,
           minPrice: minPrice,
-          maxPrice: maxPrice
+          maxPrice: maxPrice,
         },
       });
       if (response.status === 200) {
@@ -86,10 +86,10 @@ function BookList() {
   }
 
   function handleChangePrice(e) {
-    const {name, value} = e.target;
-    if (name === 'minPrice') {
+    const { name, value } = e.target;
+    if (name === "minPrice") {
       setMinPrice(value);
-    } else if (name === 'maxPrice') {
+    } else if (name === "maxPrice") {
       setMaxPrice(value);
     }
   }
@@ -101,15 +101,18 @@ function BookList() {
     <div className={cx("all-book")}>
       <div className={cx("all-book-nav")}>
         <Link className={cx("nav-home")} to="/">
-          HOME
+          TRANG CHỦ
         </Link>
         <p>/</p>
-        <div>BOOKS</div>
+        <div>SÁCH</div>
       </div>
       <div className="container py-4">
         <div className={cx("row")}>
           <div className={cx("col-0 col-md-3")}>
-            <Filter handleChangePrice={handleChangePrice} handleFilter={filterPrice}/>
+            <Filter
+              handleChangePrice={handleChangePrice}
+              handleFilter={filterPrice}
+            />
           </div>
           <div className={cx("col-12 col-md-9")}>
             <div className={cx("sort-and-paging")}>
@@ -186,9 +189,17 @@ function Filter({ handleFilter, handleChangePrice }) {
         {!isPriceCollapsed && (
           <>
             <div className={cx("input")}>
-              <input type="number" name="minPrice" onChange={handleChangePrice}/>
+              <input
+                type="number"
+                name="minPrice"
+                onChange={handleChangePrice}
+              />
               <div>-</div>
-              <input type="number" name="maxPrice" onChange={handleChangePrice}/>
+              <input
+                type="number"
+                name="maxPrice"
+                onChange={handleChangePrice}
+              />
             </div>
             <button onClick={handleFilter}>Lọc</button>
           </>
