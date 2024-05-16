@@ -21,7 +21,7 @@ function BookDetails() {
     const [book, setBook] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [reviews,setReviews] = useState([]);
-    const [averageRating, setAverageRating] = useState()
+    const [averageRating, setAverageRating] = useState(0);
     useEffect(() => { 
         async function getBook() {
             try {
@@ -169,7 +169,7 @@ function BookDetails() {
                                     </div>    
                                 </div>  
                                 <div className='average-rating'>
-                                        {averageRating}/5 <FontAwesomeIcon icon={faStar} className={cx('yellow-star')}/> ({reviews.length} đánh giá)
+                                        {averageRating}/5 <FontAwesomeIcon icon={faStar} className={cx('yellow-star')}/> ({reviews.length} lượt đánh giá)
                                 </div>  
                             </div>
                             <div className={cx('tab-list-container')}>
