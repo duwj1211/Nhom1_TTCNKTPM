@@ -9,6 +9,16 @@ import { useParams } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 
+function formatDate(dateTimeString) {
+    const dateObject = new Date(dateTimeString);
+    const day = dateObject.getDate();
+    const month = dateObject.getMonth() + 1;
+    const year = dateObject.getFullYear();
+    const hours = dateObject.getHours().toString().padStart(2, '0'); 
+    const minutes = dateObject.getMinutes().toString().padStart(2, '0'); 
+    return `${day}/${month}/${year}`;
+  }
+
 function BookReview() {
     const { slug } = useParams();
     const starRatingRef = useRef();
@@ -53,8 +63,8 @@ function BookReview() {
                 content: content
             });
             if(response.status === 200){
-                console.log('success');
                 getBookReview();
+                setContent("");
             }else{
                 console.log('unsuccess')
             }
@@ -112,22 +122,24 @@ function BookReview() {
                         </p>
                     </form>
                 </div>
+                <hr></hr>
                 <div className={cx("users-reviews")}>
                     {reviews && reviews.map((item, index) => (
                         <React.Fragment key={index}>
-                            <div>
-                            <div className={cx('user-review')}>
-                                <div className="user-name">{item.user.firstName} {item.user.lastName}</div>
-                                <div className="user-rating">
-                                    <Typography component="legend"></Typography>
-                                    <Rating name="read-only" value={item.rating} readOnly />   
+                            <div className={cx('review-box')}>
+                                <div className={cx("user-name")}><strong>{item.user.firstName} {item.user.lastName}</strong></div>
+                                <div className={cx('user-review-rating')}>
+                                    <div className={cx("user-rating")}>
+                                        <Typography component="legend"></Typography>
+                                        <Rating name="read-only" value={item.rating} readOnly />
+                                    </div>
+                                    <div className={cx('date-rating')}>{formatDate(item.createdAt)}</div>  
                                 </div>
-                            </div>
-                            <div className="user-review">{item.content}</div>
+                                <div className={cx("user-comment")}><span>{item.content}</span></div>
                             </div>
                         </React.Fragment>
                     ))}
-        </div>
+                </div>
             </div>
         </div>
         </>
