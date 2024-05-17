@@ -31,14 +31,14 @@ function BookDetails() {
                 setBook(item);
                 setReviews(item.reviews);
                 calculateAverageRating(item.reviews);
-                window.scrollTo(0, 0);
+                // window.scrollTo(0, 0);
               }
             } catch (error) {
               console.error("Error find book:", error);
             }
           }
           getBook();
-    }, [slug]);
+    }, [slug, reviews]);
     
     const limitWord = (description, maxLength) => {
         const data = description.split(' ');
