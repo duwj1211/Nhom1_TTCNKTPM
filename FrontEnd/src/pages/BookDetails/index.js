@@ -29,8 +29,6 @@ function BookDetails() {
               if (response.status === 200) {
                 const item = response.data;
                 setBook(item);
-                setReviews(item.reviews);
-                calculateAverageRating(item.reviews);
                 window.scrollTo(0, 0);
               }
             } catch (error) {
@@ -39,6 +37,21 @@ function BookDetails() {
           }
           getBook();
     }, [slug]);
+    useEffect(() => { 
+        async function getBookReview() {
+            try {
+              const response = await ApiService.get(`books/${slug}`);
+              if (response.status === 200) {
+                const item = response.data;
+                setReviews(item.reviews);
+                calculateAverageRating(item.reviews);
+              }
+            } catch (error) {
+              console.error("Error find book:", error);
+            }
+          }
+          getBookReview();
+    }, [reviews]);
     
     const limitWord = (description, maxLength) => {
         const data = description.split(' ');
