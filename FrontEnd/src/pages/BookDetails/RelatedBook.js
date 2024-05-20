@@ -10,6 +10,7 @@ const cx = classNames.bind(styles);
 
 function RelatedBook({categories = [], slug = ''}) {
     const [books, setBooks] = useState([]);
+    const [relatedBooks, setRelatedBooks] = useState([]);
     const CustomPrevArrow = (props) => {
         const { onClick } = props;
         return (
@@ -40,9 +41,16 @@ function RelatedBook({categories = [], slug = ''}) {
         getBooks();
     }, []);
 
-    const findBookByCategory = books.filter(book => categories.map(category => book.categories.includes(category)));
+    const list = books.filter(book => {
+        const hasCommonCategory = book.categories.some(bookCategory =>
+            categories.some(category => category._id === bookCategory._id)
+        );
+        return hasCommonCategory && book.slug !== slug;
+    });
     
-    const relatedBooks = findBookByCategory.filter(book => book.slug !== slug);
+    useEffect(() => {
+        setRelatedBooks(list);
+    }, [books, categories]);
 
     let settings = {
         slidesToShow: 4,

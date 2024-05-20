@@ -1,0 +1,141 @@
+.bg {
+    background: rgb(255, 255, 255);
+    color: #565a61;
+}
+
+.container {
+    padding: 0 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-author {
+    padding: 60px 0;
+    margin-right: -10px;
+    margin-left: -10px;
+    justify-content: space-between;
+}
+
+.all-author-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgba(255, 229, 229, 1), rgba(245, 255, 254, 1));
+    padding: 25px 0;
+}
+
+.all-author-nav p {
+    margin: 0 10px;
+}
+
+.all-author-nav p, .all-author-nav div, .author-nav-home {
+    color: rgba(57, 50, 128, 1);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.author-avt {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.author-avt img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-size: 28px;
+    line-height: 39px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(57, 50, 128, 1);
+    margin-bottom: 15px;
+}
+
+.author-content p {
+    font-size: 16px;
+    color: #3F3F40;
+    padding: 0;
+    line-height: 24px;
+    margin: 0 0 10px;
+}
+
+.product-author {
+    background: rgb(242,245,247);
+    color: #565a61;
+}
+
+.product-author .container {
+    padding: 20px;
+}
+
+.content-area {
+    background-color: #fff;
+}
+
+.section-related-book {
+    margin: 40px 0;
+}
+
+
+@media (min-width: 320px) {
+    .container {
+        max-width: 100%;
+    }    
+    
+    .content-area {
+        padding: 16px;
+        margin: 16px 0;
+    } 
+
+    .section-related-book .container {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }   
+        
+    .content-area {
+        padding: 32px;
+    } 
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .content-area {
+        padding: 32px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .content-area {
+        margin: 44px 0;
+        padding: 80px 100px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 1310px) {
+    .container {
+        max-width: 1290px;
+    }
+}

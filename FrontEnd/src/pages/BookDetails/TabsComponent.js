@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './TabsComponent.module.css';
 
 const cx = classNames.bind(styles);
@@ -8,6 +8,10 @@ function TabsComponent({tabs = []}) {
     const [activeTabIndex, setActiveTabIndex] = useState(0);
     const [allTabs, setAllTabs] = useState(tabs);
   
+    useEffect(() => {
+        setAllTabs(tabs);
+    }, [tabs]);
+
     const activateTab = (index) => {
         setActiveTabIndex(index);
     };
