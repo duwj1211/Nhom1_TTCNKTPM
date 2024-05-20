@@ -33,7 +33,7 @@ function App() {
             <Route path="/account" element={<Profile />} />
             <Route path="/order/detail/:orderId" element={<OrderDetail />} />
             <Route path="/authors" element={<AuthorList />} />
-            <Route path="/:slug" exact element={<AuthorDetail />} />
+            <Route path="/authors/:slug" exact element={<AuthorDetail />} />
           </Route>
 
           <Route path="/login" element={<SignIn />} />

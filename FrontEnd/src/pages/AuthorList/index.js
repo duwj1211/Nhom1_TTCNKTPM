@@ -49,7 +49,7 @@ function AuthorList() {
               {authors.map((author, index) => {
                 return (
                   <div key={author._id} className="col-6 col-md-4">
-                    <Link key={author._id} to={`/${author.slug}`}>
+                    <Link key={author._id} to={`/authors/${author.slug}`}>
                       <Author author={author} />
                     </Link>
                   </div>

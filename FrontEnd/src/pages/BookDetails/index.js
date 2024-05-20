@@ -47,7 +47,7 @@ function BookDetails() {
               console.error("Error find book:", error);
             }
           }
-          getBookReview();
+        //   getBookReview();
     }, [reviews]);
 
     const calculateAverageRating = async(reviews) => {
