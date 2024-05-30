@@ -3,7 +3,7 @@ import styles from './BookInfo.module.css';
 import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ApiService from "../../service/api.service";
 
 const cx = classNames.bind(styles);
@@ -11,6 +11,7 @@ const cx = classNames.bind(styles);
 function BookInfo({bookInfo}) {
     const [book, setBook] = useState(null);
     const [quantity, setQuantity] = useState(1);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setBook(bookInfo);
@@ -43,7 +44,10 @@ function BookInfo({bookInfo}) {
                 quantity
             })
             if(response.status === 200){
-                toast.success('Thêm vào giỏ hàng thành công!', {
+                toast.success(
+                    <div>
+                        Thêm vào giỏ hàng thành công! Xem <span onClick={() => navigate('/cart')} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>Giỏ hàng</span>.
+                    </div>, {
                     position: "top-right",
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -68,17 +72,24 @@ function BookInfo({bookInfo}) {
                 console.log("Unsuccessful");
             }
         }catch(error){
-            toast.error('Thêm vào giỏ hàng thất bại!', {
-                position: "top-right",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-            console.error('Error add to cart:',error);
+            if (error.response && error.response.status === 401) {
+                toast.error(
+                    <div>
+                        Chưa đăng nhập hoặc phiên đăng nhập hết hạn. Hãy <span onClick={() => navigate('/login')} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>đăng nhập</span> để thực hiện thao tác này.
+                    </div>, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }else{
+                console.error('Error add to cart:',error);
+                console.error('Error add to cart:',error);
+            }
         }
     }
 
@@ -112,7 +123,7 @@ function BookInfo({bookInfo}) {
                     <div className={cx("cart")}>
                         <input className={cx("quantity")} type="number" id="quantity" aria-label="Product quantity" size="4" min="1" max={book.quantity} step="1" placeholder="" inputMode="numeric" autoComplete="on" defaultValue="1" onChange={(e) => handleChange(e, book.quantity)}></input>
                         <button type="button" className={cx("btn")} onClick={() => handleAddToCart(book._id, quantity)}>
-                            Add to cart
+                            Thêm vào giỏ
                         </button>
                         <ToastContainer position="top-right"
                             autoClose={5000}

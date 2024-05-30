@@ -5,7 +5,9 @@ import StarRating from './StarRating';
 import ApiService from "../../service/api.service";
 import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
+import { ToastContainer, toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(styles);
 
@@ -21,6 +23,7 @@ function formatDate(dateTimeString) {
 
 function BookReview() {
     const { slug } = useParams();
+    const navigate = useNavigate();
     const starRatingRef = useRef();
     const [reviews, setReviews] = useState([]);
     const [updateReviews, setUpdateReviews] = useState(false);
@@ -37,7 +40,7 @@ function BookReview() {
               if (response.status === 200) {
                 const itemReviews = response.data.reviews;
                 setReviews(itemReviews);
-                window.scrollTo(0, 0);
+                //window.scrollTo(0, 0);
               }
             } catch (error) {
               console.error("Error find book:", error);
@@ -65,11 +68,28 @@ function BookReview() {
             if(response.status === 200){
                 getBookReview();
                 setContent("");
-            }else{
-                console.log('unsuccess')
+            }else if(response.status === 401){
+                console.log("Chưa đăng nhập");
+                navigate("/login");
             }
         }catch(error){
-            console.error(error);
+            if (error.response && error.response.status === 401) {
+                toast.error(
+                    <div>
+                        Chưa đăng nhập hoặc phiên đăng nhập hết hạn. Hãy <span onClick={() => navigate('/login')} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>đăng nhập</span> để thực hiện thao tác này.
+                    </div>, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }else{
+                console.error(error);
+            }
         }
     }
 
