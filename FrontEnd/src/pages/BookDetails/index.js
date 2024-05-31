@@ -47,13 +47,12 @@ function BookDetails() {
               console.error("Error find book:", error);
             }
           }
-        //   getBookReview();
+          getBookReview();
     }, [reviews]);
 
     const calculateAverageRating = async(reviews) => {
         if (reviews.length === 0) return 0;
         let totalRating = 0;
-        console.log(reviews);
         reviews.forEach(item => {
             totalRating += item.rating;
         });

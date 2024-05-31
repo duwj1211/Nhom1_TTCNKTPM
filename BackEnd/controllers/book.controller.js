@@ -152,6 +152,8 @@ const addReviewBook = async(req, res ) => {
       book.reviews.push(review);
       await book.save();
       return res.status(200).json("Thêm review thành công");
+    }else{
+      return res.status(401).json({message: "Không tìm thấy thông tin người dùng"});
     }
   }catch(error){
     return res.status(500).json({message: error.message});
