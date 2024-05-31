@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 function NewReleaseBooks() {
   return (
     <div className={cx("new-release-books")}>
-      <div className={cx("small-title")}>SOME QUALITY ITEMS</div>
+      {/* <div className={cx("small-title")}>SOME QUALITY ITEMS</div> */}
       <div className={cx("wrap-big-title")}>
         <hr></hr>
         <div className={cx("big-title")}>SÁCH MỚI PHÁT HÀNH</div>
