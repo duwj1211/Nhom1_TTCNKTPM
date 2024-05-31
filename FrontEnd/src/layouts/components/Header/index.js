@@ -113,16 +113,16 @@ function Header() {
             <div className={cx('child-wrap')}>
               <div className='row'>
                 {categories.map((cate, index) => (
-                  <div key={cate._id} className='col-12 col-md-4'>
+                  <div key={cate._id} className='col-6 col-md-4'>
                     <NavLink to={`/category/${cate.slug}`} className={(nav) => cx('nav-child', { active: nav.isActive })}>{cate.name}</NavLink>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-          <NavLink to='/new-release' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink>
+          {/* <NavLink to='/new-release' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Mới phát hành</span></NavLink> */}
           <NavLink to='/authors' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Tác giả</span></NavLink>
-          <NavLink to='/contact' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink>
+          {/* <NavLink to='/contact' className={(nav) => cx('nav-link', { active: nav.isActive })}><span>Liên hệ</span></NavLink> */}
         </div>
       </div>
     </header>

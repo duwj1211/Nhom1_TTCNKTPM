@@ -10,9 +10,9 @@ function EBook() {
         <Row>
           <Col md={7}>
             <div className={cx("ebook-text")}>
-              <h6>ebook</h6>
+              <h6>OneBook</h6>
               <h3>
-                Access, Read, Practice & Engage with Digital Content (eBook)
+                Kho sách tri thức với đầy đủ thể loại cho độc giả
               </h3>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu

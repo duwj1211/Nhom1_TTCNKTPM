@@ -29,7 +29,7 @@ function Sales() {
 
     const slides = [
         {
-            title: "All books are 50% off now! Don't miss such a deal!",
+            title: "Chương trình khuyến mãi lớn nhất trong năm, đừng bỏ lỡ!",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.",
             days: "32",
             hours: "02",
@@ -38,7 +38,7 @@ function Sales() {
             image: require('../../../assets/images/img_unsplash.png')
         },
         {
-            title: "All books are 50% off now! Don't miss such a deal!",
+            title: "Giảm giá lên tới 50% cho các loại sách thiếu nhi!",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.",
             days: "32",
             hours: "02",

@@ -167,7 +167,7 @@
   border: 1px solid #999;
   border-radius: 4px;
   padding: 8px 12px;
-  left: -100px;
+  left: -250px;
   top: calc(100% + 10px);
   z-index: 99;
   width: 100%;
@@ -175,14 +175,12 @@
   display: none;
 }
 .nav-child {
-  padding: 8px 0;
+  padding: 12px 0;
   display: inline-block;
   line-height: 16px;
   font-weight: 500;
 }
 
 @media (max-width: 991px) {
-  .search-wrap {
-      /* width: 290px; */
-  }
+  
 }

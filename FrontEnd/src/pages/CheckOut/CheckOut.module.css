@@ -60,7 +60,7 @@ select {
 .phone-number label,
 .order-notes {
     margin-top: 10px;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    /* font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; */
     font-size: 13.5px;
     font-weight: 700;
     color: #565a61;
@@ -88,10 +88,6 @@ select {
 .your-order-table th,
 .your-order-table td {
     color: #565a61;
-}
-
-.order-container h4 {
-    font-family: 'Times New Roman', Times, serif;
 }
 
 .imgName {

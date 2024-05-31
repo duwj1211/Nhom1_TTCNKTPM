@@ -17,7 +17,6 @@
 }
 
 .sort-and-paging {
-    padding: 0 50px;
     margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
@@ -25,11 +24,15 @@
 }
 
 .sort-select, .paging-select {
-    height: 30px;
-    border: none;
+    border: 1px solid #333;
+    padding: 4px 16px 4px 12px;
+    border-radius: 6px;
     color: rgba(57, 50, 128, 1);
     font-size: 16px;
     font-weight: 700;
+    outline: none;
+    cursor: pointer;
+    height: 40px;
 }
 
 .all-book-content {
@@ -63,6 +66,10 @@
     gap: 6px;
     align-content: center;
 }
+.filter-item.disable {
+    user-select: none;
+    opacity: 0.6;
+}
 
 .filter-item button {
     padding: 7px 20px;
@@ -76,6 +83,7 @@
     color: rgba(57, 50, 128, 1);
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .wrap-input {
