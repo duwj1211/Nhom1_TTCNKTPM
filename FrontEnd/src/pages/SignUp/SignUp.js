@@ -81,6 +81,7 @@ const SignUp = () => {
                         Bạn đã có tài khoản? 
                         <Link to="/login"> Đăng nhập</Link>
                     </div>
+                    <Link className={cx("nav-link")} to="/">Trở về trang chủ</Link>
                 </form>
             </div>
             <div id="dialog" className={cx('dialog', { open: showDialog })}>

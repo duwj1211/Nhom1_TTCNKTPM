@@ -112,9 +112,9 @@ function BookInfo({bookInfo}) {
                     </div>
                     <p className={cx("book-desc")}>
                         {limitWord(book.description, 50)}
-                        <Link className={cx("read-more-desc")} href="#description-tabs">
-                            Read More
-                        </Link>
+                        <a className={cx("read-more-desc")} href="#description-tabs">
+                            Đọc thêm
+                        </a>
                     </p>
                     <div className={cx("remain-quantity")}>
                         <span>Còn hàng:&nbsp;</span>

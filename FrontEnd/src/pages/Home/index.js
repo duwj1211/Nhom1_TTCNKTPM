@@ -16,9 +16,9 @@ export default function Home() {
     <div className={cx("wrap")}>
       <TopBanner />
       <Categories />
-      <EBook />
       <NewReleaseBooks />
       <FeaturedBook />
+      <EBook />
       <Sales />
     </div>
   );

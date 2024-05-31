@@ -206,10 +206,10 @@ function Filter({ handleFilter, handleChangePrice }) {
         )}
       </div>
       <hr />
-      <div className={cx("filter-item")}>
+      <div className={cx("filter-item", "disable")}>
         <div className={cx("filter-type")}>
           Category{" "}
-          <span className={cx("filter-toggle")} onClick={toggleCategory}>
+          <span className={cx("filter-toggle")}>
             {isCategoryCollapsed ? "+" : "-"}
           </span>
         </div>
@@ -228,10 +228,10 @@ function Filter({ handleFilter, handleChangePrice }) {
         )}
       </div>
       <hr />
-      <div className={cx("filter-item")}>
+      <div className={cx("filter-item", "disable")}>
         <div className={cx("filter-type")}>
           Author{" "}
-          <span className={cx("filter-toggle")} onClick={toggleAuthor}>
+          <span className={cx("filter-toggle")}>
             {isAuthorCollapsed ? "+" : "-"}
           </span>
         </div>
@@ -250,10 +250,10 @@ function Filter({ handleFilter, handleChangePrice }) {
         )}
       </div>
       <hr />
-      <div className={cx("filter-item")}>
+      <div className={cx("filter-item", "disable")}>
         <div className={cx("filter-type")}>
           Availability{" "}
-          <span className={cx("filter-toggle")} onClick={toggleAvailability}>
+          <span className={cx("filter-toggle")}>
             {isAvailabilityCollapsed ? "+" : "-"}
           </span>
         </div>

@@ -1,25 +1,48 @@
 .background {
     background: rgb(242, 245, 247);
     color: #565a61;
+    border-top: 1px solid #868c96;
 }
-.container{
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-}
+
 .main-content{
+    /* margin: 36px auto; */
+    padding: 40px 0px;
     background-color: #fff;
-    margin: 64px auto;
-    padding: 80px 100px;
+}
+.empty-cart {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    background-color: #fff;
+}
+.empty-cart img {
+    width: 500px;
+    height: 300px;
+    color: #f3f3f3;
+}
+.empty-cart-txt {
+    font-size: 22px;
+    font-weight: 500;
+    color: grey;
+}
+.empty-cart button {
+    padding: 12px 20px;
+    border-radius: 15px;
+    background-color: grey;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
 }
 .title{
     padding-top: 10px;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
 }
-table h2{
-    font-family: 'Times New Roman', Times, serif;
+.background h2{
+    /* font-family: 'Times New Roman', Times, serif; */
 }
-td{
+.background td{
     vertical-align: middle;
 }
 .table-list-books{
@@ -48,9 +71,10 @@ td{
     background-color: #ED553B;
 }
 .cart{
-    /* width: 1000px; */
     height: fit-content;
     margin: auto;
+    width: 100%;
+    padding: 0 24px;
 }
 .cart-total-table{
     height: fit-content;
@@ -78,7 +102,7 @@ td{
     border-radius: 50%;
     color: #5f4ecb;
     padding: 4px;
-    font-size: 16px;
+    font-size: 12px;
 }
 .remove-button:hover{
     background-color: #ED553B;
@@ -210,9 +234,9 @@ td{
 }
 
 @media (max-width: 921px) {
-    .container {
+    /* .container {
         padding: 8px;
-    }
+    } */
     .main-content {
         padding: 32px;
     }
@@ -271,9 +295,9 @@ td{
 }
 
 @media (max-width: 767px) {
-    .container{
+    /* .container{
         padding: 8px;
-    }
+    } */
     .main-content {
         padding: 16px;
     }
@@ -300,9 +324,9 @@ td{
 }
 
 @media (max-width: 400px) {
-    .container{
+    /* .container{
         padding: 2px;
-    }
+    } */
     .main-content {
         padding: 2px;
     }

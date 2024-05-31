@@ -75,8 +75,9 @@ const SignIn = () => {
                     </button>
                     <div className={cx("link-register")}>
                         Bạn chưa có tài khoản? 
-                        <Link to="/signup"> Đăng ký ngay</Link>
+                        <Link to="/signup"> Đăng ký ngay!</Link>
                     </div>
+                    <Link className={cx("nav-link")} to="/">Trở về trang chủ</Link>
                 </form>
             </div>
         </div>

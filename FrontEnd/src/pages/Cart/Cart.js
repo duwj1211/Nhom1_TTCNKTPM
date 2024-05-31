@@ -40,6 +40,7 @@ function Cart(){
             const response = await ApiService.get(`carts/user/`);
             if (response.status === 200) {
                 setCart(response.data.cart);
+                console.log(response.data.cart);
             } else {
                 console.log('Error get cart');
             }
@@ -95,7 +96,7 @@ function Cart(){
     return(
         <div className={cx('background')}>
             <div className={cx('container')}>
-                <div className={cx('main-content')}>
+                {cart ? <div className={cx('main-content')}>
                     <DeleteConfirm
                         open={deleteConfirmationOpen}
                         onClose={() => setDeleteConfirmationOpen(false)}
@@ -106,7 +107,7 @@ function Cart(){
                         <div className={cx('header')}>
                             <header>
                                 <div>
-                                    <h1 className={cx('title')} >Giỏ hàng</h1>
+                                    <h1 className={cx('title', 'mb-3 fs-3')} >Giỏ hàng</h1>
                                 </div>
                             </header>
                         </div>
@@ -175,7 +176,7 @@ function Cart(){
                                         </tr>
                                         </React.Fragment>
                                         ))}
-                                        <tr>
+                                        {/* <tr>
                                             <td colSpan="6" className={cx("action")}>
                                                 <div className={cx("coupon")}>
                                                     <div className="form-floating mb-1 d-flex">
@@ -187,7 +188,7 @@ function Cart(){
                                                 <button type="button" className={cx("update-btn","btn","btn-outline-custom")} disabled = "">Cập nhật</button>                                  
                                                 <input type="hidden"  value="d060906fb3"></input><input type="hidden"  value="/book-store-02/cart/"></input>
                                             </td>
-                                        </tr>
+                                        </tr> */}
                                     </tbody>
                                 </table>
                             </form>
@@ -237,7 +238,15 @@ function Cart(){
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> :
+                    <div className={cx('empty-cart')}>
+                        <img src='https://assets.materialup.com/uploads/16e7d0ed-140b-4f86-9b7e-d9d1c04edb2b/preview.png'></img>
+                        <div className={cx('empty-cart-txt')}>Giỏ hàng của bạn đang trống</div>
+                        <Link to='/'>
+                            <button>Tiếp tục mua hàng</button>
+                        </Link>
+                    </div>
+                }
             </div>
         </div>
     );
