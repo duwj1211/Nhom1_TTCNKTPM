@@ -132,6 +132,10 @@
 .link-register a:hover {
   text-decoration: underline;
 }
+.nav-link, .link-register a {
+  color: rgb(13, 110, 253);
+  text-decoration: underline;
+}
 .err-message {
   font-size: 14px;
   color: #ff3333;
