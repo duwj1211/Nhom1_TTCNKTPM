@@ -14,7 +14,12 @@ function AuthorList() {
 
   async function fetchData() {
     try {
-      const response = await ApiService.get("authors");
+      const response = await ApiService.get("authors", {
+        params: {
+          page: currentPage,
+          limit: 12,
+        },
+      });
       if (response.status === 200) {
         setAuthors(response.data.authors);
         setCurrentPage(response.data.currentPage);

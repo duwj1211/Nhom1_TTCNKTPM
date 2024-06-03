@@ -43,15 +43,17 @@ function BookList() {
   }, [location.search, searchParams]);
 
   useEffect(() => {
+    setSortBy("sold");
+    setOrderBy("desc")
     setCategory(cate);
   }, [cate]);
 
-  async function fetchData() {
+  async function fetchData(page) {
     try {
       const response = await ApiService.get("books", {
         params: {
           search: searchQuery,
-          page: currentPage,
+          page: page,
           limit: 12,
           sortBy: sortBy,
           orderBy: orderBy,
@@ -62,7 +64,7 @@ function BookList() {
       });
       if (response.status === 200) {
         setBooks(response.data.books);
-        setCurrentPage(response.data.currentPage);
+        // setCurrentPage(response.data.currentPage);
         setTotalPage(response.data.totalPages);
         window.scrollTo(0, 0);
       }
@@ -71,8 +73,11 @@ function BookList() {
     }
   }
   useEffect(() => {
-    fetchData();
-  }, [searchQuery, currentPage, sortBy, orderBy, category]);
+    fetchData(1);
+  }, [searchQuery, sortBy, orderBy, category]);
+  useEffect(() => {
+    fetchData(currentPage);
+  }, [currentPage]);
 
   function handleSortChange(event) {
     const selectedSort = event.target.value;
@@ -94,7 +99,7 @@ function BookList() {
     }
   }
   function filterPrice() {
-    fetchData();
+    fetchData(1);
   }
 
   return (
